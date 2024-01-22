@@ -5,6 +5,7 @@ INCS = -I ./includes/
 
 SRCDIR = srcs/
 SRCS_FIL = \
+			main.c
  
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))
@@ -13,7 +14,7 @@ OBJDIR = objs/
 OBJS = $(addprefix $(OBJDIR), $(notdir $(SRCS:.c=.o)))
 
 # # bonus
-# BONUS_SRCS_FIL = \
+# BONUS_SRCS_FIL =  
 
 # # ^ last line for source files can't end with '\'
 # BONUS_SRCS = $(addprefix $(SRCDIR), $(BONUS_SRCS_FIL))
@@ -37,7 +38,9 @@ $(NAME): $(OBJS)
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCS) 
+# -lm
+# "-lm" to link to math library
 
 RM = rm -f
 
