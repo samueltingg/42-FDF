@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c99 
 # -fsanitize=address -g
-INCS = -I ./includes/
+INCLUDES = -I ./includes/ -I$(LIBFT_DIR) -I$(MINILIBX_DIR) 
 
 # COLORS
 GREEN = \033[0;32m
@@ -11,54 +11,48 @@ RESET = \033[0m
 SRCDIR = srcs/
 SRCS_FIL = \
 			main.c
- 
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))
 
 OBJDIR = objs/
 OBJS = $(addprefix $(OBJDIR), $(notdir $(SRCS:.c=.o)))
 
-# # bonus
-# BONUS_SRCS_FIL =  
-
-# # ^ last line for source files can't end with '\'
-# BONUS_SRCS = $(addprefix $(SRCDIR), $(BONUS_SRCS_FIL))
-# BONUS_OBJS = $(addprefix $(OBJDIR), $(notdir $(BONUS_SRCS:.c=.o)))
-
-
 # library
-LIBFTDIR = libft/
-LIBFT.A = $(LIBFTDIR)libft.a
-
+LIBFT_DIR = libft/
+LIBFT.A = $(LIBFT_DIR)libft.a
+MINILIBX_DIR = minilibx/
+LIBRARIES = -L$(LIBFT_DIR) -lft -lm -L$(MINILIBX_DIR) -lmlx -framework OpenGL -framework AppKit 
 
 NAME = fdf
 
 all:  $(OBJDIR) $(NAME)
 
 $(OBJDIR):
-		mkdir -p $(OBJDIR)
+		@mkdir -p $(OBJDIR) && echo "$(GREEN)$(OBJDIR) was created$(RESET)"
 
 $(NAME): $(OBJS)
-		make -C $(LIBFTDIR)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft
-#  -Lmlx -lmlx -framework OpenGL -framework AppKit 
+		@make -C $(LIBFT_DIR)
+		@make -C $(MINILIBX_DIR) 
+		@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBRARIES) && echo "$(GREEN)$(NAME) was created$(RESET)"
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCS) 
-# -Imlx
+		@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES) && echo "$(GREEN)object files were created$(RESET)"
 # -lm
 # "-lm" to link to math library
 
 RM = rm -rf
 
 clean:
-		@ $(RM) $(OBJDIR)
-		@make clean -C ${LIBFTDIR} && echo "$(RED)object files were deleted$(RESET)"
+		@ $(RM) $(OBJDIR) && echo "$(RED) object files were deleted$(RESET)"
+		@make clean -C ${LIBFT_DIR} && echo "$(RED) libft object files were deleted$(RESET)"
+		@make clean -C ${MINILIBX_DIR} && echo "$(RED)ran make clean in $(MINILIBX_DIR)$(RESET)"
+
 
 fclean: clean
 		@$(RM) $(NAME) && echo "$(RED)$(NAME) was deleted$(RESET)"
-		@make fclean -C $(LIBFTDIR) && echo "$(RED)libft.a was deleted$(RESET)"
+		@make fclean -C $(LIBFT_DIR) && echo "$(RED)libft.a was deleted$(RESET)"
 
 re: fclean all
+
 
 .PHONY: all clean fclean re bonus
