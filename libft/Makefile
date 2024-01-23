@@ -64,10 +64,10 @@ $(NAME): $(OBJS) $(BONUS_OBJS) $(PRINTF_OBJS) $(GNL_OBJS)
 RM = rm -f
 
 clean:
-		$(RM) $(OBJS) $(BONUS_OBJS) $(PRINTF_OBJS) $(GNL_OBJS)
+		@$(RM) $(OBJS) $(BONUS_OBJS) $(PRINTF_OBJS) $(GNL_OBJS)
 
 fclean: clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
 
 re: fclean all
 

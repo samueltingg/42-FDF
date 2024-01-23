@@ -3,6 +3,11 @@ CFLAGS = -Wall -Wextra -Werror -std=c99
 # -fsanitize=address -g
 INCS = -I ./includes/
 
+# COLORS
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
 SRCDIR = srcs/
 SRCS_FIL = \
 			main.c
@@ -36,22 +41,23 @@ $(OBJDIR):
 $(NAME): $(OBJS)
 		make -C $(LIBFTDIR)
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft
+#  -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCS) 
+# -Imlx
 # -lm
 # "-lm" to link to math library
 
-RM = rm -f
+RM = rm -rf
 
 clean:
-		# $(RM) $(OBJS)
-		rm -rf $(OBJDIR)
-		make clean -C ${LIBFTDIR}
+		@ $(RM) $(OBJDIR)
+		@make clean -C ${LIBFTDIR} && echo "$(RED)object files were deleted$(RESET)"
 
 fclean: clean
-		$(RM) $(NAME) 
-		make fclean -C $(LIBFTDIR)
+		@$(RM) $(NAME) && echo "$(RED)$(NAME) was deleted$(RESET)"
+		@make fclean -C $(LIBFTDIR) && echo "$(RED)libft.a was deleted$(RESET)"
 
 re: fclean all
 
