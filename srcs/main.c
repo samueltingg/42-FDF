@@ -97,7 +97,7 @@ int	main(void)
 
 	// mlx_key_hook(data.win_ptr, &handle_input, &data);
 
-	mlx_hook(data.win_ptr, 2, 1L<<0, &closee, &data);
+	mlx_hook(data.win_ptr, ON_KEYDOWN, 0, closee, &data);
 
 	mlx_loop(data.mlx_ptr);
 	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
