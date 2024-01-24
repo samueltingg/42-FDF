@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/01/24 11:04:30 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/24 13:22:06 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_H
 
 # include ".././libft/libft.h"
-# include "mlx.h"
 # include "macros.h"
+# include "mlx.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
@@ -26,10 +26,16 @@
 
 typedef struct s_cord
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
-}		t_cord;
+	int		x;
+	int		y;
+	int		z;
+	int		color;
+}			t_cord;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}			t_data;
 
 #endif
