@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:58:35 by sting             #+#    #+#             */
-/*   Updated: 2023/11/09 09:32:04 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/24 20:48:14 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,6 @@ void	ft_putnbr_base(unsigned long long nb, char *base)
 	if (check_count_base(base) == 0)
 		return ;
 	base_len = (unsigned long long)check_count_base(base);
-	if (nb < 0)
-	{
-		nb = -nb;
-		put_char('-');
-	}
 	if (nb < base_len)
 		put_char(base[nb]);
 	else
