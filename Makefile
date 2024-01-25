@@ -1,27 +1,41 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c99 
+CFLAGS = -Wall -Wextra -Werror -std=c99
 # -fsanitize=address -g
-INCLUDES = -I ./includes/ -I$(LIBFT_DIR) -I$(MINILIBX_DIR) 
+INCLUDES = -I ./includes/ -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 
 # COLORS
 GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
+# SRCS
 SRCDIR = srcs/
 SRCS_FIL = \
 			main.c
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))
 
+# OBS
 OBJDIR = objs/
 OBJS = $(addprefix $(OBJDIR), $(notdir $(SRCS:.c=.o)))
 
-# library
+# LIBRARIES
 LIBFT_DIR = libft/
 LIBFT.A = $(LIBFT_DIR)libft.a
-MINILIBX_DIR = minilibx/
-LIBRARIES = -L$(LIBFT_DIR) -lft -lm -L$(MINILIBX_DIR) -lmlx -framework OpenGL -framework AppKit 
+LIBRARIES = -L$(LIBFT_DIR) -lft -lm
+
+# Set MINILIBX_DIR based on the operating system
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S), Darwin)  # macOS
+    MINILIBX_DIR = minilibx/
+	$(LIBRARIES) += -L$(MINILIBX_DIR) -lminilibx -framework OpenGL -framework AppKit
+
+else ifeq ($(UNAME_S), Linux)  # Linux
+    MINILIBX_DIR = minilibx-linux/
+	$(LIBRARIES) += -L$(MINILIBX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
+else
+    $(error Unsupported operating system)
+endif
 
 NAME = fdf
 
@@ -32,13 +46,12 @@ $(OBJDIR):
 
 $(NAME): $(OBJS)
 		@make -C $(LIBFT_DIR)
-		@make -C $(MINILIBX_DIR) 
+		@make -C $(MINILIBX_DIR)
 		@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBRARIES) && echo "$(GREEN)$(NAME) was created$(RESET)"
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 		@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES) && echo "$(GREEN)object files were created$(RESET)"
-# -lm
-# "-lm" to link to math library
+
 
 RM = rm -rf
 
@@ -56,3 +69,5 @@ re: fclean all
 
 
 .PHONY: all clean fclean re bonus
+
+
