@@ -92,7 +92,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 int	main(void)
 {
 	t_vars vars;
-	t_data	img;
+	// t_data	img;
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)
@@ -103,17 +103,22 @@ int	main(void)
 		free(vars.win_ptr);
 		return (MLX_ERROR);
 	}
+	// img.img = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+	// 							&img.endian);
 
-	img.img = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
+	// my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	// mlx_put_image_to_window(vars.mlx_ptr, vars.win_ptr, img.img, 100, 0);
+	
+	for (int x = 0; x < WINDOW_WIDTH; x++)
+		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, x, WINDOW_HEIGHT/2, 0x0000FF00);
+	for (int y = 0; y < WINDOW_WIDTH; y++)
+		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, WINDOW_WIDTH/2, y, 0x000000FF);
 
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(vars.mlx_ptr, vars.win_ptr, img.img, 100, 0);
 	mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, closee, &vars);
 	mlx_loop(vars.mlx_ptr);
 
-	mlx_loop(vars.mlx_ptr);
+	// exit loop if no window left 
 	mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
     free(vars.mlx_ptr);
 }
