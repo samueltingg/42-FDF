@@ -74,9 +74,9 @@
 //     return (0);
 // }
 
-int	closee(t_vars *vars)
+int	close_window(int keycode, t_vars *vars)
 {
-	// if (keycode == )
+	if (keycode == KEY_DOWN)
 	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
 	vars->win_ptr = NULL;
 	return (0);
@@ -118,7 +118,7 @@ int	main(void)
 		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, WINDOW_WIDTH/2, y, 0x000000FF);
 	
 
-	// mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, closee, &vars);
+	mlx_hook(vars.win_ptr, KEY_DOWN, 0, close_window, &vars);
 	mlx_loop(vars.mlx_ptr);
 
 	// exit loop if no window left 
