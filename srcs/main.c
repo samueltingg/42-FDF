@@ -81,37 +81,6 @@ int	closee(t_vars *vars)
 	return (0);
 }
 
-// int	main(void)
-// {
-// 	t_vars vars;
-
-// 	vars.mlx_ptr = mlx_init();
-// 	if (vars.mlx_ptr == NULL)
-// 		return (MLX_ERROR);
-// 	vars.win_ptr = mlx_new_window(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "first window");
-// 	if (vars.win_ptr == NULL)
-// 	{
-// 		free(vars.win_ptr);
-// 		return (MLX_ERROR);
-// 	}
-
-// 	// mlx_key_hook(vars.win_ptr, &handle_input, &vars);
-
-// 	mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, closee, &vars);
-
-// 	mlx_loop(vars.mlx_ptr);
-// 	mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
-//     free(vars.mlx_ptr);
-// }
-
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -134,11 +103,7 @@ int	main(void)
 		free(vars.win_ptr);
 		return (MLX_ERROR);
 	}
-	// void	*mlx;
-	// void	*mlx_win;
 
-	// mlx = mlx_init();
-	// mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");
 	img.img = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
@@ -150,5 +115,5 @@ int	main(void)
 
 	mlx_loop(vars.mlx_ptr);
 	mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
-//     free(vars.mlx_ptr);
+    free(vars.mlx_ptr);
 }
