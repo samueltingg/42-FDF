@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/26 12:00:07 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/26 11:17:22 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 800
 # define MLX_ERROR 1
-
 
 // KEYCODES
 #ifdef __APPLE__  // Check if compiling on macOS

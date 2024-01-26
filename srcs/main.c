@@ -74,14 +74,26 @@
 //     return (0);
 // }
 
-int	close_window(int keycode, t_vars *vars)
+// int	close_window(int keycode, void *params)
+// {
+// 	t_vars *vars;
+
+// 	vars = (t_vars *)params;
+// 	if (keycode == KEY_ESC)
+// 	{
+// 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+// 		// vars->win_ptr = NULL;
+// 	}
+// 	return (0);
+// }
+
+
+int close_window(int keycode, void *params)
 {
-	if (keycode == KEY_ESC)
-	{
+	t_vars *vars = (t_vars *)params;
+	if (keycode == 65307)
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-		vars->win_ptr = NULL;
-	}
-	return (0);
+	return 0;
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -113,17 +125,17 @@ int	main(void)
 
 	// my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	// mlx_put_image_to_window(vars.mlx_ptr, vars.win_ptr, img.img, 100, 0);
-	
+
 	for (int x = 0; x < WINDOW_WIDTH; x++)
 		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, x, WINDOW_HEIGHT/2, 0x0000FF00);
 	for (int y = 0; y < WINDOW_WIDTH; y++)
 		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, WINDOW_WIDTH/2, y, 0x000000FF);
-	
 
-	mlx_hook(vars.win_ptr, KEY_DOWN, 0, close_window, &vars);
+	mlx_key_hook(vars.win_ptr, &close_window, &vars);
+	// mlx_hook(vars.win_ptr, KEY_ESC, 2, &print_keys, &vars);
 	mlx_loop(vars.mlx_ptr);
 
-	// exit loop if no window left 
+	// exit loop if no window left
 	mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
-    free(vars.mlx_ptr);
+    // free(vars.mlx_ptr);
 }
