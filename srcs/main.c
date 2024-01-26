@@ -78,6 +78,7 @@ int	closee(t_vars *vars)
 {
 	// if (keycode == )
 	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+	vars->win_ptr = NULL;
 	return (0);
 }
 
@@ -88,6 +89,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
+
 
 int	main(void)
 {
@@ -114,8 +116,9 @@ int	main(void)
 		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, x, WINDOW_HEIGHT/2, 0x0000FF00);
 	for (int y = 0; y < WINDOW_WIDTH; y++)
 		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, WINDOW_WIDTH/2, y, 0x000000FF);
+	
 
-	mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, closee, &vars);
+	// mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, closee, &vars);
 	mlx_loop(vars.mlx_ptr);
 
 	// exit loop if no window left 
