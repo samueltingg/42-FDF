@@ -76,9 +76,11 @@
 
 int	close_window(int keycode, t_vars *vars)
 {
-	if (keycode == KEY_DOWN)
-	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-	vars->win_ptr = NULL;
+	if (keycode == KEY_ESC)
+	{
+		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+		vars->win_ptr = NULL;
+	}
 	return (0);
 }
 
