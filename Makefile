@@ -22,9 +22,6 @@ OBJS = $(addprefix $(OBJDIR), $(notdir $(SRCS:.c=.o)))
 # LIBRARIES
 LIBFT_DIR = libft/
 LIBFT.A = $(LIBFT_DIR)libft.a
-# LIBRARIES = -L$(LIBFT_DIR) -lft -lm
-# LIBRARIES = -L$(LIBFT_DIR) -lft -lm -L$(MINILIBX_DIR) -lmlx -framework OpenGL -framework AppKit
-
 
 # Set MINILIBX_DIR based on the operating system
 UNAME_S := $(shell uname -s)
@@ -34,7 +31,7 @@ ifeq ($(UNAME_S), Darwin)  # macOS
 else ifeq ($(UNAME_S), Linux)  # Linux
     MINILIBX_DIR = minilibx-linux/
 	LIBRARIES = -L$(LIBFT_DIR) -lft -lm -L$(MINILIBX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
-else 
+else
     $(error Unsupported operating system)
 endif
 
