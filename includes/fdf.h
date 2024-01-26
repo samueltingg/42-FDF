@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/01/25 16:47:27 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/26 09:19:25 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct s_cord
 	int		color;
 }			t_cord;
 
-typedef struct s_data
+typedef struct s_vars
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-}			t_data;
+}			t_vars;
 
 #endif

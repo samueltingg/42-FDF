@@ -67,39 +67,88 @@
 // 	parsing(fd, &cord);
 // }
 
-// int	handle_input(int keysym, t_data *data)
+// int	handle_input(int keysym, t_vars *vars)
 // {
 //     if (keysym == ON_)
-//         mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+//         mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
 //     return (0);
 // }
 
-int	closee(t_data *data)
+int	closee(t_vars *vars)
 {
 	// if (keycode == )
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
 	return (0);
+}
+
+// int	main(void)
+// {
+// 	t_vars vars;
+
+// 	vars.mlx_ptr = mlx_init();
+// 	if (vars.mlx_ptr == NULL)
+// 		return (MLX_ERROR);
+// 	vars.win_ptr = mlx_new_window(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "first window");
+// 	if (vars.win_ptr == NULL)
+// 	{
+// 		free(vars.win_ptr);
+// 		return (MLX_ERROR);
+// 	}
+
+// 	// mlx_key_hook(vars.win_ptr, &handle_input, &vars);
+
+// 	mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, closee, &vars);
+
+// 	mlx_loop(vars.mlx_ptr);
+// 	mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
+//     free(vars.mlx_ptr);
+// }
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
 int	main(void)
 {
-	t_data data;
+	t_vars vars;
+	t_data	img;
 
-	data.mlx_ptr = mlx_init();
-	if (data.mlx_ptr == NULL)
+	vars.mlx_ptr = mlx_init();
+	if (vars.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "first window");
-	if (data.win_ptr == NULL)
+	vars.win_ptr = mlx_new_window(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "first window");
+	if (vars.win_ptr == NULL)
 	{
-		free(data.win_ptr);
+		free(vars.win_ptr);
 		return (MLX_ERROR);
 	}
+	// void	*mlx;
+	// void	*mlx_win;
 
-	// mlx_key_hook(data.win_ptr, &handle_input, &data);
+	// mlx = mlx_init();
+	// mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");
+	img.img = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
 
-	mlx_hook(data.win_ptr, ON_KEYDOWN, 0, closee, &data);
+	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	mlx_put_image_to_window(vars.mlx_ptr, vars.win_ptr, img.img, 100, 0);
+	mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, closee, &vars);
+	mlx_loop(vars.mlx_ptr);
 
-	mlx_loop(data.mlx_ptr);
-	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
-    free(data.mlx_ptr);
+	mlx_loop(vars.mlx_ptr);
+	mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
+//     free(vars.mlx_ptr);
 }
