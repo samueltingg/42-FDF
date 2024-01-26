@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/26 11:51:56 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/26 11:53:24 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define MLX_ERROR 1
 
 
+// KEYCODES
 // Reference: https://github.com/izenynn/fdf/blob/main/inc/fdf.h
-
 #ifdef __APPLE__  // Check if compiling on macOS
     // Code specific to macOS
     #  define KEY_DOWN 2
