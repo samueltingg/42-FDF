@@ -102,15 +102,15 @@ int close_window(int keycode, void *params)
 	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-		// free (vars->mlx_ptr);  // not sure
-		exit(0); // not sure
+		exit(0);
 	}
 	return 0;
 }
 
-int	handle_no_event(void *data)
+int	handle_no_event(void *params)
 {
-	(void)data;
+	(void)params;
+
     /* This function needs to exist, but it is useless for the moment */
     return (0);
 }
@@ -141,12 +141,8 @@ int	main(void)
 	for (int y = 0; y < WINDOW_WIDTH; y++)
 		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, WINDOW_WIDTH/2, y, 0x000000FF);
 
-	mlx_loop_hook(vars.mlx_ptr, &handle_no_event, &vars);
+	// mlx_loop_hook(vars.mlx_ptr, &handle_no_event, &vars);
 	mlx_key_hook(vars.win_ptr, &close_window, &vars);
 	// mlx_hook(vars.win_ptr, KEY_ESC, 2, &print_keys, &vars);
 	mlx_loop(vars.mlx_ptr);
-
-	// exit loop if no window left
-	// mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
-    // free(vars.mlx_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/29 08:31:34 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/29 09:16:10 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,18 @@
 // KEYCODES
 #ifdef __APPLE__  // Check if compiling on macOS
     // Code specific to macOS
-    #  define KEY_DOWN 2
-    #  define KEY_UP 3
-    #  define MOUSE_DOWN 4
-    #  define MOUSE_UP 5
-    #  define MOUSE_MOVE 6
-    #  define EXPOSE 12
-    #  define DESTROY 17
+    #  define ON_KEYDOWN 2
+    #  define ON_KEYUP 3
+    #  define ON_MOUSEDOWN 4
+    #  define ON_MOUSEUP 5
+    #  define ON_MOUSEMOVE 6
+    #  define ON_EXPOSE 12
+    #  define ON_DESTROY 17
     #  define KEY_ESC 53
+    #  define KEY_UP 126
+    #  define KEY_DOWN 125
+    #  define KEY_LEFT 123
+    #  define KEY_RIGHT 124
     // Reference: https://github.com/izenynn/fdf/blob/main/inc/fdf.h
 #elif __linux__   // Check if compiling on Linux
     // Code specific to Linux
