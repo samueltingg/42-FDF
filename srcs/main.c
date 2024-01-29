@@ -95,6 +95,7 @@
 // 	*(unsigned int*)dst = color;
 // }
 
+
 int close_window(int keycode, void *params)
 {
 	t_vars *vars = (t_vars *)params;
@@ -144,4 +145,4 @@ int	main(void)
 	// exit loop if no window left
 	mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
     free(vars.mlx_ptr);
-
+}
