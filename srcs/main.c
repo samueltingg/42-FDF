@@ -95,6 +95,26 @@
 // 	*(unsigned int*)dst = color;
 // }
 
+/*
+- Puts pixel row by row
+*/
+int render_rect(t_vars *vars, t_rect rect)
+{
+    int	i;
+    int j;
+
+    if (vars->win_ptr == NULL)
+        return (1);
+    i = rect.y;
+    while (i < rect.y + rect.height)
+    {
+        j = rect.x;
+        while (j < rect.x + rect.width)
+            mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, j++, i, rect.color);
+        i++;
+    }
+    return (0);
+}
 
 int close_window(int keycode, void *params)
 {
@@ -115,10 +135,12 @@ int	handle_no_event(void *params)
     return (0);
 }
 
+
+
 int	main(void)
 {
 	t_vars vars;
-	// t_data	img;
+	t_data	img;
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)
@@ -126,23 +148,27 @@ int	main(void)
 	vars.win_ptr = mlx_new_window(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "first window");
 	if (vars.win_ptr == NULL)
 	{
-		free(vars.win_ptr);
+		mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
 		return (MLX_ERROR);
 	}
-	// img.img = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	// 							&img.endian);
+	img.img = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
 
 	// my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	// mlx_put_image_to_window(vars.mlx_ptr, vars.win_ptr, img.img, 100, 0);
 
-	for (int x = 0; x < WINDOW_WIDTH; x++)
-		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, x, WINDOW_HEIGHT/2, 0x0000FF00);
-	for (int y = 0; y < WINDOW_WIDTH; y++)
-		mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, WINDOW_WIDTH/2, y, 0x000000FF);
+	// for (int x = 0; x < WINDOW_WIDTH; x++)
+	// 	mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, x, WINDOW_HEIGHT/2, 0x0000FF00);
+	// for (int y = 0; y < WINDOW_WIDTH; y++)
+	// 	mlx_pixel_put(vars.mlx_ptr, vars.win_ptr, WINDOW_WIDTH/2, y, 0x000000FF);
 
-	// mlx_loop_hook(vars.mlx_ptr, &handle_no_event, &vars);
+	render_rect(&vars, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100, 100, 100, 0x00FF00});
+	render_rect(&vars, (t_rect){0, 0, 100, 100, 0xFF0000});
+
+
 	mlx_key_hook(vars.win_ptr, &close_window, &vars);
+	// mlx_loop_hook(vars.mlx_ptr, &handle_no_event, &vars);
 	// mlx_hook(vars.win_ptr, KEY_ESC, 2, &print_keys, &vars);
 	mlx_loop(vars.mlx_ptr);
 }
