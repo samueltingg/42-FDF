@@ -7,7 +7,7 @@ INCLUDES = -I ./includes/ -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
-
+ORANGE = \033[0;38;5;166m
 # SRCS
 SRCDIR = srcs/
 SRCS_FIL = \
@@ -54,14 +54,14 @@ $(OBJDIR)%.o: $(SRCDIR)%.c
 RM = rm -rf
 
 clean:
-		@ $(RM) $(OBJDIR) && echo "$(RED) object files were deleted$(RESET)"
-		@make clean -C ${LIBFT_DIR} && echo "$(RED) libft object files were deleted$(RESET)"
-		@make clean -C ${MINILIBX_DIR} && echo "$(RED)ran make clean in $(MINILIBX_DIR)$(RESET)"
+		@ $(RM) $(OBJDIR) && echo "$(ORANGE) object files were deleted$(RESET)"
+		@make clean -C ${LIBFT_DIR} && echo "$(ORANGE) libft object files were deleted$(RESET)"
+		@make clean -C ${MINILIBX_DIR} && echo "$(ORANGE)ran make clean in $(MINILIBX_DIR)$(RESET)"
 
 
 fclean: clean
-		@$(RM) $(NAME) && echo "$(RED)$(NAME) was deleted$(RESET)"
-		@make fclean -C $(LIBFT_DIR) && echo "$(RED)libft.a was deleted$(RESET)"
+		@$(RM) $(NAME) && echo "$(ORANGE)$(NAME) was deleted$(RESET)"
+		@make fclean -C $(LIBFT_DIR) && echo "$(ORANGE)libft.a was deleted$(RESET)"
 
 re: fclean all
 
