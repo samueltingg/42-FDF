@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/01/29 11:36:18 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:44:02 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ typedef struct s_vars
 	void	*mlx_ptr;
 	void	*win_ptr;
 }			t_vars;
-
+/*
+- line length: amount of bytes taken by one row of our image
+*/
 typedef struct	s_data {
 	void	*img;
 	char	*addr;

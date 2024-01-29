@@ -135,10 +135,10 @@ int render_rect(t_vars *vars, t_rect rect)
 
 int	render(t_vars *vars)
 {
-    render_background(vars, WHITE_PIXEL);
+    render_background(vars, 0x0); // RESET frame so that new frame doesn't overlap on top of old frame
     render_rect(vars, (t_rect){0, 0, 300, 300, RED_PIXEL});
     render_rect(vars, (t_rect){WINDOW_WIDTH - 300, WINDOW_HEIGHT - 300, 300, 300, GREEN_PIXEL});
-	render_rect(vars, (t_rect){WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 - 150, 300, 300, BLUE_PIXEL});
+	render_rect(vars, (t_rect){WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 - 150, 300, 300, 0xAA9900FF});
 
     return (0);
 }
@@ -154,19 +154,10 @@ int close_window(int keycode, void *params)
 	return 0;
 }
 
-int	handle_no_event(void *params)
-{
-	(void)params;
-
-    /* This function needs to exist, but it is useless for the moment */
-    return (0);
-}
-
-
 int	main(void)
 {
 	t_vars vars;
-	// t_data	img;
+	t_data	img;
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)
@@ -177,9 +168,13 @@ int	main(void)
 		mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
 		return (MLX_ERROR);
 	}
-	// img.img = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	// 							&img.endian);
+	img.img = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	printf("bpb: %i\n", img.bits_per_pixel);
+	printf("size_line: %i\n", img.line_length);
+	printf("endian: %i\n", img.endian);
+	printf("img.addr: %s\n", img.addr);
 
 	// my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	// mlx_put_image_to_window(vars.mlx_ptr, vars.win_ptr, img.img, 100, 0);
