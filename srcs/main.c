@@ -102,7 +102,7 @@ int close_window(int keycode, void *params)
 	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-		free (vars->mlx_ptr);  // not sure
+		// free (vars->mlx_ptr);  // not sure
 		exit(0); // not sure
 	}
 	return 0;
@@ -148,5 +148,5 @@ int	main(void)
 
 	// exit loop if no window left
 	// mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
-    free(vars.mlx_ptr);
+    // free(vars.mlx_ptr);
 }
