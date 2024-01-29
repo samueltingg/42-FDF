@@ -99,7 +99,7 @@
 int close_window(int keycode, void *params)
 {
 	t_vars *vars = (t_vars *)params;
-	if (keycode == 65307)
+	if (keycode == KEY_ESC)
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
 	return 0;
 }
