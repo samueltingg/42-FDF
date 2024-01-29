@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/01/29 10:17:36 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/29 11:36:18 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+/*
+- x & y : starting coordinates
+*/
 typedef struct s_rect
 {
     int	x;

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/29 09:16:10 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/29 11:42:29 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,10 @@
     #error Unsupported operating system
 #endif
 
+// COLORS
+#define WHITE_PIXEL 0xFFFFFF
+#define RED_PIXEL   0xFF0000
+#define GREEN_PIXEL 0x00FF00
+#define BLUE_PIXEL  0x0000FF
 
 #endif
