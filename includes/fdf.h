@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/01/30 13:48:18 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:19:13 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ typedef struct s_rect
 }	t_rect;
 
 void	render_background(t_img *img, int color);
-int render_rect(t_img *img, t_rect rect);
+// Initialise all elements in struct!
 int	render(t_vars *vars);
+
+void	img_pix_put(t_img *img, int x, int y, int color);
+int close_window(int keycode, void *params);
 
 
 #endif
