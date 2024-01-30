@@ -87,9 +87,8 @@
 // 	return (0);
 // }
 
-/*
-- works best if pixel_size equot to size of INT
-*/
+
+// works best if pixel_size equot to size of INT
 void	img_pix_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
@@ -113,9 +112,6 @@ void	render_background(t_img *img, int color)
     }
 }
 
-/*
-- Puts pixel row by row
-*/
 int render_rect(t_img *img, t_rect rect)
 {
     int	i;
@@ -170,7 +166,7 @@ int	main(void)
 		mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
 		return (MLX_ERROR);
 	}
-	// what's the diff betwen img_ptr & addr ??
+	// * what's the diff betwen img_ptr & addr ??
 	vars.img.img_ptr = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	vars.img.addr = mlx_get_data_addr(vars.img.img_ptr, &vars.img.bits_per_pixel, &vars.img.line_length,
 								&vars.img.endian);
