@@ -67,33 +67,13 @@
 // 	parsing(fd, &cord);
 // }
 
-// int	handle_input(int keysym, t_vars *vars)
-// {
-//     if (keysym == ON_)
-//         mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-//     return (0);
-// }
-
-// int	close_window(int keycode, void *params)
-// {
-// 	t_vars *vars;
-
-// 	vars = (t_vars *)params;
-// 	if (keycode == KEY_ESC)
-// 	{
-// 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-// 		// vars->win_ptr = NULL;
-// 	}
-// 	return (0);
-// }
-
 
 // works best if pixel_size equot to size of INT
-void	img_pix_put(t_img *data, int x, int y, int color)
+void	img_pix_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_len + x * (data->bits_per_pixel / 8));
+	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
 
@@ -166,19 +146,12 @@ int	main(void)
 		mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
 		return (MLX_ERROR);
 	}
-	// * what's the diff betwen img_ptr & addr ??
 	vars.img.img_ptr = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	vars.img.addr = mlx_get_data_addr(vars.img.img_ptr, &vars.img.bits_per_pixel, &vars.img.line_len,
 								&vars.img.endian);
-	printf("bpb: %i\n", vars.img.bits_per_pixel);
-	printf("size_line: %i\n", vars.img.line_len);
-	printf("endian: %i\n", vars.img.endian);
-	printf("img.addr: %s\n", vars.img.addr);
 
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
 
 	mlx_key_hook(vars.win_ptr, &close_window, &vars);
-	// mlx_loop_hook(vars.mlx_ptr, &handle_no_event, &vars);
-	// mlx_hook(vars.win_ptr, KEY_ESC, 2, &print_keys, &vars);
 	mlx_loop(vars.mlx_ptr);
 }
