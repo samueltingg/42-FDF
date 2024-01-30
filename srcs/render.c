@@ -6,26 +6,14 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/30 14:19:21 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:15:37 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
 
-void	render_background(t_img *img, int color)
-{
-    int	i;
-    int	j;
+int render_diagonal)line
 
-    i = 0;
-    while (i < WINDOW_HEIGHT)
-    {
-        j = 0;
-        while (j < WINDOW_WIDTH)
-            img_pix_put(img, j++, i, color);
-        ++i;
-    }
-}
 
 int render_rect(t_img *img, t_rect rect)
 {
@@ -65,6 +53,22 @@ int render_hollow_rect(t_img *img, t_rect rect)
     }
     return (0);
 }
+
+void	render_background(t_img *img, int color)
+{
+    int	i;
+    int	j;
+
+    i = 0;
+    while (i < WINDOW_HEIGHT)
+    {
+        j = 0;
+        while (j < WINDOW_WIDTH)
+            img_pix_put(img, j++, i, color);
+        ++i;
+    }
+}
+
 
 int	render(t_vars *vars)
 {
