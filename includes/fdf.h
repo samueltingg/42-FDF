@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/01/30 10:37:30 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/30 13:48:18 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,10 @@ typedef struct s_rect
     int height;
     int color;
 }	t_rect;
+
+void	render_background(t_img *img, int color);
+int render_rect(t_img *img, t_rect rect);
+int	render(t_vars *vars);
+
 
 #endif
