@@ -93,7 +93,7 @@ void	img_pix_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (y * data->line_len + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
 
@@ -168,10 +168,10 @@ int	main(void)
 	}
 	// * what's the diff betwen img_ptr & addr ??
 	vars.img.img_ptr = mlx_new_image(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	vars.img.addr = mlx_get_data_addr(vars.img.img_ptr, &vars.img.bits_per_pixel, &vars.img.line_length,
+	vars.img.addr = mlx_get_data_addr(vars.img.img_ptr, &vars.img.bits_per_pixel, &vars.img.line_len,
 								&vars.img.endian);
 	printf("bpb: %i\n", vars.img.bits_per_pixel);
-	printf("size_line: %i\n", vars.img.line_length);
+	printf("size_line: %i\n", vars.img.line_len);
 	printf("endian: %i\n", vars.img.endian);
 	printf("img.addr: %s\n", vars.img.addr);
 

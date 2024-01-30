@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/01/30 09:26:23 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/30 10:37:30 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@ typedef struct s_cord
 	int		color;
 }			t_cord;
 
-/*
-- line length: amount of bytes taken by one row of our image
+/**
+* @param line_len amount of bytes taken by one row of our image
+* @param img_ptr pointer to the image structure created by mlx_new_image
+* @param addr pointer to the raw pixel data of the image
 */
 typedef struct	s_img {
 	void	*img_ptr;
 	char	*addr;
 	int		bits_per_pixel;
-	int		line_length;
+	int		line_len;
 	int		endian;
 }				t_img;
 
@@ -50,9 +52,7 @@ typedef struct s_vars
 	t_img	img;
 }			t_vars;
 
-/*
-- x & y : starting coordinates
-*/
+// x & y : starting coordinates
 typedef struct s_rect
 {
     int	x;
