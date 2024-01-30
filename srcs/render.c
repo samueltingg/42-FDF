@@ -6,13 +6,16 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/30 16:15:37 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/30 16:16:41 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
 
-int render_diagonal)line
+int render_diagonal_line()
+{
+    
+}
 
 
 int render_rect(t_img *img, t_rect rect)
