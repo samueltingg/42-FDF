@@ -137,7 +137,7 @@ int	render(t_vars *vars)
 {
 	if (vars->win_ptr == NULL)
 		return (1);
-	render_background(&vars->img, WHITE_PIXEL);
+	render_background(&vars->img, 0x0);
 	render_rect(&vars->img, (t_rect){0, 0, 300, 300, RED_PIXEL});
 	render_rect(&vars->img, (t_rect){WINDOW_WIDTH - 300, WINDOW_HEIGHT - 300, 300, 300, GREEN_PIXEL});
 
