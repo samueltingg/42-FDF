@@ -113,7 +113,6 @@ void	render_background(t_img *img, int color)
     }
 }
 
-
 /*
 - Puts pixel row by row
 */
