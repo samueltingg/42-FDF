@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/31 09:32:16 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/31 11:37:30 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,18 @@ typedef struct s_line
 
 int render_diagonal_line(t_img *img, t_line line)
 {
+    float m;
     int x;
     int y;
-
-    x = line.x1;
-    y = line.y1;
-    while (x < line.x2)
-    {
-        img_pix_put(img, x, y, line.color);
-        x++;
-        y--;
-    }
+    int c;
+    
+    m = (float)(line.y2 - line.y1) / (line.x2 - line.x1); 
+    c = line.y1 - m * line.x1;
+    for (x = line.x1; x <= line.x2; x++) { 
+        // round function finds closest integer to a given float. 
+        y = round(m * x + c);
+        img_pix_put(img, x, y, line.color); 
+    } 
     return (0);
 }
 
@@ -101,7 +102,8 @@ int	render(t_vars *vars)
 	// render_rect(&vars->img, (t_rect){0, 0, 300, 300, RED_PIXEL});
 	// render_rect(&vars->img, (t_rect){WINDOW_WIDTH - 300, WINDOW_HEIGHT - 300, 300, 300, GREEN_PIXEL});
     // render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
-	render_diagonal_line(&vars->img, (t_line){0, WINDOW_HEIGHT, WINDOW_HEIGHT, 0, RED_PIXEL});
+	render_diagonal_line(&vars->img, (t_line){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, RED_PIXEL});
+	render_diagonal_line(&vars->img, (t_line){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0, GREEN_PIXEL});
     mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0, 0);
 
     return (0);
