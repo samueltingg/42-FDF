@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/31 11:37:30 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/31 16:49:09 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,30 @@ typedef struct s_line
     int color;
 }               t_line;
 
-int render_diagonal_line(t_img *img, t_line line)
+
+
+/*
+func
 {
-    float m;
-    int x;
-    int y;
-    int c;
-    
-    m = (float)(line.y2 - line.y1) / (line.x2 - line.x1); 
-    c = line.y1 - m * line.x1;
-    for (x = line.x1; x <= line.x2; x++) { 
-        // round function finds closest integer to a given float. 
-        y = round(m * x + c);
-        img_pix_put(img, x, y, line.color); 
-    } 
-    return (0);
+    while (x <= line.x2)
+    {
+        doublevar_func = 
+        if f(x+1,y+1/2) == 0
+            put(x + 1, y)
+        else if f(x+1,y+1/2) > 0
+            put(x+1, y+ 1)
+        else if f(x+1,y+1/2) < 0
+            put(x+1, y)
+        x++;
+    }
 }
+
+*/
+
+// int render_diagonal_line(t_img *img, t_line line)
+// { 
+
+// }
 
 
 int render_rect(t_img *img, t_rect rect)
