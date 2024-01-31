@@ -6,15 +6,35 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/30 16:16:41 by sting            ###   ########.fr       */
+/*   Updated: 2024/01/31 09:32:16 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
 
-int render_diagonal_line()
+typedef struct s_line
 {
-    
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+    int color;
+}               t_line;
+
+int render_diagonal_line(t_img *img, t_line line)
+{
+    int x;
+    int y;
+
+    x = line.x1;
+    y = line.y1;
+    while (x < line.x2)
+    {
+        img_pix_put(img, x, y, line.color);
+        x++;
+        y--;
+    }
+    return (0);
 }
 
 
@@ -78,10 +98,11 @@ int	render(t_vars *vars)
 	if (vars->win_ptr == NULL)
 		return (1);
 	render_background(&vars->img, 0x0);
-	render_rect(&vars->img, (t_rect){0, 0, 300, 300, RED_PIXEL});
-	render_rect(&vars->img, (t_rect){WINDOW_WIDTH - 300, WINDOW_HEIGHT - 300, 300, 300, GREEN_PIXEL});
-    render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
-	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0, 0);
+	// render_rect(&vars->img, (t_rect){0, 0, 300, 300, RED_PIXEL});
+	// render_rect(&vars->img, (t_rect){WINDOW_WIDTH - 300, WINDOW_HEIGHT - 300, 300, 300, GREEN_PIXEL});
+    // render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
+	render_diagonal_line(&vars->img, (t_line){0, WINDOW_HEIGHT, WINDOW_HEIGHT, 0, RED_PIXEL});
+    mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0, 0);
 
     return (0);
 }
