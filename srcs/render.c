@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/01 15:54:02 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:07:41 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,43 +45,6 @@ func
 //     }
 //     return (0);
 // }
-
-void swap_coordinates(t_line_cord *cord)
-{
-    int tmp;
-
-    tmp = cord->x1;
-    cord->x1 = cord->x2;
-    cord->x2 = tmp;
-
-    tmp = cord->y1;
-    cord->y1 = cord->y2;
-    cord->y2 = tmp;
-}
-
-void	render_diagonal_line(t_img *img, t_line_cord cord)
-{
-	if (abs(cord.y2 - cord.y1) < abs(cord.x2 - cord.x1))
-	{
-		if (cord.x1 > cord.x2)
-		{
-            swap_coordinates(&cord);
-			render_line_low(img, cord);
-		}
-		else
-			render_line_low(img, cord);
-	}
-	else
-	{
-		if (cord.y1 > cord.y2)
-		{
-            swap_coordinates(&cord);
-			render_line_high(img, cord);
-		}
-		else
-			render_line_high(img, cord);
-	}
-}
 
 int	render_rect(t_img *img, t_rect rect)
 {

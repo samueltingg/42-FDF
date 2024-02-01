@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/01 16:02:00 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:07:30 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,41 @@ void	render_line_high(t_img *img, t_line_cord cord)
 		else
 			var.D = var.D + (2 * var.dx);
 		var.y++;
+	}
+}
+void swap_coordinates(t_line_cord *cord)
+{
+    int tmp;
+
+    tmp = cord->x1;
+    cord->x1 = cord->x2;
+    cord->x2 = tmp;
+
+    tmp = cord->y1;
+    cord->y1 = cord->y2;
+    cord->y2 = tmp;
+}
+
+void	render_diagonal_line(t_img *img, t_line_cord cord)
+{
+	if (abs(cord.y2 - cord.y1) < abs(cord.x2 - cord.x1))
+	{
+		if (cord.x1 > cord.x2)
+		{
+            swap_coordinates(&cord);
+			render_line_low(img, cord);
+		}
+		else
+			render_line_low(img, cord);
+	}
+	else
+	{
+		if (cord.y1 > cord.y2)
+		{
+            swap_coordinates(&cord);
+			render_line_high(img, cord);
+		}
+		else
+			render_line_high(img, cord);
 	}
 }
