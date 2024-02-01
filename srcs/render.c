@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/01/31 16:49:09 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/01 12:02:52 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,45 @@ func
 }
 
 */
-
 // int render_diagonal_line(t_img *img, t_line line)
-// { 
-
+// {
+//     float m;
+//     int x;
+//     int y;
+//     int c;
+    
+//     m = (float)(line.y2 - line.y1) / (line.x2 - line.x1); 
+//     c = line.y1 - m * line.x1;
+//     for (x = line.x1; x <= line.x2; x++) { 
+//         // round function finds closest integer to a given float. 
+//         y = round(m * x + c);
+//         img_pix_put(img, x, y, line.color); 
+//     } 
+//     return (0);
 // }
 
+int render_diagonal_line(t_img *img, t_line line)
+{ 
+    int dx = line.x2 - line.x1;
+    int dy = line.y2 - line.y1;
+    int D = 2 * dy - dx;
+    int x = line.x1;
+    int y = line.y1;
+
+    while (x <= line.x2) 
+    {
+        img_pix_put(img, x, y, line.color);
+
+        if (D > 0) {
+            y = y + 1;
+            D = D - 2 * dx;
+        }
+
+        D = D + 2 * dy;
+        x++;
+    }
+    return (0);
+}
 
 int render_rect(t_img *img, t_rect rect)
 {
