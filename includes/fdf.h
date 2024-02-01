@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/01/30 14:19:13 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:01:01 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,40 @@ typedef struct s_rect
     int color;
 }	t_rect;
 
-void	render_background(t_img *img, int color);
-// Initialise all elements in struct!
-int	render(t_vars *vars);
+typedef struct s_line_cord
+{
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+    int color;
+}               t_line_cord;
+
+typedef struct s_line_var
+{
+	int	dx;
+	int	dy;
+	int	D;
+	int	x;
+	int	y;
+	int	xi;
+	int yi;
+}				t_line_var;
 
 void	img_pix_put(t_img *img, int x, int y, int color);
 int close_window(int keycode, void *params);
 
+// RENDERING
+void	render_background(t_img *img, int color);
+int	render(t_vars *vars);
+// Initialise all elements in struct!
+void render_line_low(t_img *img, t_line_cord line);
+/* 
+- For steep slope
+- gradient > 1 OR gradient < -1
+*/
+void render_line_high(t_img *img, t_line_cord line);
+
 
 #endif
+
