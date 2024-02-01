@@ -6,45 +6,11 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/01 16:07:41 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:29:12 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
-
-/*
-func
-{
-	while (x <= line.x2)
-	{
-		doublevar_func =
-		if f(x+1,y+1/2) == 0
-			put(x + 1, y)
-		else if f(x+1,y+1/2) > 0
-			put(x+1, y+ 1)
-		else if f(x+1,y+1/2) < 0
-			put(x+1, y)
-		x++;
-	}
-}
-
-*/
-// int render_diagonal_line(t_img *img, t_line line)
-// {
-//     float m;
-//     int x;
-//     int y;
-//     int c;
-
-//     m = (float)(line.y2 - line.y1) / (line.x2 - line.x1);
-//     c = line.y1 - m * line.x1;
-//     for (x = line.x1; x <= line.x2; x++) {
-//         // round function finds closest integer to a given float.
-//         y = round(m * x + c);
-//         img_pix_put(img, x, y, line.color);
-//     }
-//     return (0);
-// }
 
 int	render_rect(t_img *img, t_rect rect)
 {
@@ -117,6 +83,13 @@ int	render(t_vars *vars)
 		RED_PIXEL});
 	render_diagonal_line(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
 		GREEN_PIXEL});
+	render_diagonal_line(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT,
+		BLUE_PIXEL});
+	render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
+		GREEN_PIXEL});
+	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0, 
+	// 	BLUE_PIXEL});
+
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
 		0);
 

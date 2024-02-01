@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/01 16:07:30 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:31:14 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	render_line_high(t_img *img, t_line_cord cord)
 		var.xi = -1;
 		var.dx = -var.dx;
 	}
-	while (var.y <= cord.x2)
+	while (var.y <= cord.y2)
 	{
-		img_pix_put(img, var.y, var.x, cord.color);
+		img_pix_put(img, var.x, var.y, cord.color);
 		if (var.D > 0)
 		{
 			var.x = var.x + var.xi;
@@ -88,7 +88,7 @@ void swap_coordinates(t_line_cord *cord)
 
 void	render_diagonal_line(t_img *img, t_line_cord cord)
 {
-	if (abs(cord.y2 - cord.y1) < abs(cord.x2 - cord.x1))
+	if (abs(cord.x2 - cord.x1 > abs(cord.y2 - cord.y1)))
 	{
 		if (cord.x1 > cord.x2)
 		{
