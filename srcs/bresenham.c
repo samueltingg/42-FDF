@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/01 16:31:14 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:40:39 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 /*
 - For Less steep slope
 - gradient < 1 OR gradient > -1
+- x always increment by 1
+- y either (y++ OR y--) OR (no increment)
 */
 void	render_line_low(t_img *img, t_line_cord cord)
 {
@@ -44,7 +46,12 @@ void	render_line_low(t_img *img, t_line_cord cord)
 		var.x++;
 	}
 }
-
+/*
+- For STEEP slope
+- gradient > 1 OR gradient < -1
+- y always increment by 1
+- x either (x++ OR x--) OR (no increment)
+*/
 void	render_line_high(t_img *img, t_line_cord cord)
 {
 	t_line_var	var;
