@@ -13,7 +13,8 @@ SRCDIR = srcs/
 SRCS_FIL = \
 			main.c \
 			render.c \
-			bresenham.c
+			bresenham.c \
+			test.c
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))
 

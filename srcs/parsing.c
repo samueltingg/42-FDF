@@ -1,38 +1,52 @@
-// void	parsing(int fd, t_cord *cord)
-// {
-// 	int		y;
-// 	int		x;
-// 	int		i;
-// 	char	*input;
-// 	char	**arr;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
+/*   Updated: 2024/02/02 09:55:18 by sting            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// 	y = 0;
-// 	while (1)
-// 	{
-// 		input = get_next_line(fd); // malloc
-// 		if (input == NULL)
-// 			break ;
-// 		arr = ft_split(input, ' '); // malloc
-// 		x = 0;
-// 		while (arr[x]) // "x = x-cordinate"
-// 		{
-// 			cord->x = x;
-// 			cord->y = y;
-// 			cord->z = ft_atoi(arr[x]);
-// 			if (ft_strchr((const char *)arr[x], ',') != NULL) // if there's ',''
-// 			{
-// 				i = 0;
-// 				while (arr[x][i] != ',')
-// 					i++;
-// 				i++;
-// 				cord->color = ft_atoi((const char *)(&arr[x][i]));
-// 			}
-// 			x++;
-// 		}
-// 		free(input);
-// 		y++;
-// 	}
-// }
+#include ".././includes/fdf.h"
+
+void	parsing(int fd, t_cord *cord)
+{
+	int		y;
+	int		x;
+	int		i;
+	char	*input;
+	char	**arr;
+
+	y = 0;
+	while (1)
+	{
+		input = get_next_line(fd); // malloc
+		if (input == NULL)
+			break ;
+		arr = ft_split(input, ' '); // malloc
+		x = 0;
+		while (arr[x]) // "x = x-cordinate"
+		{
+			cord->x = x;
+			cord->y = y;
+			cord->z = ft_atoi(arr[x]);
+			if (ft_strchr((const char *)arr[x], ',') != NULL) // if there's ',''
+			{
+				i = 0;
+				while (arr[x][i] != ',')
+					i++;
+				i++;
+				cord->color = ft_atoi((const char *)(&arr[x][i]));
+			}
+			x++;
+		}
+		free(input);
+		y++;
+	}
+}
 
 // int	main(int argc, char **argv)
 // {

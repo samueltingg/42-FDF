@@ -39,12 +39,23 @@ int close_window(int keycode, void *params)
 int	main(void)
 {
 	t_vars vars;
-	// t_img	img;
+
+	// PARSING TEST
+    int fd;
+    fd = open("maps/10-2.fdf", O_RDONLY);
+    if (fd == -1) {
+        perror("Unable to open the file");
+        return 1;
+    }
+    printf("Line_count of file: %d\n", get_line_count(fd));
+
+	// ------------------
+
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	vars.win_ptr = mlx_new_window(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "first window");
+	vars.win_ptr = mlx_new_window(vars.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
 	if (vars.win_ptr == NULL)
 	{
 		mlx_destroy_window(vars.mlx_ptr, vars.win_ptr);
