@@ -36,13 +36,19 @@ int close_window(int keycode, void *params)
 	return 0;
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_vars vars;
 
+	if (argc != 2)
+	{
+		ft_putstr_fd("Usage : ./fdf_linux <filename>\n", 2);
+		exit (1);
+	}
+
 	// PARSING TEST
     int fd;
-    fd = open("maps/10-2.fdf", O_RDONLY);
+    fd = open(argv[1], O_RDONLY);
     if (fd == -1) {
         perror("Unable to open the file");
         return 1;
