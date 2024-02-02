@@ -3,7 +3,7 @@
  * returns line_count of an open file.
  * - run gnl until it return NULL, to get number of lines in file
 */
-int get_line_count(fd)
+int get_line_count(int fd)
 {
     char *input;
     int line_count;
