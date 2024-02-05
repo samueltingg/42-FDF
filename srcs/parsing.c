@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/05 14:33:39 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:52:27 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void free_str_arr(char **str_arr)
 	}
 	free(str_arr);
 }
+
 int	count_words(char *str, char c)
 {
 	int	count;
@@ -98,7 +99,6 @@ t_cord	**parsing(char *input)
 	while (y < line_count)
 	{
 		line = get_next_line(fd);
-		// printf("line: %s\n", line);
 		str_arr = ft_split(line, ' ');
 		wc = count_words(line, ' ');
 		cord[y] = malloc(wc * sizeof(t_cord));
@@ -111,14 +111,10 @@ t_cord	**parsing(char *input)
 				i = 0;
 				while (str_arr[x][i] != 'x')
 					i++;
-				i++;
-				cord[y][x].color = ft_atoi_base((&str_arr[x][i]), "0123456789ABCDEF");
+				cord[y][x].color = ft_atoi_base((&str_arr[x][++i]), "0123456789ABCDEF");
 			}
 			else
-			{
-				cord[y][x].color = BLUE_PIXEL;
-					// Set a default color if none is provided
-			}
+				cord[y][x].color = 0; // Set a default color if none is provided
 			x++;
 		}
 		free_str_arr(str_arr);
@@ -131,8 +127,8 @@ t_cord	**parsing(char *input)
     {
         for (x = 0; x < wc; x++)
         {
-            printf("(%d, %d) ", cord[y][x].z, cord[y][x].color);
-            // printf("%d  ", cord[y][x].z);
+            printf("%d,%d  ", cord[y][x].z, cord[y][x].color);
+            // printf("%3d ", cord[y][x].z);
         }
         printf("\n");
     }

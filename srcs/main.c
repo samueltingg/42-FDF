@@ -45,21 +45,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Usage : ./fdf_linux <filename>\n", 2);
 		exit (1);
 	}
-
-	// PARSING TEST
-    // int fd;
-    // fd = open(argv[1], O_RDONLY);
-    // if (fd == -1) {
-    //     perror("Unable to open the file");
-    //     return 1;
-    // }
-    // // printf("Line_count of file: %d\n", get_line_count(fd));
-    // fd = open(argv[1], O_RDONLY);
-
-	cord = parsing(argv[1]);
-
-	// ------------------
-
+	cord = parsing(argv[1]); // PARSING
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)
