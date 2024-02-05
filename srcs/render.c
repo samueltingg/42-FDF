@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/02 12:55:03 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/05 17:12:48 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,11 @@ void	render_background(t_img *img, int color)
 	}
 }
 
-int	render(t_vars *vars)
+int	render(void *param)
 {
+	t_vars *vars;
+	
+	vars = (t_vars *)param;
 	if (vars->win_ptr == NULL)
 		return (1);
 	render_background(&vars->img, 0x0);
