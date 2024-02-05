@@ -39,7 +39,7 @@ int close_window(int keycode, void *params)
 int	main(int argc, char **argv)
 {
 	t_vars vars;
-
+	t_cord **cord;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Usage : ./fdf_linux <filename>\n", 2);
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
     }
     printf("Line_count of file: %d\n", get_line_count(fd));
 
-	// parsing(fd, cord);
+	cord = parsing(fd);
 
 	// ------------------
 

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/05 10:25:59 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/05 13:17:51 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 typedef struct s_cord
 {
-	int		x;
-	int		y;
+	// int		x;
+	// int		y;
 	int		z;
 	int		color;
 }			t_cord;
@@ -84,7 +84,7 @@ typedef struct s_line_var
 
 // PARSING
 int get_line_count(int fd);
-void	parsing(int fd, t_cord *cord);
+t_cord	**parsing(int fd);
 
 
 
