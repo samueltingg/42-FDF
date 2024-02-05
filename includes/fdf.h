@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/02 11:12:14 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/05 10:25:59 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_line_var
 
 // PARSING
 int get_line_count(int fd);
+void	parsing(int fd, t_cord *cord);
 
 
 

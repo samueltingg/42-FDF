@@ -6,12 +6,32 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/02 09:55:18 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/05 10:55:14 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
 
+/**
+ * returns line_count of an open file.
+ * - run gnl until it return NULL, to get number of lines in file
+*/
+int get_line_count(int fd)
+{
+    char *input;
+    int line_count;
+
+    line_count = 0;
+    while (1)
+    {
+        input = get_next_line(fd);
+        if (input == NULL)
+            break;
+        line_count++;
+    }
+    close(fd);
+    return (line_count);
+}
 void	parsing(int fd, t_cord *cord)
 {
 	int		y;

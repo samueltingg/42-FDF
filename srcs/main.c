@@ -55,6 +55,8 @@ int	main(int argc, char **argv)
     }
     printf("Line_count of file: %d\n", get_line_count(fd));
 
+	// parsing(fd, cord);
+
 	// ------------------
 
 

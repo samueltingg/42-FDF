@@ -14,7 +14,7 @@ SRCS_FIL = \
 			main.c \
 			render.c \
 			bresenham.c \
-			test.c
+			parsing.c
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))
 
