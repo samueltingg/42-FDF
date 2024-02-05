@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/01 16:29:12 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/02 12:55:03 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	render_hollow_rect(t_img *img, t_rect rect)
 	j = rect.y;
 	while (i < rect.x + rect.width)
 	{
-		img_pix_put(img, i, rect.y, rect.color);              
+		img_pix_put(img, i, rect.y, rect.color);
 			// top horizontal line
 		img_pix_put(img, i, rect.y + rect.height, rect.color);
 			// bottom horizontal line
@@ -45,7 +45,7 @@ int	render_hollow_rect(t_img *img, t_rect rect)
 	}
 	while (j < rect.y + rect.height)
 	{
-		img_pix_put(img, rect.x, j, rect.color);             
+		img_pix_put(img, rect.x, j, rect.color);
 			// left vertical line
 		img_pix_put(img, rect.x + rect.width, j, rect.color);
 			// right vertical line
@@ -87,7 +87,7 @@ int	render(t_vars *vars)
 		BLUE_PIXEL});
 	render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
 		GREEN_PIXEL});
-	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0, 
+	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
 	// 	BLUE_PIXEL});
 
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
