@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/05 13:23:07 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:33:39 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,44 @@ void free_str_arr(char **str_arr)
 	}
 	free(str_arr);
 }
+int	count_words(char *str, char c)
+{
+	int	count;
+	int	flag;
 
+	count = 0;
+	flag = 1;
+	while (*str)
+	{
+		if (*str != c && flag == 1)
+		{
+			count++;
+			flag = 0;
+		}
+		if (*str == c)
+		{
+			flag = 1;
+		}
+		str++;
+	}
+	return (count);
+}
 
 /**
  * returns line_count of an open file.
  * - run gnl until it return NULL, to get number of lines in file
  */
-int	get_line_count(int fd)
+int	get_line_count(char *input)
 {
-	char	*input;
 	int		line_count;
+	int fd;
 
+    fd = open(input, O_RDONLY);
+    if (fd == -1) 
+	{
+        perror("Unable to open the file");
+        return 1;
+	}
 	line_count = 0;
 	while (1)
 	{
@@ -47,7 +74,7 @@ int	get_line_count(int fd)
 	return (line_count);
 }
 
-t_cord	**parsing(int fd)
+t_cord	**parsing(char *input)
 {
 	t_cord	**cord;
 	int		y;
@@ -57,13 +84,21 @@ t_cord	**parsing(int fd)
 	char	**str_arr;
 	int		wc;
 	int		i;
+	int fd;
 
-	line_count = get_line_count(fd);
+	line_count = get_line_count(input);
+    fd = open(input, O_RDONLY);
+    if (fd == -1) 
+	{
+        perror("Unable to open the file");
+        exit (1);
+	}
 	cord = malloc(line_count * sizeof(t_cord *));
 	y = 0;
 	while (y < line_count)
 	{
-		line = gnl();
+		line = get_next_line(fd);
+		// printf("line: %s\n", line);
 		str_arr = ft_split(line, ' ');
 		wc = count_words(line, ' ');
 		cord[y] = malloc(wc * sizeof(t_cord));
@@ -74,10 +109,10 @@ t_cord	**parsing(int fd)
 			if (ft_strchr((const char *)str_arr[x], ',') != NULL)
 			{
 				i = 0;
-				while (str_arr[x][i] != ',')
+				while (str_arr[x][i] != 'x')
 					i++;
 				i++;
-				cord[y][x].color = ft_atoi((const char *)(&str_arr[x][i]));
+				cord[y][x].color = ft_atoi_base((&str_arr[x][i]), "0123456789ABCDEF");
 			}
 			else
 			{
@@ -89,6 +124,17 @@ t_cord	**parsing(int fd)
 		free_str_arr(str_arr);
 		y++;
 	}
-
+	
+    // Print the contents of the 2D array
+    y = 0; 
+	for (y = 0; y < line_count; y++)
+    {
+        for (x = 0; x < wc; x++)
+        {
+            printf("(%d, %d) ", cord[y][x].z, cord[y][x].color);
+            // printf("%d  ", cord[y][x].z);
+        }
+        printf("\n");
+    }
 	return (cord);
 }

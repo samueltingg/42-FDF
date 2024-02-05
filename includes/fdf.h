@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/05 13:17:51 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:31:59 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ typedef struct s_line_var
 }				t_line_var;
 
 // PARSING
-int get_line_count(int fd);
-t_cord	**parsing(int fd);
+int	ft_atoi_base(char *str, char *base);
+int get_line_count(char *input);
+t_cord	**parsing(char *input);
 
 
 

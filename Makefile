@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c99
+CFLAGS = -Wall -Wextra -Werror -std=c99 
 # -fsanitize=address -g
 INCLUDES = -I ./includes/ -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 
@@ -14,7 +14,8 @@ SRCS_FIL = \
 			main.c \
 			render.c \
 			bresenham.c \
-			parsing.c
+			parsing.c \
+			ft_atoi_base.c
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))
 

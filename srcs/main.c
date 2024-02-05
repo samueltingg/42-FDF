@@ -47,15 +47,16 @@ int	main(int argc, char **argv)
 	}
 
 	// PARSING TEST
-    int fd;
-    fd = open(argv[1], O_RDONLY);
-    if (fd == -1) {
-        perror("Unable to open the file");
-        return 1;
-    }
-    printf("Line_count of file: %d\n", get_line_count(fd));
+    // int fd;
+    // fd = open(argv[1], O_RDONLY);
+    // if (fd == -1) {
+    //     perror("Unable to open the file");
+    //     return 1;
+    // }
+    // // printf("Line_count of file: %d\n", get_line_count(fd));
+    // fd = open(argv[1], O_RDONLY);
 
-	cord = parsing(fd);
+	cord = parsing(argv[1]);
 
 	// ------------------
 
