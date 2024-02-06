@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/05 17:13:56 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/06 09:26:27 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ typedef struct s_rect
 	int		color;
 }			t_rect;
 
+
+/*
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
+	int		color;
+*/
 typedef struct s_line_cord
 {
 	int		x1;

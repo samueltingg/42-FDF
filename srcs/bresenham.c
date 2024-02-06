@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/01 16:40:39 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/06 10:37:24 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	render_line_high(t_img *img, t_line_cord cord)
 		var.y++;
 	}
 }
+
 void swap_coordinates(t_line_cord *cord)
 {
     int tmp;
