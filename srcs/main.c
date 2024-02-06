@@ -13,20 +13,6 @@
 #include ".././includes/fdf.h"
 
 
-
-// works best if pixel_size equot to size of INT
-void	img_pix_put(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT) // * IMPORTANT!
-		return ;
-	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel /               8));
-	*(unsigned int*)dst = color;
-}
-
-
-
 int close_window(int keycode, void *params)
 {
 	t_vars *vars = (t_vars *)params;
@@ -48,8 +34,8 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Usage : ./fdf_linux <filename>\n", 2);
 		exit (1);
 	}
-	(void)argv;
-	// cord = parsing(argv[1]); // PARSING
+	vars.line_count = get_line_count(argv[1]);
+	vars.cord = parsing(argv[1], vars.line_count); // PARSING
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)

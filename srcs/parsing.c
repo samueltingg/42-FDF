@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/05 14:52:27 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/06 16:24:35 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,17 @@ int	get_line_count(char *input)
 	return (line_count);
 }
 
-t_cord	**parsing(char *input)
+t_cord	**parsing(char *input, int line_count)
 {
 	t_cord	**cord;
 	int		y;
 	int		x;
 	char	*line;
-	int		line_count;
 	char	**str_arr;
 	int		wc;
 	int		i;
 	int fd;
 
-	line_count = get_line_count(input);
     fd = open(input, O_RDONLY);
     if (fd == -1) 
 	{

@@ -6,11 +6,22 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/06 15:57:07 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/06 16:38:49 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
+
+// works best if pixel_size equot to size of INT
+void	img_pix_put(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT) // * IMPORTANT!
+		return ;
+	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
 
 int	render_rect(t_img *img, t_rect rect)
 {
@@ -82,19 +93,33 @@ int	render(void *param)
 		// 300, 300, GREEN_PIXEL});
 	// render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150,
 		// WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
-	render_diagonal_line(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
-		RED_PIXEL});
-	render_diagonal_line(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
-		GREEN_PIXEL}); // ! heap buffer overflow
-	render_diagonal_line(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT,
-		BLUE_PIXEL}); // ! heap buffer overflow
-	render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
-		GREEN_PIXEL});
-	render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
-		BLUE_PIXEL});
+	// render_diagonal_line(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
+	// 	RED_PIXEL});
+	// render_diagonal_line(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
+	// 	GREEN_PIXEL}); 
+	// render_diagonal_line(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT,
+	// 	BLUE_PIXEL}); 
+	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
+	// 	GREEN_PIXEL});
+	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
+	// 	BLUE_PIXEL});
 
+	// * Render 9 dots
+	// int x;
+	// int y = 0;
+	// while (y < vars->line_count) 
+	// {
+	// 	x = 0;
+	// 	while (x < wc) 
+	// 		{
+	// 			img_pix_put (&vars->img, x, y, vars->cord[y][x].color);
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
+	// * ----------------
+	
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
 		0);
-
 	return (0);
 }
