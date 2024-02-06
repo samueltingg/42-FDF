@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/06 16:24:35 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/06 13:13:45 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void free_str_arr(char **str_arr)
 {
 	int i;
-	
+
 	i = 0;
 	while (str_arr[i] != NULL)
 	{
@@ -23,6 +23,23 @@ void free_str_arr(char **str_arr)
 		i++;
 	}
 	free(str_arr);
+}
+
+void free_cord(t_vars *vars) // ! NOT CHECKED
+{
+
+	int x;
+	int y = 0;
+	while (y < vars->line_count)
+	{
+		x = 0;
+		while (x < vars->wc)
+			{
+				img_pix_put (&vars->img, x, y, vars->cord[y][x].color);
+			x++;
+		}
+		y++;
+	}
 }
 
 int	count_words(char *str, char c)
@@ -58,7 +75,7 @@ int	get_line_count(char *input)
 	int fd;
 
     fd = open(input, O_RDONLY);
-    if (fd == -1) 
+    if (fd == -1)
 	{
         perror("Unable to open the file");
         return 1;
@@ -75,31 +92,31 @@ int	get_line_count(char *input)
 	return (line_count);
 }
 
-t_cord	**parsing(char *input, int line_count)
+t_cord	**parsing(char *input, t_vars *vars)
 {
 	t_cord	**cord;
 	int		y;
 	int		x;
 	char	*line;
 	char	**str_arr;
-	int		wc;
+	// int		wc;
 	int		i;
 	int fd;
 
     fd = open(input, O_RDONLY);
-    if (fd == -1) 
+    if (fd == -1)
 	{
         perror("Unable to open the file");
         exit (1);
 	}
-	cord = malloc(line_count * sizeof(t_cord *));
+	cord = malloc(vars->line_count * sizeof(t_cord *));
 	y = 0;
-	while (y < line_count)
+	while (y < vars->line_count)
 	{
 		line = get_next_line(fd);
 		str_arr = ft_split(line, ' ');
-		wc = count_words(line, ' ');
-		cord[y] = malloc(wc * sizeof(t_cord));
+		vars->wc = count_words(line, ' ');
+		cord[y] = malloc(vars->wc * sizeof(t_cord));
 		x = 0;
 		while (str_arr[x])
 		{
@@ -115,15 +132,17 @@ t_cord	**parsing(char *input, int line_count)
 				cord[y][x].color = 0; // Set a default color if none is provided
 			x++;
 		}
+		free(line);
 		free_str_arr(str_arr);
 		y++;
+
 	}
-	
+
     // Print the contents of the 2D array
-    y = 0; 
-	for (y = 0; y < line_count; y++)
+    y = 0;
+	for (y = 0; y < vars->line_count; y++)
     {
-        for (x = 0; x < wc; x++)
+        for (x = 0; x < vars->wc; x++)
         {
             printf("%d,%d  ", cord[y][x].z, cord[y][x].color);
             // printf("%3d ", cord[y][x].z);

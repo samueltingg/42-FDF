@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		exit (1);
 	}
 	vars.line_count = get_line_count(argv[1]);
-	vars.cord = parsing(argv[1], vars.line_count); // PARSING
+	vars.cord = parsing(argv[1], &vars); // PARSING
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)

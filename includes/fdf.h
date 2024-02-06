@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/06 16:43:12 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/06 13:07:27 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ typedef struct s_line_var
 // PARSING
 int			ft_atoi_base(char *str, char *base);
 int			get_line_count(char *input);
-t_cord		**parsing(char *input, int line_count);
+t_cord	**parsing(char *input, t_vars *vars);
+
 
 void		img_pix_put(t_img *img, int x, int y, int color);
 int			close_window(int keycode, void *params);
