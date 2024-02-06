@@ -19,7 +19,9 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
+	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT) // * IMPORTANT!
+		return ;
+	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel /               8));
 	*(unsigned int*)dst = color;
 }
 
@@ -30,6 +32,7 @@ int close_window(int keycode, void *params)
 	t_vars *vars = (t_vars *)params;
 	if (keycode == KEY_ESC)
 	{
+		mlx_destroy_image(vars->mlx_ptr, vars->img.img_ptr);
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
 		exit(0);
 	}
@@ -39,13 +42,14 @@ int close_window(int keycode, void *params)
 int	main(int argc, char **argv)
 {
 	t_vars vars;
-	t_cord **cord;
+	// t_cord **cord;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Usage : ./fdf_linux <filename>\n", 2);
 		exit (1);
 	}
-	cord = parsing(argv[1]); // PARSING
+	(void)argv;
+	// cord = parsing(argv[1]); // PARSING
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)
@@ -64,4 +68,5 @@ int	main(int argc, char **argv)
 
 	mlx_key_hook(vars.win_ptr, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);
+	// mlx_destroy_image(vars.mlx_ptr, vars.img.img_ptr);
 }

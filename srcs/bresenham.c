@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/06 10:37:24 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/06 15:51:36 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void swap_coordinates(t_line_cord *cord)
 
 void	render_diagonal_line(t_img *img, t_line_cord cord)
 {
-	if (abs(cord.x2 - cord.x1 > abs(cord.y2 - cord.y1)))
+	if (abs(cord.x2 - cord.x1) > abs(cord.y2 - cord.y1)) // Less STEEP
 	{
 		if (cord.x1 > cord.x2)
 		{
@@ -104,9 +104,12 @@ void	render_diagonal_line(t_img *img, t_line_cord cord)
 			render_line_low(img, cord);
 		}
 		else
+		{
+			// printf("check\n");
 			render_line_low(img, cord);
+		}
 	}
-	else
+	else // STEEP
 	{
 		if (cord.y1 > cord.y2)
 		{

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/05 17:12:48 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/06 15:57:07 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ int	render(void *param)
 	render_diagonal_line(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
 		RED_PIXEL});
 	render_diagonal_line(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
-		GREEN_PIXEL});
+		GREEN_PIXEL}); // ! heap buffer overflow
 	render_diagonal_line(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT,
-		BLUE_PIXEL});
+		BLUE_PIXEL}); // ! heap buffer overflow
 	render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
 		GREEN_PIXEL});
-	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
-	// 	BLUE_PIXEL});
+	render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
+		BLUE_PIXEL});
 
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
 		0);
