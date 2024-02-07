@@ -20,7 +20,7 @@ int close_window(int keycode, void *params)
 	{
 		mlx_destroy_image(vars->mlx_ptr, vars->img.img_ptr);
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-		// free_cord(vars);
+		free_cord(vars); // not needed as exit helps to free
 		exit(0);
 	}
 	return 0;
@@ -29,7 +29,7 @@ int close_window(int keycode, void *params)
 int	main(int argc, char **argv)
 {
 	t_vars vars;
-	// t_cord **cord;
+
 	if (argc != 2)
 	{
 		ft_putstr_fd("Usage : ./fdf_linux <filename>\n", 2);
@@ -55,5 +55,4 @@ int	main(int argc, char **argv)
 
 	mlx_key_hook(vars.win_ptr, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);
-	// mlx_destroy_image(vars.mlx_ptr, vars.img.img_ptr);
 }

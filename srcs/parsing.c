@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 10:56:34 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/07 10:40:58 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ t_cord	**parsing(char *input, t_vars *vars)
 		free_str_arr(str_arr);
 		y++;
 	}
-	
+
 	// Print the contents of the 2D array
 	y = 0;
 	for (y = 0; y < vars->line_count; y++)
