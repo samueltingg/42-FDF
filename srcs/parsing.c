@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/06 13:13:45 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/07 10:29:00 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	get_line_count(char *input)
 		if (input == NULL)
 			break ;
 		line_count++;
+		free(input);
 	}
 	close(fd);
 	return (line_count);
