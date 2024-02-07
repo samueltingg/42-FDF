@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 14:09:11 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/07 14:54:35 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void render_vertical_line(t_img *img, t_line_cord line)
 	}
 }
 
-
 void	render_grid(t_vars *vars)
 {
 	int y;
@@ -58,14 +57,23 @@ void	render_grid(t_vars *vars)
 	y = 0;	
 	while (y < vars->line_count) // horizontal
 	{
-		render_horizontal_line(&vars->img, (t_line_cord){0 * gap, y * gap, (vars->wc -1) * gap, y * gap, PURPLE_PIXEL});
-		// ! COLOR not done;
+		x = 0;
+		while (x < vars->wc - 1)
+		{
+			render_horizontal_line(&vars->img, (t_line_cord){x * gap, y * gap, (x + 1) * gap, y * gap, PURPLE_PIXEL});
+			x++;
+		}
 		y++;
 	}
 	x = 0;
 	while (x < vars->wc) // vertical
-	{		
-		render_vertical_line(&vars->img, (t_line_cord){x * gap, 0 * gap, x * gap, (vars->line_count - 1) * gap, PURPLE_PIXEL});
+	{	
+		y = 0;	
+		while (y < vars->line_count - 1)
+		{
+			render_vertical_line(&vars->img, (t_line_cord){x * gap, y * gap, x * gap, (y + 1) * gap, PURPLE_PIXEL});
+			y++;
+		}
 		// ! COLOR not done;
 		x++;
 	}
