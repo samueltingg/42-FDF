@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/06 16:38:49 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/07 11:23:33 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,21 @@ int	render(void *param)
 	// 	BLUE_PIXEL});
 
 	// * Render 9 dots
-	// int x;
-	// int y = 0;
-	// while (y < vars->line_count) 
-	// {
-	// 	x = 0;
-	// 	while (x < wc) 
-	// 		{
-	// 			img_pix_put (&vars->img, x, y, vars->cord[y][x].color);
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
+	int x;
+	int y = 0;
+	while (y < vars->line_count) 
+	{
+		x = 0;
+		while (x < vars->wc) 
+		{
+			img_pix_put(&vars->img, x * 10, y * 10, vars->cord[y][x].color);
+			x++;
+		}
+		y++;
+	}
 	// * ----------------
+
+
 	
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
 		0);
