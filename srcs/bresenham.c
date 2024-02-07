@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/06 15:51:36 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/07 13:11:26 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	render_line_low(t_img *img, t_line_cord cord)
 
 	var.dx = cord.x2 - cord.x1;
 	var.dy = cord.y2 - cord.y1;
-	var.D = 2 * var.dy - var.dx;
+	var.D = (2 * var.dy) - var.dx;
 	var.x = cord.x1;
 	var.y = cord.y1;
 	var.yi = 1;
@@ -58,7 +58,7 @@ void	render_line_high(t_img *img, t_line_cord cord)
 
 	var.dx = cord.x2 - cord.x1;
 	var.dy = cord.y2 - cord.y1;
-	var.D = 2 * var.dy - var.dx;
+	var.D = (2 * var.dy) - var.dx;
 	var.x = cord.x1;
 	var.y = cord.y1;
 	var.xi = 1;

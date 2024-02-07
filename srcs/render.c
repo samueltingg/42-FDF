@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 11:23:33 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/07 14:09:11 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,55 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	render_rect(t_img *img, t_rect rect)
+void render_horizontal_line(t_img *img, t_line_cord line)
+{
+	int x;
+
+	x = line.x1;
+	while (x <= line.x2)
+	{
+		img_pix_put(img, x, line.y1, line.color);
+		x++;
+	}
+}
+
+void render_vertical_line(t_img *img, t_line_cord line)
+{
+	int y;
+
+	y = line.y1;
+	while (y <= line.y2)
+	{
+		img_pix_put(img, line.x1, y, line.color);
+		y++;
+	}
+}
+
+
+void	render_grid(t_vars *vars)
+{
+	int y;
+	int x;
+	int gap;
+
+	gap = 20;
+	y = 0;	
+	while (y < vars->line_count) // horizontal
+	{
+		render_horizontal_line(&vars->img, (t_line_cord){0 * gap, y * gap, (vars->wc -1) * gap, y * gap, PURPLE_PIXEL});
+		// ! COLOR not done;
+		y++;
+	}
+	x = 0;
+	while (x < vars->wc) // vertical
+	{		
+		render_vertical_line(&vars->img, (t_line_cord){x * gap, 0 * gap, x * gap, (vars->line_count - 1) * gap, PURPLE_PIXEL});
+		// ! COLOR not done;
+		x++;
+	}
+}
+
+int	render_rect(t_img *img, t_rect rect) // ! do I need this?
 {
 	int	i;
 	int	j;
@@ -92,7 +140,7 @@ int	render(void *param)
 	// render_rect(&vars->img, (t_rect){WINDOW_WIDTH - 300, WINDOW_HEIGHT - 300,
 		// 300, 300, GREEN_PIXEL});
 	// render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150,
-		// WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
+	// 	WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
 	// render_diagonal_line(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
 	// 	RED_PIXEL});
 	// render_diagonal_line(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
@@ -103,22 +151,25 @@ int	render(void *param)
 	// 	GREEN_PIXEL});
 	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
 	// 	BLUE_PIXEL});
+	
 
 	// * Render 9 dots
-	int x;
-	int y = 0;
-	while (y < vars->line_count) 
-	{
-		x = 0;
-		while (x < vars->wc) 
-		{
-			img_pix_put(&vars->img, x * 10, y * 10, vars->cord[y][x].color);
-			x++;
-		}
-		y++;
-	}
+	// int x;
+	// int y = 0;
+	// while (y < vars->line_count) 
+	// {
+	// 	x = 0;
+	// 	while (x < vars->wc) 
+	// 	{
+	// 		img_pix_put(&vars->img, (x * 10) + WINDOW_WIDTH/2 , (y * 10) + WINDOW_HEIGHT/2, vars->cord[y][x].color);
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
 	// * ----------------
 
+	// * GRID
+	render_grid(vars);
 
 	
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
