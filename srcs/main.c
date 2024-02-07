@@ -20,6 +20,7 @@ int close_window(int keycode, void *params)
 	{
 		mlx_destroy_image(vars->mlx_ptr, vars->img.img_ptr);
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+		// free_cord(vars);
 		exit(0);
 	}
 	return 0;
