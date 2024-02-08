@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 14:54:35 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/08 20:18:34 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,25 @@ void	render_grid(t_vars *vars)
 	int x;
 	int gap;
 
-	gap = 20;
-	y = 0;	
+	gap = 190;
+	y = 0;
 	while (y < vars->line_count) // horizontal
 	{
 		x = 0;
 		while (x < vars->wc - 1)
 		{
-			render_horizontal_line(&vars->img, (t_line_cord){x * gap, y * gap, (x + 1) * gap, y * gap, PURPLE_PIXEL});
+			render_line_bresenham(&vars->img, (t_line_cord){x * gap + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, (x + 1) * gap + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, PURPLE_PIXEL});
 			x++;
 		}
 		y++;
 	}
 	x = 0;
 	while (x < vars->wc) // vertical
-	{	
-		y = 0;	
+	{
+		y = 0;
 		while (y < vars->line_count - 1)
 		{
-			render_vertical_line(&vars->img, (t_line_cord){x * gap, y * gap, x * gap, (y + 1) * gap, PURPLE_PIXEL});
+			render_line_bresenham(&vars->img, (t_line_cord){x * gap + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, x * gap + WINDOW_WIDTH/2, (y + 1) * gap + WINDOW_HEIGHT/2, PURPLE_PIXEL});
 			y++;
 		}
 		// ! COLOR not done;
@@ -139,7 +139,7 @@ void	render_background(t_img *img, int color)
 int	render(void *param)
 {
 	t_vars *vars;
-	
+
 	vars = (t_vars *)param;
 	if (vars->win_ptr == NULL)
 		return (1);
@@ -149,37 +149,22 @@ int	render(void *param)
 		// 300, 300, GREEN_PIXEL});
 	// render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150,
 	// 	WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
-	// render_diagonal_line(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
+	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
 	// 	RED_PIXEL});
-	// render_diagonal_line(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
-	// 	GREEN_PIXEL}); 
-	// render_diagonal_line(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT,
-	// 	BLUE_PIXEL}); 
-	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
+	// render_line_bresenham(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
 	// 	GREEN_PIXEL});
-	// render_diagonal_line(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
+	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT,
 	// 	BLUE_PIXEL});
-	
+	// render_line_bresenham(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
+	// 	GREEN_PIXEL});
+	// render_line_bresenham(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
+	// 	BLUE_PIXEL});
 
-	// * Render 9 dots
-	// int x;
-	// int y = 0;
-	// while (y < vars->line_count) 
-	// {
-	// 	x = 0;
-	// 	while (x < vars->wc) 
-	// 	{
-	// 		img_pix_put(&vars->img, (x * 10) + WINDOW_WIDTH/2 , (y * 10) + WINDOW_HEIGHT/2, vars->cord[y][x].color);
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
-	// * ----------------
 
 	// * GRID
 	render_grid(vars);
 
-	
+
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
 		0);
 	return (0);

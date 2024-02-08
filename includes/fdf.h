@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 10:58:04 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/07 11:53:32 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int			render(void *param);
 // Initialise all elements in struct!
 
 // BRESENHAM'S LINE ALGO
-void		render_diagonal_line(t_img *img, t_line_cord cord);
+void		render_line_bresenham(t_img *img, t_line_cord cord);
 void		render_line_low(t_img *img, t_line_cord line);
 /*
 - For steep slope

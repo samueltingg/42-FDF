@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 13:11:26 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/08 20:15:58 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ void	render_line_high(t_img *img, t_line_cord cord)
 		var.xi = -1;
 		var.dx = -var.dx;
 	}
+	printf("(%i,%i)\n", var.x, var.y);
 	while (var.y <= cord.y2)
 	{
 		img_pix_put(img, var.x, var.y, cord.color);
-		if (var.D > 0)
+		if (var.D > 0 && var.dx != 0)
 		{
 			var.x = var.x + var.xi;
 			var.D = var.D + (2 * (var.dx - var.dy));
@@ -94,7 +95,7 @@ void swap_coordinates(t_line_cord *cord)
     cord->y2 = tmp;
 }
 
-void	render_diagonal_line(t_img *img, t_line_cord cord)
+void	render_line_bresenham(t_img *img, t_line_cord cord)
 {
 	if (abs(cord.x2 - cord.x1) > abs(cord.y2 - cord.y1)) // Less STEEP
 	{
@@ -117,6 +118,10 @@ void	render_diagonal_line(t_img *img, t_line_cord cord)
 			render_line_high(img, cord);
 		}
 		else
+		{
+			printf("check\n");
+
 			render_line_high(img, cord);
+		}
 	}
 }
