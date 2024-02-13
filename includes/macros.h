@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 13:57:39 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 10:44:42 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@
 # define WINDOW_HEIGHT 800
 # define MLX_ERROR 1
 
+// EVENT CODES
+#  define ON_KEYDOWN 2
+#  define ON_KEYUP 3
+#  define ON_MOUSEDOWN 4
+#  define ON_MOUSEUP 5
+#  define ON_MOUSEMOVE 6
+#  define ON_EXPOSE 12
+#  define ON_DESTROY 17
+
 // KEYCODES
-#ifdef __APPLE__  // Check if compiling on macOS
-    // Code specific to macOS
-    #  define ON_KEYDOWN 2
-    #  define ON_KEYUP 3
-    #  define ON_MOUSEDOWN 4
-    #  define ON_MOUSEUP 5
-    #  define ON_MOUSEMOVE 6
-    #  define ON_EXPOSE 12
-    #  define ON_DESTROY 17
+#ifdef __APPLE__  // MacOS
     #  define KEY_ESC 53
     #  define KEY_UP 126
     #  define KEY_DOWN 125
     #  define KEY_LEFT 123
     #  define KEY_RIGHT 124
     // Reference: https://github.com/izenynn/fdf/blob/main/inc/fdf.h
-#elif __linux__   // Check if compiling on Linux
-    // Code specific to Linux
+#elif __linux__   
     #  define KEY_ESC 65307
     #  define KEY_UP 65362
     #  define KEY_DOWN 65364
