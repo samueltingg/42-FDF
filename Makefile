@@ -15,7 +15,8 @@ SRCS_FIL = \
 			render.c \
 			bresenham.c \
 			parsing.c \
-			ft_atoi_base.c
+			ft_atoi_base.c \
+			matrix.c
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))
 
