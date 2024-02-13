@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/13 15:52:44 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 16:25:33 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,13 @@ typedef struct s_line_var
 	int		xi;
 	int		yi;
 }			t_line_var;
+
+typedef struct s_matrix
+{
+	int a;
+	int b;
+	int c;
+}			t_matrix;
 
 // PARSING
 int			ft_atoi_base(char *str, char *base);
