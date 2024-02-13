@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/08 20:26:50 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 13:54:45 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,29 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void render_horizontal_line(t_img *img, t_line_cord line)
-{
-	int x;
+// void render_horizontal_line(t_img *img, t_line_cord line)
+// {
+// 	int x;
 
-	x = line.x1;
-	while (x <= line.x2)
-	{
-		img_pix_put(img, x, line.y1, line.color);
-		x++;
-	}
-}
+// 	x = line.x1;
+// 	while (x <= line.x2)
+// 	{
+// 		img_pix_put(img, x, line.y1, line.color);
+// 		x++;
+// 	}
+// }
 
-void render_vertical_line(t_img *img, t_line_cord line)
-{
-	int y;
+// void render_vertical_line(t_img *img, t_line_cord line)
+// {
+// 	int y;
 
-	y = line.y1;
-	while (y <= line.y2)
-	{
-		img_pix_put(img, line.x1, y, line.color);
-		y++;
-	}
-}
+// 	y = line.y1;
+// 	while (y <= line.y2)
+// 	{
+// 		img_pix_put(img, line.x1, y, line.color);
+// 		y++;
+// 	}
+// }
 
 void	render_grid(t_vars *vars)
 {

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/08 20:15:58 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 13:48:50 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	render_line_high(t_img *img, t_line_cord cord)
 		var.xi = -1;
 		var.dx = -var.dx;
 	}
-	printf("(%i,%i)\n", var.x, var.y);
+	// printf("(%i,%i)\n", var.x, var.y);
 	while (var.y <= cord.y2)
 	{
 		img_pix_put(img, var.x, var.y, cord.color);
@@ -105,10 +105,7 @@ void	render_line_bresenham(t_img *img, t_line_cord cord)
 			render_line_low(img, cord);
 		}
 		else
-		{
-			// printf("check\n");
 			render_line_low(img, cord);
-		}
 	}
 	else // STEEP
 	{
@@ -118,10 +115,6 @@ void	render_line_bresenham(t_img *img, t_line_cord cord)
 			render_line_high(img, cord);
 		}
 		else
-		{
-			printf("check\n");
-
 			render_line_high(img, cord);
-		}
 	}
 }

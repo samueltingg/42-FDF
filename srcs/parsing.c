@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 11:27:06 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 14:14:33 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ t_cord	**parsing(char *input, t_vars *vars)
 		x = 0;
 		while (str_arr[x])
 		{
+			cord[y][x].x = x;
+			cord[y][x].y = y;
 			cord[y][x].z = ft_atoi(str_arr[x]);
 			if (ft_strchr((const char *)str_arr[x], ',') != NULL)
 			{
@@ -138,7 +140,9 @@ t_cord	**parsing(char *input, t_vars *vars)
 	{
 		for (x = 0; x < vars->wc; x++)
 		{
-			printf("%d,%d  ", cord[y][x].z, cord[y][x].color);
+			printf("%d,%d,", cord[y][x].x, cord[y][x].y);
+			printf("%d  ", cord[y][x].z); // z
+			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
 			// printf("%3d ", cord[y][x].z);
 		}
 		printf("\n");

@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Usage : ./fdf_linux <filename>\n", 2);
+		ft_putstr_fd("Usage : ./fdf <filename>\n", 2);
 		exit (1);
 	}
 	vars.line_count = get_line_count(argv[1]);
@@ -53,8 +53,8 @@ int	main(int argc, char **argv)
 
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
 
-	// mlx_key_hook(vars.win_ptr, &close_window, &vars);
-	mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &close_window, &vars);
+	mlx_key_hook(vars.win_ptr, &close_window, &vars);
+	// mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);
 }
 

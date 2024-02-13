@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/07 11:53:32 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 14:06:08 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 typedef struct s_cord
 {
-	// int		x;
-	// int		y;
+	int		x;
+	int		y;
 	int		z;
 	int		color;
 }			t_cord;
