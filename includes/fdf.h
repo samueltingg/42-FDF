@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/13 14:06:08 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 15:52:44 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ typedef struct s_vars
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
+// PARSING
 	t_cord	**cord;
 	int		line_count;
 	int		wc;
+	
+	int		gap;
 }			t_vars;
 
 // x & y : starting coordinates
@@ -105,14 +108,14 @@ typedef struct s_line_var
 // PARSING
 int			ft_atoi_base(char *str, char *base);
 int			get_line_count(char *input);
-t_cord	**parsing(char *input, t_vars *vars);
-void	free_cord(t_vars *vars);
-
+void		parsing(char *input, t_vars *vars);
+void		free_cord(t_vars *vars);
 
 void		img_pix_put(t_img *img, int x, int y, int color);
 int			close_window(int keycode, void *params);
 
 // RENDERING
+// covers previous frame with black (reset)
 void		render_background(t_img *img, int color);
 int			render(void *param);
 // Initialise all elements in struct!

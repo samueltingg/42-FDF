@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/13 13:54:45 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 15:57:35 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT) // * IMPORTANT!
 		return ;
 	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 // void render_horizontal_line(t_img *img, t_line_cord line)
@@ -47,79 +47,122 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 // 	}
 // }
 
+// void	render_grid(t_vars *vars)
+// {
+// 	int y;
+// 	int x;
+// 	int gap;
+
+// 	gap = 20;
+// 	y = 0;
+// 	while (y < vars->line_count) // horizontal
+// 	{
+// 		x = 0;
+// 		while (x < vars->wc - 1)
+// 		{
+// 			render_line_bresenham(&vars->img, (t_line_cord){x * gap
+				// + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, (x + 1) * gap
+				// + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, PURPLE_PIXEL});
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	x = 0;
+// 	while (x < vars->wc) // vertical
+// 	{
+// 		y = 0;
+// 		while (y < vars->line_count - 1)
+// 		{
+// 			render_line_bresenham(&vars->img, (t_line_cord){x * gap
+				// + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, x * gap
+				// + WINDOW_WIDTH/2, (y + 1) * gap + WINDOW_HEIGHT/2,
+				// PURPLE_PIXEL});
+// 			y++;
+// 		}
+// 		// ! COLOR not done;
+// 		x++;
+// 	}
+// }
+
 void	render_grid(t_vars *vars)
 {
-	int y;
-	int x;
-	int gap;
+	int	j;
+	int	i;
+	int	x;
+	int	y;
 
-	gap = 20;
-	y = 0;
-	while (y < vars->line_count) // horizontal
+	// int gap;
+	// gap = 1;
+	j = 0;
+	while (j < vars->line_count) // horizontal
 	{
-		x = 0;
-		while (x < vars->wc - 1)
+		i = 0;
+		while (i < vars->wc - 1)
 		{
-			render_line_bresenham(&vars->img, (t_line_cord){x * gap + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, (x + 1) * gap + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, PURPLE_PIXEL});
-			x++;
+			y = vars->cord[j][i].y;
+			x = vars->cord[j][i].x;
+			render_line_bresenham(&vars->img, (t_line_cord){x, y, (x + vars->gap), y, PURPLE_PIXEL});
+			i++;
 		}
-		y++;
+		j++;
 	}
-	x = 0;
-	while (x < vars->wc) // vertical
+	i = 0;
+	while (i < vars->wc) // vertical
 	{
-		y = 0;
-		while (y < vars->line_count - 1)
+		j = 0;
+		while (j < vars->line_count - 1)
 		{
-			render_line_bresenham(&vars->img, (t_line_cord){x * gap + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, x * gap + WINDOW_WIDTH/2, (y + 1) * gap + WINDOW_HEIGHT/2, PURPLE_PIXEL});
-			y++;
+			x = vars->cord[j][i].x;
+			y = vars->cord[j][i].y;
+			render_line_bresenham(&vars->img, (t_line_cord){x, y, x, (y + vars->gap), PURPLE_PIXEL});
+			j++;
 		}
 		// ! COLOR not done;
-		x++;
-	}
-}
-
-int	render_rect(t_img *img, t_rect rect) // ! do I need this?
-{
-	int	i;
-	int	j;
-
-	j = rect.y;
-	while (j < rect.y + rect.height)
-	{
-		i = rect.x;
-		while (i < rect.x + rect.width)
-			img_pix_put(img, i++, j, rect.color);
-		j++;
-	}
-	return (0);
-}
-
-int	render_hollow_rect(t_img *img, t_rect rect)
-{
-	int	i;
-	int	j;
-
-	i = rect.x;
-	j = rect.y;
-	while (i < rect.x + rect.width)
-	{
-		img_pix_put(img, i, rect.y, rect.color);
-			// top horizontal line
-		img_pix_put(img, i, rect.y + rect.height, rect.color);
-			// bottom horizontal line
 		i++;
 	}
-	while (j < rect.y + rect.height)
-	{
-		img_pix_put(img, rect.x, j, rect.color);
-			// left vertical line
-		img_pix_put(img, rect.x + rect.width, j, rect.color);
-			// right vertical line
-		j++;
-	}
-	return (0);
 }
+
+// int	render_rect(t_img *img, t_rect rect) // ! do I need this?
+// {
+// 	int	i;
+// 	int	j;
+
+// 	j = rect.y;
+// 	while (j < rect.y + rect.height)
+// 	{
+// 		i = rect.x;
+// 		while (i < rect.x + rect.width)
+// 			img_pix_put(img, i++, j, rect.color);
+// 		j++;
+// 	}
+// 	return (0);
+// }
+
+// int	render_hollow_rect(t_img *img, t_rect rect)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = rect.x;
+// 	j = rect.y;
+// 	while (i < rect.x + rect.width)
+// 	{
+// 		img_pix_put(img, i, rect.y, rect.color);
+// 			// top horizontal line
+// 		img_pix_put(img, i, rect.y + rect.height, rect.color);
+// 			// bottom horizontal line
+// 		i++;
+// 	}
+// 	while (j < rect.y + rect.height)
+// 	{
+// 		img_pix_put(img, rect.x, j, rect.color);
+// 			// left vertical line
+// 		img_pix_put(img, rect.x + rect.width, j, rect.color);
+// 			// right vertical line
+// 		j++;
+// 	}
+// 	return (0);
+// }
 
 void	render_background(t_img *img, int color)
 {
@@ -138,7 +181,7 @@ void	render_background(t_img *img, int color)
 
 int	render(void *param)
 {
-	t_vars *vars;
+	t_vars	*vars;
 
 	vars = (t_vars *)param;
 	if (vars->win_ptr == NULL)
@@ -146,25 +189,18 @@ int	render(void *param)
 	render_background(&vars->img, 0x0);
 	// render_rect(&vars->img, (t_rect){0, 0, 300, 300, RED_PIXEL});
 	// render_rect(&vars->img, (t_rect){WINDOW_WIDTH - 300, WINDOW_HEIGHT - 300,
-		// 300, 300, GREEN_PIXEL});
+	// 300, 300, GREEN_PIXEL});
 	// render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150,
 	// 	WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
-	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
-	// 	RED_PIXEL});
-	// render_line_bresenham(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
-	// 	GREEN_PIXEL});
-	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT,
-	// 	BLUE_PIXEL});
+	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, RED_PIXEL});
+	// render_line_bresenham(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0, GREEN_PIXEL});
+	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT, BLUE_PIXEL});
 	// render_line_bresenham(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
 	// 	GREEN_PIXEL});
 	// render_line_bresenham(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
 	// 	BLUE_PIXEL});
-
-
 	// * GRID
 	render_grid(vars);
-
-
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
 		0);
 	return (0);

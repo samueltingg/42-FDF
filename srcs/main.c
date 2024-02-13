@@ -12,6 +12,26 @@
 
 #include ".././includes/fdf.h"
 
+// center & enlarge grid to default setting
+void init_grid(t_vars *vars)
+{
+	int x;
+	int y;
+
+	y = 0;
+	vars->gap = 20;
+	while (y < vars->line_count)
+	{
+		x = 0;
+		while (x < vars->wc)
+		{
+			vars->cord[y][x].x = x * vars->gap + WINDOW_WIDTH / 2;
+			vars->cord[y][x].y = y * vars->gap + WINDOW_HEIGHT / 2;
+			x++;
+		}
+		y++;
+	}
+}
 
 int close_window(int keycode, void *params)
 {
@@ -36,7 +56,23 @@ int	main(int argc, char **argv)
 		exit (1);
 	}
 	vars.line_count = get_line_count(argv[1]);
-	vars.cord = parsing(argv[1], &vars); // PARSING
+	parsing(argv[1], &vars); // PARSING
+	// init_grid(&vars);
+
+	// Print the contents of the 2D array
+	printf("\n ----\n");
+	int y = 0;
+	for (y = 0; y < vars.line_count; y++)
+	{
+		for (int x = 0; x < vars.wc; x++)
+		{
+			printf("%d,%d,", vars.cord[y][x].x, vars.cord[y][x].y);
+			printf("%d  ", vars.cord[y][x].z); // z
+			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
+			// printf("%3d ", cord[y][x].z);
+		}
+		printf("\n");
+	}
 
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)
@@ -52,7 +88,7 @@ int	main(int argc, char **argv)
 								&vars.img.endian);
 
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
-
+	mlx_hook(vars.win_ptr, 2, 0, &init_grid, &vars);
 	mlx_key_hook(vars.win_ptr, &close_window, &vars);
 	// mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);

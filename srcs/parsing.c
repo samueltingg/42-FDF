@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/13 14:14:33 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/13 15:23:18 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,15 @@ int	get_line_count(char *input)
 	return (line_count);
 }
 
-t_cord	**parsing(char *input, t_vars *vars)
+void parsing(char *input, t_vars *vars)
 {
-	t_cord	**cord;
 	int		y;
 	int		x;
+	int		i;
+	// store below variables in vars struct (norm)
 	int		fd;
 	char	*line;
 	char	**str_arr;
-	int		i;
 
 	fd = open(input, O_RDONLY);
 	if (fd == -1)
@@ -103,30 +103,30 @@ t_cord	**parsing(char *input, t_vars *vars)
 		perror("Unable to open the file");
 		exit(1);
 	}
-	cord = malloc(vars->line_count * sizeof(t_cord *));
+	vars->cord = malloc(vars->line_count * sizeof(t_cord *));
 	y = 0;
 	while (y < vars->line_count)
 	{
 		line = get_next_line(fd);
 		str_arr = ft_split(line, ' ');
 		vars->wc = count_words(line, ' ');
-		cord[y] = malloc(vars->wc * sizeof(t_cord));
+		vars->cord[y] = malloc(vars->wc * sizeof(t_cord));
 		x = 0;
 		while (str_arr[x])
 		{
-			cord[y][x].x = x;
-			cord[y][x].y = y;
-			cord[y][x].z = ft_atoi(str_arr[x]);
+			vars->cord[y][x].x = x;
+			vars->cord[y][x].y = y;
+			vars->cord[y][x].z = ft_atoi(str_arr[x]);
 			if (ft_strchr((const char *)str_arr[x], ',') != NULL)
 			{
 				i = 0;
 				while (str_arr[x][i] != 'x')
 					i++;
-				cord[y][x].color = ft_atoi_base((&str_arr[x][++i]),
+				vars->cord[y][x].color = ft_atoi_base((&str_arr[x][++i]),
 						"0123456789ABCDEF");
 			}
 			else
-				cord[y][x].color = 0xFFFFFF; // Set a default color if none is provided
+				vars->cord[y][x].color = 0xFFFFFF; // Set a default color if none is provided
 			x++;
 		}
 		free(line);
@@ -140,12 +140,12 @@ t_cord	**parsing(char *input, t_vars *vars)
 	{
 		for (x = 0; x < vars->wc; x++)
 		{
-			printf("%d,%d,", cord[y][x].x, cord[y][x].y);
-			printf("%d  ", cord[y][x].z); // z
+			printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
+			printf("%d  ", vars->cord[y][x].z); // z
 			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
 			// printf("%3d ", cord[y][x].z);
 		}
 		printf("\n");
 	}
-	return (cord);
+	// return (cord);
 }
