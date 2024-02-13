@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/08 20:18:34 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/08 20:26:50 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	render_grid(t_vars *vars)
 	int x;
 	int gap;
 
-	gap = 190;
+	gap = 20;
 	y = 0;
 	while (y < vars->line_count) // horizontal
 	{
