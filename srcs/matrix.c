@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/14 09:55:38 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/14 10:37:55 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
 {
     int x;
     int y;
-    int x_new;
-    int y_new;
-    int z_new;
+    double x_new;
+    double y_new;
+    double z_new;
 
     y = 0;
     while (y < vars->line_count)
@@ -36,19 +36,43 @@ void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
             vars->cord[y][x].y = y_new;
             vars->cord[y][x].z = z_new;
 
+
             x++;
+
+            printf("%f,%f,%f  ", x_new,y_new,z_new); // remove
         }
         y++;
 
+        printf("\n"); // remove
+
     }
 }
+
 
 int rotate(t_vars *vars)
 {
     double angle;
 
-    angle = 45 * (PI / 180); // convert to radians
-    multiply_matrix(vars, (t_matrix){cos(angle), -sin(angle), 0}, (t_matrix){sin(angle), cos(angle), 0},(t_matrix){0, 0, 1});
+    angle = 90 * (PI / 180); // convert to radians
+    multiply_matrix(vars, (t_matrix){cos(angle), -sin(angle), 0},
+                          (t_matrix){sin(angle), cos(angle), 0},
+                          (t_matrix){0, 0, 1});
+
+    // PRINT OUT GRID
+    int y = 0;
+    printf("\n --------\n");
+	for (y = 0; y < vars->line_count; y++)
+	{
+		for (int x = 0; x < vars->wc; x++)
+		{
+			printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
+			printf("%d  ", vars->cord[y][x].z); // z
+			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
+			// printf("%3d ", cord[y][x].z);
+		}
+		printf("\n");
+	}
+    // ----------
     return (0);
 }
 

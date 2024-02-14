@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/14 09:57:11 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/14 10:30:57 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ typedef struct s_line_var
 */
 typedef struct s_matrix
 {
-	int a;
-	int b;
-	int c;
+	double a;
+	double b;
+	double c;
 }			t_matrix;
 
 // PARSING
@@ -142,7 +142,7 @@ void		render_line_low(t_img *img, t_line_cord line);
 void		render_line_high(t_img *img, t_line_cord line);
 
 // MATRIX MULTIPLICATION
-void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
+// void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
 
 // TRANSFORMATION
 int rotate(t_vars *vars);
