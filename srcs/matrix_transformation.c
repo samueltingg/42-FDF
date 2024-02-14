@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   matrix_transformation.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/14 10:37:55 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/14 12:06:29 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
 {
+    printf("Row 1: %f, %f, %f\n", row1.a, row1.b, row1.c);
+    printf("Row 2: %f, %f, %f\n", row2.a, row2.b, row2.c);
+    printf("Row 3: %f, %f, %f\n", row3.a, row3.b, row3.c);
     int x;
     int y;
     double x_new;
@@ -36,7 +39,6 @@ void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
             vars->cord[y][x].y = y_new;
             vars->cord[y][x].z = z_new;
 
-
             x++;
 
             printf("%f,%f,%f  ", x_new,y_new,z_new); // remove
@@ -48,8 +50,42 @@ void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
     }
 }
 
+void translate(t_vars *vars, double tx, double ty)
+{
+    int y;
+    int x;
 
-int rotate(t_vars *vars)
+    y = 0;
+    while (y < vars->line_count)
+    {
+        x = 0;
+        while (x < vars->wc)
+        {
+            vars->cord[y][x].x += tx;
+            vars->cord[y][x].y += ty;
+            x++;
+        }
+        y++;
+    }
+    // PRINT OUT GRID
+    y = 0;
+    printf("\n ---Translation-----\n");
+	for (y = 0; y < vars->line_count; y++)
+	{
+		for (x = 0; x < vars->wc; x++)
+		{
+			printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
+			printf("%d  ", vars->cord[y][x].z); // z
+			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
+			// printf("%3d ", cord[y][x].z);
+		}
+		printf("\n");
+	}
+    // ----------
+
+}
+
+void rotate(t_vars *vars)
 {
     double angle;
 
@@ -73,6 +109,5 @@ int rotate(t_vars *vars)
 		printf("\n");
 	}
     // ----------
-    return (0);
 }
 

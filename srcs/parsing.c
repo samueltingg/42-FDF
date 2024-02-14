@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/14 10:28:23 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/14 11:35:34 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,19 +135,19 @@ void parsing(char *input, t_vars *vars)
 	}
 
 	// Print the contents of the 2D array
-	y = 0;
-	for (y = 0; y < vars->line_count; y++)
-	{
-		for (x = 0; x < vars->wc; x++)
-		{
-			printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
-			printf("%d  ", vars->cord[y][x].z); // z
-			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
-			// printf("%3d ", cord[y][x].z);
-		}
-		printf("\n");
-	}
-	printf("\n");
-	
+	// y = 0;
+	// for (y = 0; y < vars->line_count; y++)
+	// {
+	// 	for (x = 0; x < vars->wc; x++)
+	// 	{
+	// 		printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
+	// 		printf("%d  ", vars->cord[y][x].z); // z
+	// 		// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
+	// 		// printf("%3d ", cord[y][x].z);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("\n");
+
 	// return (cord);
 }
