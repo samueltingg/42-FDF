@@ -33,17 +33,26 @@ void init_grid(t_vars *vars)
 	}
 }
 
-int close_window(int keycode, void *params)
+int close_window(void *params)
 {
 	t_vars *vars = (t_vars *)params;
-	if (keycode == KEY_ESC)
-	{
-		mlx_destroy_image(vars->mlx_ptr, vars->img.img_ptr);
-		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-		free_cord(vars); // not needed as exit helps to free
-		exit(0);
-	}
-	return 0;
+
+	mlx_destroy_image(vars->mlx_ptr, vars->img.img_ptr);
+	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+	free_cord(vars); // not needed as exit helps to free
+	exit(0);
+}
+
+int handle_key_event(int keycode, void *param)
+{
+    t_vars *vars = (t_vars *)param;
+
+    if (keycode == KEY_RIGHT)
+    	rotate(vars);
+	else if (keycode == KEY_ESC)
+        close_window(vars);
+
+    return (0);
 }
 
 int	main(int argc, char **argv)
@@ -72,9 +81,10 @@ int	main(int argc, char **argv)
 	vars.img.addr = mlx_get_data_addr(vars.img.img_ptr, &vars.img.bits_per_pixel, &vars.img.line_len,
 								&vars.img.endian);
 
-	mlx_key_hook(vars.win_ptr, &close_window, &vars);
-	mlx_key_hook(vars.win_ptr, &rotate, &vars);
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
+	// mlx_key_hook(vars.win_ptr, &rotate, &vars);
+	// mlx_key_hook(vars.win_ptr, &close_window, &vars);
+	mlx_key_hook(vars.win_ptr, &handle_key_event, &vars);
 
 	// mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);

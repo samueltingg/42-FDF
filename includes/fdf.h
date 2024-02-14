@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/13 17:09:45 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/14 09:57:11 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_vars
 	t_cord	**cord;
 	int		line_count;
 	int		wc;
-	
+
 	int		gap;
 }			t_vars;
 
@@ -124,7 +124,7 @@ void		parsing(char *input, t_vars *vars);
 void		free_cord(t_vars *vars);
 
 void		img_pix_put(t_img *img, int x, int y, int color);
-int			close_window(int keycode, void *params);
+int			close_window(void *params);
 
 // RENDERING
 // covers previous frame with black (reset)
@@ -145,6 +145,6 @@ void		render_line_high(t_img *img, t_line_cord line);
 void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
 
 // TRANSFORMATION
-int rotate(int keycode, t_vars *vars);
+int rotate(t_vars *vars);
 
 #endif

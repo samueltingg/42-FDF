@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/13 17:15:36 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/14 09:55:38 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
     }
 }
 
-int rotate(int keycode, t_vars *vars)
+int rotate(t_vars *vars)
 {
     double angle;
 
-    angle = 45 * M_PI / 180;
-    if (keycode == KEY_RIGHT)
-        multiply_matrix(vars, (t_matrix){cos(angle), -sin(angle), 0}, (t_matrix){sin(angle), cos(angle), 0},(t_matrix){0, 0, 1});
+    angle = 45 * (PI / 180); // convert to radians
+    multiply_matrix(vars, (t_matrix){cos(angle), -sin(angle), 0}, (t_matrix){sin(angle), cos(angle), 0},(t_matrix){0, 0, 1});
     return (0);
 }
+
