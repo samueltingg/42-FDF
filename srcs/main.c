@@ -31,6 +31,7 @@ void init_grid(t_vars *vars)
 		}
 		y++;
 	}
+
 }
 
 int close_window(void *params)
@@ -47,16 +48,20 @@ int handle_key_event(int keycode, void *param)
 {
     t_vars *vars = (t_vars *)param;
 
-    if (keycode == KEY_RIGHT)
-    	translate(vars, 25, 0);
-	else if (keycode == KEY_LEFT)
-		translate(vars, -25, 0);
-	else if (keycode == KEY_UP)
-		translate(vars, 0, -25);
-	else if (keycode == KEY_DOWN)
-		translate(vars, 0, 25);
-	else if (keycode == KEY_ESC)
+
+	if (keycode == KEY_ESC)
         close_window(vars);
+	// Translation
+    else if (keycode == KEY_RIGHT)
+    	translate_2d(vars, 25, 0);
+	else if (keycode == KEY_LEFT)
+		translate_2d(vars, -25, 0);
+	else if (keycode == KEY_UP)
+		translate_2d(vars, 0, -25);
+	else if (keycode == KEY_DOWN)
+		translate_2d(vars, 0, 25);
+	// Enlarge
+	else if (keycode == )
 
     return (0);
 }

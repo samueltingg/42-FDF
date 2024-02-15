@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/14 12:06:39 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:49:54 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,10 @@ void		render_line_high(t_img *img, t_line_cord line);
 // MATRIX MULTIPLICATION
 // void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
 
-// TRANSFORMATION
+// TRANSFORMATION 2D
 void rotate(t_vars *vars);
-void translate(t_vars *vars, double tx, double ty);
+void translate_2d(t_vars *vars, double tx, double ty);
+void enlarge(t_vars *vars, double factor);
 
 
 #endif
