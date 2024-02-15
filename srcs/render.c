@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/13 16:25:42 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:24:57 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT) // * IMPORTANT!
+	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT || x < 0 || y < 0 ) // * IMPORTANT!
 		return ;
 	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
