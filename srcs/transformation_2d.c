@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/15 11:48:26 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/15 13:11:57 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,24 @@ void translate_2d(t_vars *vars, double tx, double ty)
 
 void enlarge(t_vars *vars, double factor)
 {
-    vars->gap = (double)vars->gap * factor;
+    int y;
+    int x;
+
+    if (factor <= 0)
+        return ;
+    y = 0;
+	vars->gap = 20 * factor;
+	while (y < vars->line_count)
+	{
+		x = 0;
+		while (x < vars->wc)
+		{
+			vars->cord[y][x].x *= factor;
+			vars->cord[y][x].y *= factor;
+			x++;
+		}
+		y++;
+	}
+
+    printf("gap: %d\n", vars->gap);
 }

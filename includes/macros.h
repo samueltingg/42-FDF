@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/14 09:56:01 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/15 12:16:35 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
     #  define KEY_DOWN 125
     #  define KEY_LEFT 123
     #  define KEY_RIGHT 124
+    #  define KEY_MINUS 27
+    #  define KEY_PLUS 24
     // Reference: https://github.com/izenynn/fdf/blob/main/inc/fdf.h
 #elif __linux__
     #  define KEY_ESC 65307
@@ -56,6 +58,9 @@
     #  define KEY_K 107
     #  define KEY_O 111
     #  define KEY_L 108
+    #  define KEY_MINUS 45
+    #  define KEY_PLUS 61
+
 #else
     #error Unsupported operating system
 #endif

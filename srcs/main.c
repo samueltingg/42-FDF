@@ -61,7 +61,10 @@ int handle_key_event(int keycode, void *param)
 	else if (keycode == KEY_DOWN)
 		translate_2d(vars, 0, 25);
 	// Enlarge
-	else if (keycode == )
+	else if (keycode == KEY_PLUS)
+		enlarge(vars, 1.5);
+	else if (keycode == KEY_MINUS)
+		enlarge(vars, 0.5	);
 
     return (0);
 }
@@ -109,8 +112,6 @@ int	main(int argc, char **argv)
 								&vars.img.endian);
 
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
-	// mlx_key_hook(vars.win_ptr, &rotate, &vars);
-	// mlx_key_hook(vars.win_ptr, &close_window, &vars);
 	mlx_key_hook(vars.win_ptr, &handle_key_event, &vars);
 
 	// mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &close_window, &vars);
