@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/19 15:11:49 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/19 15:50:14 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void translate_2d(t_vars *vars, double tx, double ty)
         }
         y++;
     }
+	
     // PRINT OUT GRID
     y = 0;
     printf("\n ---Translation-----\n");
