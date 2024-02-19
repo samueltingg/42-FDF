@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/19 11:12:16 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/19 14:55:07 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void		render_line_high(t_img *img, t_line_cord line);
 void rotate(t_vars *vars);
 void translate_2d(t_vars *vars, double tx, double ty);
 void resize(t_vars *vars, double factor);
+void center_grid(t_vars *vars);
 
 
 #endif

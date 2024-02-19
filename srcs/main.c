@@ -12,6 +12,25 @@
 
 #include ".././includes/fdf.h"
 
+void center_grid(t_vars *vars)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < vars->line_count)
+	{
+		x = 0;
+		while (x < vars->wc)
+		{
+			vars->cord[y][x].x += WINDOW_WIDTH / 2;
+			vars->cord[y][x].y += WINDOW_HEIGHT / 2;
+			x++;
+		}
+		y++;
+	}
+}
+
 // center & enlarge grid to default setting
 void init_grid(t_vars *vars)
 {
@@ -25,13 +44,12 @@ void init_grid(t_vars *vars)
 		x = 0;
 		while (x < vars->wc)
 		{
-			vars->cord[y][x].x = x * vars->gap /*+ WINDOW_WIDTH / 2*/;
-			vars->cord[y][x].y = y * vars->gap /*+ WINDOW_HEIGHT / 2*/;
+			vars->cord[y][x].x = x * vars->gap + WINDOW_WIDTH / 2;
+			vars->cord[y][x].y = y * vars->gap + WINDOW_HEIGHT / 2;
 			x++;
 		}
 		y++;
 	}
-
 }
 
 int close_window(void *params)

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/19 14:46:05 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/19 15:11:49 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void resize(t_vars *vars, double factor)
 
     if (factor <= 0 || vars->gap * factor < 1) // 2nd condition -> to prevent 1 * 0.5
         return ;
-    y = 0;
 	vars->gap *= factor;
+    y = 0;
     // if (vars->cord[0][1].x * factor < 1)
     //     return ; // check if cord(other than most top left) would reach 0,0 after enlarge
                 // when reach 0,0 , size can't increase as anything*0 = 0
@@ -72,10 +72,12 @@ void resize(t_vars *vars, double factor)
 		}
 		y++;
 	}
-    printf("gap: %d\n", vars->gap);
+
+	center_grid(vars);
+    printf("\ngap: %d\n", vars->gap);
     // PRINT OUT GRID
     y = 0;
-    printf("\n ---Enlarge-----\n");
+    printf("\n----Enlarge-----\n");
 	for (y = 0; y < vars->line_count; y++)
 	{
 		for (x = 0; x < vars->wc; x++)
