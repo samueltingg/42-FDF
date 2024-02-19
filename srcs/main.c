@@ -19,14 +19,14 @@ void init_grid(t_vars *vars)
 	int y;
 
 	y = 0;
-	vars->gap = 20;
+	vars->gap = 20; // must be EVEN number to avoid decimal result when *0.5 during enlarge
 	while (y < vars->line_count)
 	{
 		x = 0;
 		while (x < vars->wc)
 		{
-			vars->cord[y][x].x = x * vars->gap + WINDOW_WIDTH / 2;
-			vars->cord[y][x].y = y * vars->gap + WINDOW_HEIGHT / 2;
+			vars->cord[y][x].x = x * vars->gap /*+ WINDOW_WIDTH / 2*/;
+			vars->cord[y][x].y = y * vars->gap /*+ WINDOW_HEIGHT / 2*/;
 			x++;
 		}
 		y++;
@@ -62,9 +62,9 @@ int handle_key_event(int keycode, void *param)
 		translate_2d(vars, 0, 25);
 	// Enlarge
 	else if (keycode == KEY_PLUS)
-		enlarge(vars, 1.5);
+		resize(vars, 2);
 	else if (keycode == KEY_MINUS)
-		enlarge(vars, 0.5	);
+		resize(vars, 0.5);
 
     return (0);
 }
