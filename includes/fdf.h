@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/20 16:04:25 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:25:07 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ typedef struct s_vars
 	t_cord	**cord;
 	int		line_count;
 	int		wc;
-
+	
 	int		gap;
+	int		offset_x;
+	int		offset_y;
 }			t_vars;
 
 // x & y : starting coordinates

@@ -55,11 +55,18 @@ void resize(t_vars *vars, int increase_amt)
     int y;
     int x;
 
+	
+	int grid_width;
+	int grid_height;
+	grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
+	grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
+
+	vars->offset_x = vars->cord[0][0].x + grid_width / 2 ;
+	vars->offset_y = vars->cord[0][0].y + grid_height / 2;
+
+
 	vars->gap += increase_amt;
     y = 0;
-    // if (vars->cord[0][1].x * factor < 1)
-    //     return ; // check if cord(other than most top left) would reach 0,0 after enlarge
-                // when reach 0,0 , size can't increase as anything*0 = 0
 	while (y < vars->line_count)
 	{
 		x = 0;
@@ -74,9 +81,10 @@ void resize(t_vars *vars, int increase_amt)
 		y++;
 	}
 
-	// center_grid(vars);
 	bring_grid_to_origin(vars);
-	center_grid(vars);
+	translate_2d(vars, vars->offset_x, vars->offset_y);
+
+	// center_grid(vars);
     printf("\ngap: %d\n", vars->gap);
     // PRINT OUT GRID
     y = 0;
