@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/20 09:19:25 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/20 13:46:27 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void translate_2d(t_vars *vars, double tx, double ty)
 {
     int y;
     int x;
-
+	printf("\ntx: %f, ty: %f", tx, ty);
     y = 0;
     while (y < vars->line_count)
     {
@@ -65,8 +65,6 @@ void resize(t_vars *vars, int increase_amt)
 		x = 0;
 		while (x < vars->wc)
 		{
-			// vars->cord[y][x].x = (double)vars->cord[y][x].x * factor;
-			// vars->cord[y][x].y = (double)vars->cord[y][x].y * factor;
 			vars->cord[y][x].x = x * vars->gap;
 			vars->cord[y][x].y = y * vars->gap;
 			x++;
@@ -74,7 +72,7 @@ void resize(t_vars *vars, int increase_amt)
 		y++;
 	}
 
-	center_grid(vars);
+	// center_grid(vars);
     printf("\ngap: %d\n", vars->gap);
     // PRINT OUT GRID
     y = 0;

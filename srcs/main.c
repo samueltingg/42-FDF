@@ -34,22 +34,21 @@ void center_grid(t_vars *vars)
 // center & enlarge grid to default setting
 void init_grid(t_vars *vars)
 {
-	int x;
-	int y;
+	int grid_width;
+	int grid_height;
 
-	y = 0;
-	vars->gap = 20; // must be EVEN number to avoid decimal result when *0.5 during enlarge
-	while (y < vars->line_count)
-	{
-		x = 0;
-		while (x < vars->wc)
-		{
-			vars->cord[y][x].x = x * vars->gap + WINDOW_WIDTH / 2;
-			vars->cord[y][x].y = y * vars->gap + WINDOW_HEIGHT / 2;
-			x++;
-		}
-		y++;
-	}
+	vars->gap = 20;
+	resize(vars, 0);
+
+	// calculation to translate centre of grid to (0,0) top left
+	grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
+	grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
+	// printf("wc: %i\nline_count: %i\n", vars->wc, vars->line_count);
+	// printf("grid_height: %i\ngrid_width: %i\n", grid_height, grid_width);
+	translate_2d(vars, -(grid_width / 2), -(grid_height / 2));
+	printf("cord[9][5]: %i,%i\n", vars->cord[1][1].x, vars->cord[1][1].y);
+	// printf("cord[18][10]: %i,%i\n", vars->cord[10][18].x, vars->cord[10][18].y);
+
 }
 
 int close_window(void *params)
@@ -71,13 +70,13 @@ int handle_key_event(int keycode, void *param)
         close_window(vars);
 	// Translation
     else if (keycode == KEY_RIGHT)
-    	translate_2d(vars, 25, 0);
+    	translate_2d(vars, 10, 0);
 	else if (keycode == KEY_LEFT)
-		translate_2d(vars, -25, 0);
+		translate_2d(vars, -10, 0);
 	else if (keycode == KEY_UP)
-		translate_2d(vars, 0, -25);
+		translate_2d(vars, 0, -10);
 	else if (keycode == KEY_DOWN)
-		translate_2d(vars, 0, 25);
+		translate_2d(vars, 0, 10);
 	// Enlarge
 	else if (keycode == KEY_PLUS)
 		resize(vars, 2);
@@ -131,9 +130,7 @@ int	main(int argc, char **argv)
 
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
 	mlx_key_hook(vars.win_ptr, &handle_key_event, &vars);
-	mlx_hook(vars.win_ptr, 17, 0, &close_window, &vars);
-
-	// mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &close_window, &vars);
+	mlx_hook(vars.win_ptr, ON_DESTROY, 0, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);
 }
 
