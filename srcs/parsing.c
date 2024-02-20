@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/14 11:35:34 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:04:20 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,3 +151,21 @@ void parsing(char *input, t_vars *vars)
 
 	// return (cord);
 }
+
+// void after_parse(t_vars *vars) // meng's advice
+// {
+// 	int y;
+// 	int x;
+
+// 	y = 0;
+// 	while (y < vars->line_count)
+// 	{
+// 		x = 0;
+// 		while (x < vars->wc)
+// 		{
+// 			vars->cord[y][x].x -= vars->wc / 2;
+// 			vars->cord[y][x].y -= vars->line_count / 2;
+// 			x++;
+// 		}
+// 		y++;
+// 	}}

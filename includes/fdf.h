@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/20 09:17:28 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:04:25 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,5 +150,8 @@ void translate_2d(t_vars *vars, double tx, double ty);
 void resize(t_vars *vars, int increase_amt);
 void center_grid(t_vars *vars);
 
+void bring_grid_to_origin(t_vars *vars);
+
+// void after_parse(t_vars *vars);
 
 #endif

@@ -14,39 +14,50 @@
 
 void center_grid(t_vars *vars)
 {
-	int x;
-	int y;
+	translate_2d(vars, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+}
 
-	y = 0;
-	while (y < vars->line_count)
-	{
-		x = 0;
-		while (x < vars->wc)
-		{
-			vars->cord[y][x].x += WINDOW_WIDTH / 2;
-			vars->cord[y][x].y += WINDOW_HEIGHT / 2;
-			x++;
-		}
-		y++;
-	}
+void bring_grid_to_origin(t_vars *vars)
+{
+	// int x;
+	// int y;
+
+	// y = 0;
+	// while (y < vars->line_count)
+	// {
+	// 	x = 0;
+	// 	while (x < vars->wc)
+	// 	{
+	// 		vars->cord[y][x].x += WINDOW_WIDTH / 2;
+	// 		vars->cord[y][x].y += WINDOW_HEIGHT / 2;
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
+	int grid_width;
+	int grid_height;
+
+	grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
+	grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
+	translate_2d(vars, -(grid_width / 2), -(grid_height / 2));
+
 }
 
 // center & enlarge grid to default setting
 void init_grid(t_vars *vars)
 {
-	int grid_width;
-	int grid_height;
 
-	vars->gap = 20;
-	resize(vars, 0);
+	vars->gap = 20; // must be EVEN number to avoid decimal result when *0.5 during enlarge
 
-	// calculation to translate centre of grid to (0,0) top left
-	grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
-	grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
+
+	// grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
+	// grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
 	// printf("wc: %i\nline_count: %i\n", vars->wc, vars->line_count);
 	// printf("grid_height: %i\ngrid_width: %i\n", grid_height, grid_width);
-	translate_2d(vars, -(grid_width / 2), -(grid_height / 2));
-	printf("cord[9][5]: %i,%i\n", vars->cord[1][1].x, vars->cord[1][1].y);
+	
+	resize(vars, 0);
+	// translate_2d(vars, -(grid_width / 2), -(grid_height / 2));
+	// printf("cord[9][5]: %i,%i\n", vars->cord[1][1].x, vars->cord[1][1].y);
 	// printf("cord[18][10]: %i,%i\n", vars->cord[10][18].x, vars->cord[10][18].y);
 
 }
@@ -97,6 +108,7 @@ int	main(int argc, char **argv)
 	}
 	vars.line_count = get_line_count(argv[1]);
 	parsing(argv[1], &vars); // PARSING
+	// after_parse(&vars); // meng's advice
 	init_grid(&vars);
 
     // PRINT OUT GRID
