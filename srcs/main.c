@@ -82,7 +82,7 @@ int handle_key_event(int keycode, void *param)
 	else if (keycode == KEY_PLUS)
 		resize(vars, 2);
 	else if (keycode == KEY_MINUS)
-		resize(vars, 0.5);
+		resize(vars, -2);
 
     return (0);
 }

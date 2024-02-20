@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/19 16:40:21 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/20 09:19:25 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void translate_2d(t_vars *vars, double tx, double ty)
 
 }
 
-void resize(t_vars *vars, double factor)
+void resize(t_vars *vars, int increase_amt)
 {
-    if( factor <= 0 || (vars->gap * factor) < 1) // 2nd condition -> to prevent 1 * 0.5
-        return ;
+    // if (increase_amt < 1) // 2nd condition -> to prevent 1 * 0.5
+    //     return ;
     int y;
     int x;
 
-	vars->gap *= factor;
+	vars->gap += increase_amt;
     y = 0;
     // if (vars->cord[0][1].x * factor < 1)
     //     return ; // check if cord(other than most top left) would reach 0,0 after enlarge
