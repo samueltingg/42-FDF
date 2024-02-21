@@ -17,7 +17,7 @@ void center_grid(t_vars *vars)
 	translate_2d(vars, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 }
 
-void bring_grid_to_origin(t_vars *vars)
+void bring_grid_center_to_origin(t_vars *vars)
 {
 	// int x;
 	// int y;
@@ -46,16 +46,18 @@ void bring_grid_to_origin(t_vars *vars)
 // center & enlarge grid to default setting
 void init_grid(t_vars *vars)
 {
-
-	vars->gap = 20; // must be EVEN number to avoid decimal result when *0.5 during enlarge
-
+	// init variables
+	vars->gap = 0;
+	vars->offset_x = 0;
+	vars->offset_y = 0;
 
 	// grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
 	// grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
 	// printf("wc: %i\nline_count: %i\n", vars->wc, vars->line_count);
 	// printf("grid_height: %i\ngrid_width: %i\n", grid_height, grid_width);
 	
-	resize(vars, 0);
+	resize(vars, 20);
+	center_grid(vars);
 	// translate_2d(vars, -(grid_width / 2), -(grid_height / 2));
 	// printf("cord[9][5]: %i,%i\n", vars->cord[1][1].x, vars->cord[1][1].y);
 	// printf("cord[18][10]: %i,%i\n", vars->cord[10][18].x, vars->cord[10][18].y);

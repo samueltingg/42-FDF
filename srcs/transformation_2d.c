@@ -55,16 +55,24 @@ void resize(t_vars *vars, int increase_amt)
     int y;
     int x;
 
+	if (vars->gap + increase_amt <= 0) // gap cannot be <0
+		return ;
 	
 	int grid_width;
 	int grid_height;
-	grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
-	grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
 
-	vars->offset_x = vars->cord[0][0].x + grid_width / 2 ;
-	vars->offset_y = vars->cord[0][0].y + grid_height / 2;
+	if (vars->gap != 0)
+	{
+		grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
+		grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
+		printf("\ngrid_width: %i\ngrid_height: %i\n", grid_width, grid_height);
 
+		vars->offset_x = vars->cord[0][0].x + grid_width / 2 ;
+		vars->offset_y = vars->cord[0][0].y + grid_height / 2;
+	}
 
+	printf("\noffset_x: %i\noffset_y: %i\n", vars->offset_x, vars->offset_y);
+	// if (vars->gap += increase_amt;
 	vars->gap += increase_amt;
     y = 0;
 	while (y < vars->line_count)
@@ -81,7 +89,7 @@ void resize(t_vars *vars, int increase_amt)
 		y++;
 	}
 
-	bring_grid_to_origin(vars);
+	bring_grid_center_to_origin(vars);
 	translate_2d(vars, vars->offset_x, vars->offset_y);
 
 	// center_grid(vars);
@@ -102,3 +110,4 @@ void resize(t_vars *vars, int increase_amt)
 	}
     // ----------
 }
+
