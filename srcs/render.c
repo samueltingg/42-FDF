@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/19 09:42:17 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/21 14:46:10 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ void	render_grid(t_vars *vars)
 		i = 0;
 		while (i < vars->wc - 1)
 		{
-			y = vars->cord[j][i].y;
 			x = vars->cord[j][i].x;
-			render_line_bresenham(&vars->img, (t_line_cord){x, y, vars->cord[j][i + 1].x, y, PURPLE_PIXEL});
+			y = vars->cord[j][i].y;
+			render_line_bresenham(&vars->img, (t_line_cord){x, y, vars->cord[j][i + 1].x, vars->cord[j][i + 1].y, PURPLE_PIXEL});
 			i++;
 		}
 		j++;
@@ -114,7 +114,7 @@ void	render_grid(t_vars *vars)
 		{
 			x = vars->cord[j][i].x;
 			y = vars->cord[j][i].y;
-			render_line_bresenham(&vars->img, (t_line_cord){x, y, x, vars->cord[j + 1][i].y, PURPLE_PIXEL});
+			render_line_bresenham(&vars->img, (t_line_cord){x, y, vars->cord[j + 1][i].x, vars->cord[j + 1][i].y, PURPLE_PIXEL});
 			j++;
 		}
 		// ! COLOR not done;
@@ -192,6 +192,8 @@ int	render(void *param)
 	// 300, 300, GREEN_PIXEL});
 	// render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150,
 	// 	WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
+
+	// * DIAGONAL LINE TEST
 	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, RED_PIXEL});
 	// render_line_bresenham(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0, GREEN_PIXEL});
 	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT, BLUE_PIXEL});
@@ -199,6 +201,12 @@ int	render(void *param)
 	// 	GREEN_PIXEL});
 	// render_line_bresenham(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
 	// 	BLUE_PIXEL});
+
+	// render_line_bresenham(&vars->img, (t_line_cord){14, 14, 28, 0,
+	// 	BLUE_PIXEL});
+	// render_line_bresenham(&vars->img, (t_line_cord){-14, -14, 14, 14,
+	// 	PURPLE_PIXEL});
+	
 	// * GRID
 	render_grid(vars);
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,

@@ -19,24 +19,10 @@ void center_grid(t_vars *vars)
 
 void bring_grid_center_to_origin(t_vars *vars)
 {
-	// int x;
-	// int y;
-
-	// y = 0;
-	// while (y < vars->line_count)
-	// {
-	// 	x = 0;
-	// 	while (x < vars->wc)
-	// 	{
-	// 		vars->cord[y][x].x += WINDOW_WIDTH / 2;
-	// 		vars->cord[y][x].y += WINDOW_HEIGHT / 2;
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
 	int grid_width;
 	int grid_height;
 
+	translate_2d(vars, -vars->cord[0][0].x, -vars->cord[0][0].y); // NOT SURE
 	grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
 	grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
 	translate_2d(vars, -(grid_width / 2), -(grid_height / 2));
@@ -50,18 +36,26 @@ void init_grid(t_vars *vars)
 	vars->gap = 0;
 	vars->offset_x = 0;
 	vars->offset_y = 0;
-
-	// grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
-	// grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
-	// printf("wc: %i\nline_count: %i\n", vars->wc, vars->line_count);
-	// printf("grid_height: %i\ngrid_width: %i\n", grid_height, grid_width);
 	
 	resize(vars, 20);
-	center_grid(vars);
-	// translate_2d(vars, -(grid_width / 2), -(grid_height / 2));
-	// printf("cord[9][5]: %i,%i\n", vars->cord[1][1].x, vars->cord[1][1].y);
-	// printf("cord[18][10]: %i,%i\n", vars->cord[10][18].x, vars->cord[10][18].y);
+	// center_grid(vars);
 
+
+    // PRINT OUT GRID
+    int y = 0;
+    printf("\n ----Start----\n");
+	for (y = 0; y < vars->line_count; y++)
+	{
+		for (int x = 0; x < vars->wc; x++)
+		{
+			printf("%d,%d,", (int)vars->cord[y][x].x, (int)vars->cord[y][x].y);
+			printf("%d  ", (int)vars->cord[y][x].z); // z
+			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
+			// printf("%3d ", cord[y][x].z);
+		}
+		printf("\n");
+	}
+    // ----------
 }
 
 int close_window(void *params)
@@ -78,6 +72,7 @@ int handle_key_event(int keycode, void *param)
 {
     t_vars *vars = (t_vars *)param;
 
+	// printf("\nkey = %i\n", keycode);
 
 	if (keycode == KEY_ESC)
         close_window(vars);
@@ -95,6 +90,13 @@ int handle_key_event(int keycode, void *param)
 		resize(vars, 2);
 	else if (keycode == KEY_MINUS)
 		resize(vars, -2);
+	else if (keycode == KEY_D)
+	{
+		// bring_grid_center_to_origin(vars);
+		rotate(vars, 45);
+	}
+	else if (keycode == KEY_R)
+		init_grid(vars);
 
     return (0);
 }
@@ -113,22 +115,6 @@ int	main(int argc, char **argv)
 	// after_parse(&vars); // meng's advice
 	init_grid(&vars);
 
-    // PRINT OUT GRID
-    int y = 0;
-    printf("\n ----Start----\n");
-	for (y = 0; y < vars.line_count; y++)
-	{
-		for (int x = 0; x < vars.wc; x++)
-		{
-			printf("%d,%d,", vars.cord[y][x].x, vars.cord[y][x].y);
-			printf("%d  ", vars.cord[y][x].z); // z
-			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
-			// printf("%3d ", cord[y][x].z);
-		}
-		printf("\n");
-	}
-    // ----------
-
 	vars.mlx_ptr = mlx_init();
 	if (vars.mlx_ptr == NULL)
 		return (MLX_ERROR);
@@ -143,7 +129,7 @@ int	main(int argc, char **argv)
 								&vars.img.endian);
 
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
-	mlx_key_hook(vars.win_ptr, &handle_key_event, &vars);
+	mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &handle_key_event, &vars); 
 	mlx_hook(vars.win_ptr, ON_DESTROY, 0, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);
 }

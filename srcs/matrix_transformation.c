@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/15 11:45:28 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/21 15:03:51 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
 {
-    printf("Row 1: %f, %f, %f\n", row1.a, row1.b, row1.c);
+    printf("\nRow 1: %f, %f, %f\n", row1.a, row1.b, row1.c);
     printf("Row 2: %f, %f, %f\n", row2.a, row2.b, row2.c);
     printf("Row 3: %f, %f, %f\n", row3.a, row3.b, row3.c);
     int x;
@@ -50,24 +50,29 @@ void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
     }
 }
 
-void rotate(t_vars *vars)
+void rotate(t_vars *vars, double angle)
 {
-    double angle;
+    
+    printf("\n ----Rotation----\n");
+    // double angle;
+    double radian;
 
-    angle = 90 * (PI / 180); // convert to radians
-    multiply_matrix(vars, (t_matrix){cos(angle), -sin(angle), 0},
-                          (t_matrix){sin(angle), cos(angle), 0},
+    radian = angle * (PI / 180); // convert to radians 
+    printf("\nradian: %f\n", radian);
+    printf("cos(angle): %f\n", cos(radian));
+    multiply_matrix(vars, (t_matrix){cos(radian), -sin(radian), 0},
+                          (t_matrix){sin(radian), cos(radian), 0},
                           (t_matrix){0, 0, 1});
 
     // PRINT OUT GRID
+    printf("\nAFTER matrix multiplication ~~\n");
     int y = 0;
-    printf("\n --------\n");
 	for (y = 0; y < vars->line_count; y++)
 	{
 		for (int x = 0; x < vars->wc; x++)
 		{
-			printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
-			printf("%d  ", vars->cord[y][x].z); // z
+			printf("%d,%d,", (int)vars->cord[y][x].x, (int)vars->cord[y][x].y);
+			printf("%d  ", (int)vars->cord[y][x].z); // z
 			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
 			// printf("%3d ", cord[y][x].z);
 		}

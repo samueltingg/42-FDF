@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/21 09:49:23 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/21 14:57:33 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 
 typedef struct s_cord
 {
-	int		x;
-	int		y;
-	int		z;
+	double		x;
+	double		y;
+	double		z;
 	int		color;
 }			t_cord;
 
@@ -71,14 +71,14 @@ typedef struct s_vars
 }			t_vars;
 
 // x & y : starting coordinates
-typedef struct s_rect
-{
-	int		x;
-	int		y;
-	int		width;
-	int		height;
-	int		color;
-}			t_rect;
+// typedef struct s_rect
+// {
+// 	int		x;
+// 	int		y;
+// 	int		width;
+// 	int		height;
+// 	int		color;
+// }			t_rect;
 
 /*
 	int		x1;
@@ -147,7 +147,7 @@ void		render_line_high(t_img *img, t_line_cord line);
 // void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
 
 // TRANSFORMATION 2D
-void rotate(t_vars *vars);
+void rotate(t_vars *vars, double angle);
 void translate_2d(t_vars *vars, double tx, double ty);
 void resize(t_vars *vars, int increase_amt);
 void center_grid(t_vars *vars);
