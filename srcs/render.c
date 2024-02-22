@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 10:04:31 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 13:25:50 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,103 @@ void	render_background(t_img *img, int color)
 	}
 }
 
+// void test_bresenham_line(t_vars *vars)
+// {
+//     t_line_cord a1;
+//     t_line_cord a2;
+//     t_line_cord a3;
+//     t_line_cord a4;
+//     t_line_cord a5;
+//     t_line_cord a6;
+//     t_line_cord a7;
+//     t_line_cord a8;
+//     t_line_cord a12;
+//     t_line_cord a11;
+//     t_line_cord a10;
+//     t_line_cord a9;
+		//
+//     a1.color = RED_PIXEL;
+//     a2.color = BLUE_PIXEL;
+//     a3.color = RED_PIXEL;
+//     a4.color = PURPLE_PIXEL;
+//     a5.color = GREEN_PIXEL;
+//     a6.color = BLUE_PIXEL;
+//     a7.color = GREEN_PIXEL;
+//     a8.color = PURPLE_PIXEL;
+//     a9.color = RED_PIXEL;
+//     a10.color = PURPLE_PIXEL;
+//     a11.color = GREEN_PIXEL;
+//     a12.color = PURPLE_PIXEL;
+		//
+//     a1.x1 = 500;
+//     a1.y1 = 500;
+//     a2.x1 = 500;
+//     a2.y1 = 500;
+//     a3.x1 = 500;
+//     a3.y1 = 500;
+//     a4.x1 = 500;
+//     a4.y1 = 500;
+//     a5.x1 = 500;
+//     a5.y1 = 500;
+//     a6.x1 = 500;
+//     a6.y1 = 500;
+//     a7.x1 = 500;
+//     a7.y1 = 500;
+//     a8.x1 = 500;
+//     a8.y1 = 500;
+//     a9.x1 = 500;
+//     a9.y1 = 500;
+//     a10.x1 = 500;
+//     a10.y1 = 500;
+//     a11.x1 = 500;
+//     a11.y1 = 500;
+//     a12.x1 = 500;
+//     a12.y1 = 500;
+		// 	
+//     a1.x2 = 100;
+//     a1.y2 =100;
+//     a2.x2 = 500; // y axis
+//     a2.y2 = 100;
+		//
+//     a3.x2 = 1000; // ! issue
+//     a3.y2 = 100;
+		//
+//     a4.x2 = 100; // x-axis
+//     a4.y2 = 500; 
+		//
+//     a5.x2 = 1000; // x-axis
+//     a5.y2 = 500;
+		//
+//     a6.x2 = 100;
+//     a6.y2 = 1000;
+//     a7.x2 = 500; // y-axis
+//     a7.y2 = 1000;
+		//
+//     a8.x2 = 1000;
+//     a8.y2 = 1000;
+//     a9.x2 = 250;
+//     a9.y2 = 100;
+//     a10.x2 = 750; // ! issue
+//     a10.y2 = 100;
+//     a11.x2 = 250;
+//     a11.y2 = 1000;
+//     a12.x2 = 750;
+//     a12.y2 = 1000;
+		//
+// 	// render_line_bresenham(&vars->img, a1);
+// 	render_line_bresenham(&vars->img, a2); // y-axis
+// 	render_line_bresenham(&vars->img, a4); // x-axis
+// 	render_line_bresenham(&vars->img, a5); // x-axis
+// 	render_line_bresenham(&vars->img, a3); // ! issue
+// 	// render_line_bresenham(&vars->img, a6);
+// 	// render_line_bresenham(&vars->img, a7); // y-axis
+// 	// render_line_bresenham(&vars->img, a8);
+// 	// render_line_bresenham(&vars->img, a9);
+// 	render_line_bresenham(&vars->img, a10); // ! issue
+// 	// render_line_bresenham(&vars->img, a11);
+// 	// render_line_bresenham(&vars->img, a12);
+// }
+
 int	render(void *param)
 {
 	t_vars	*vars;
@@ -255,18 +352,7 @@ int	render(void *param)
 	// 	WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
 
 	// * DIAGONAL LINE TEST
-	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, RED_PIXEL});
-	// render_line_bresenham(&vars->img, (t_line_cord){0, WINDOW_HEIGHT, WINDOW_WIDTH, 0, GREEN_PIXEL});
-	// render_line_bresenham(&vars->img, (t_line_cord){0, 0, 100, WINDOW_HEIGHT, BLUE_PIXEL});
-	// render_line_bresenham(&vars->img, (t_line_cord){WINDOW_WIDTH, 0, WINDOW_WIDTH - 100, WINDOW_HEIGHT,
-	// 	GREEN_PIXEL});
-	// render_line_bresenham(&vars->img, (t_line_cord){WINDOW_WIDTH - 100, WINDOW_HEIGHT, WINDOW_WIDTH, 0,
-	// 	BLUE_PIXEL});
-
-	// render_line_bresenham(&vars->img, (t_line_cord){14, 14, 28, 0,
-	// 	BLUE_PIXEL});
-	// render_line_bresenham(&vars->img, (t_line_cord){-14, -14, 14, 14,
-	// 	PURPLE_PIXEL});
+	// test_bresenham_line(vars);
 	
 	// * GRID
 	render_grid(vars);

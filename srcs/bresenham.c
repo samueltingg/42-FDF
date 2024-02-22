@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 10:02:55 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 13:17:50 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 void	render_line_low(t_img *img, t_line_cord cord)
 {
 	t_line_var	var;
-
+	
 	var.dx = cord.x2 - cord.x1;
 	var.dy = cord.y2 - cord.y1;
-	var.D = (2 * var.dy) - var.dx;
-	var.x = cord.x1;
-	var.y = cord.y1;
 	var.yi = 1;
 	if (var.dy < 0)
 	{
 		var.yi = -1;
 		var.dy = -var.dy;
 	}
+	var.D = (2 * var.dy) - var.dx;
+	var.x = cord.x1;
+	var.y = cord.y1;
 	while (var.x <= cord.x2)
 	{
 		img_pix_put(img, round(var.x), round(var.y), cord.color);
@@ -56,17 +56,17 @@ void	render_line_high(t_img *img, t_line_cord cord)
 {
 	t_line_var	var;
 
-	var.dx = cord.x2 - cord.x1;
 	var.dy = cord.y2 - cord.y1;
-	var.D = (2 * var.dy) - var.dx;
-	var.x = cord.x1;
-	var.y = cord.y1;
+	var.dx = cord.x2 - cord.x1;
 	var.xi = 1;
 	if (var.dx < 0)
 	{
 		var.xi = -1;
 		var.dx = -var.dx;
 	}
+	var.D = (2 * var.dy) - var.dx;
+	var.x = cord.x1;
+	var.y = cord.y1;
 	// printf("(%i,%i)\n", var.x, var.y);
 	while (var.y <= cord.y2)
 	{
