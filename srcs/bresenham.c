@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/13 13:48:50 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 10:02:55 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	render_line_low(t_img *img, t_line_cord cord)
 	}
 	while (var.x <= cord.x2)
 	{
-		img_pix_put(img, var.x, var.y, cord.color);
+		img_pix_put(img, round(var.x), round(var.y), cord.color);
 		if (var.D > 0)
 		{
 			var.y = var.y + var.yi;
@@ -70,7 +70,7 @@ void	render_line_high(t_img *img, t_line_cord cord)
 	// printf("(%i,%i)\n", var.x, var.y);
 	while (var.y <= cord.y2)
 	{
-		img_pix_put(img, var.x, var.y, cord.color);
+		img_pix_put(img, round(var.x), round(var.y), cord.color);
 		if (var.D > 0 && var.dx != 0)
 		{
 			var.x = var.x + var.xi;

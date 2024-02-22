@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/21 14:57:33 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 10:03:30 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,9 @@ typedef struct s_matrix
 	double c;
 }			t_matrix;
 
+// print_grid
+void print_grid(t_vars *vars);
+
 // PARSING
 int			ft_atoi_base(char *str, char *base);
 int			get_line_count(char *input);
@@ -126,6 +129,8 @@ void		parsing(char *input, t_vars *vars);
 void		free_cord(t_vars *vars);
 
 void		img_pix_put(t_img *img, int x, int y, int color);
+// void		img_pix_put(t_img *img, double x_double, double y_double, int color);
+
 int			close_window(void *params);
 
 // RENDERING
@@ -155,5 +160,6 @@ void center_grid(t_vars *vars);
 void bring_grid_center_to_origin(t_vars *vars);
 
 // void after_parse(t_vars *vars);
+
 
 #endif

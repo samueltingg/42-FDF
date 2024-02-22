@@ -14,6 +14,7 @@
 
 void center_grid(t_vars *vars)
 {
+	printf("\n~~Center Grid~~");
 	translate_2d(vars, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 }
 
@@ -37,25 +38,13 @@ void init_grid(t_vars *vars)
 	vars->offset_x = 0;
 	vars->offset_y = 0;
 	
-	resize(vars, 20);
+	resize(vars, 100);
 	// center_grid(vars);
 
 
     // PRINT OUT GRID
-    int y = 0;
     printf("\n ----Start----\n");
-	for (y = 0; y < vars->line_count; y++)
-	{
-		for (int x = 0; x < vars->wc; x++)
-		{
-			printf("%d,%d,", (int)vars->cord[y][x].x, (int)vars->cord[y][x].y);
-			printf("%d  ", (int)vars->cord[y][x].z); // z
-			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
-			// printf("%3d ", cord[y][x].z);
-		}
-		printf("\n");
-	}
-    // ----------
+	print_grid(vars);
 }
 
 int close_window(void *params)

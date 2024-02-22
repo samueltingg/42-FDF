@@ -30,21 +30,10 @@ void translate_2d(t_vars *vars, double tx, double ty)
         y++;
     }
 
-    // // PRINT OUT GRID
-    // y = 0;
-    // printf("\n ---Translation-----\n");
-	// for (y = 0; y < vars->line_count; y++)
-	// {
-	// 	for (x = 0; x < vars->wc; x++)
-	// 	{
-	// 		printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
-	// 		printf("%d  ", vars->cord[y][x].z); // z
-	// 		// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
-	// 		// printf("%3d ", cord[y][x].z);
-	// 	}
-	// 	printf("\n");
-	// }
-    // // ----------
+    // PRINT OUT GRID
+    printf("\n ---Translation-----\n");
+	print_grid(vars);
+    // ----------
 
 }
 
@@ -93,20 +82,9 @@ void resize(t_vars *vars, int increase_amt)
 
 	// center_grid(vars);
     // printf("\ngap: %d\n", vars->gap);
+
     // // PRINT OUT GRID
-    // y = 0;
     // printf("\n----Enlarge-----\n");
-	// for (y = 0; y < vars->line_count; y++)
-	// {
-	// 	for (x = 0; x < vars->wc; x++)
-	// 	{
-	// 		printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
-	// 		printf("%d  ", vars->cord[y][x].z); // z
-	// 		// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
-	// 		// printf("%3d ", cord[y][x].z);
-	// 	}
-	// 	printf("\n");
-	// }
-    // // ----------
+	// print_grid(vars);
 }
 

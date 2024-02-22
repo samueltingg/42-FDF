@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/21 15:03:51 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 09:23:55 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,15 @@ void rotate(t_vars *vars, double angle)
     radian = angle * (PI / 180); // convert to radians 
     printf("\nradian: %f\n", radian);
     printf("cos(angle): %f\n", cos(radian));
+
+    // bring_grid_center_to_origin(vars);
     multiply_matrix(vars, (t_matrix){cos(radian), -sin(radian), 0},
                           (t_matrix){sin(radian), cos(radian), 0},
                           (t_matrix){0, 0, 1});
+    // center_grid(vars);
 
     // PRINT OUT GRID
     printf("\nAFTER matrix multiplication ~~\n");
-    int y = 0;
-	for (y = 0; y < vars->line_count; y++)
-	{
-		for (int x = 0; x < vars->wc; x++)
-		{
-			printf("%d,%d,", (int)vars->cord[y][x].x, (int)vars->cord[y][x].y);
-			printf("%d  ", (int)vars->cord[y][x].z); // z
-			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
-			// printf("%3d ", cord[y][x].z);
-		}
-		printf("\n");
-	}
-    // ----------
+    print_grid(vars);
 }
 
