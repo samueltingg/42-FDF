@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/21 16:14:56 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 14:17:47 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define PI 3.14159
 
 // EVENT CODES
-#  define ON_KEYDOWN 2
+#  define ON_KEYDOWN 2 // mac only :()
 #  define ON_KEYUP 3
 #  define ON_MOUSEDOWN 4
 #  define ON_MOUSEUP 5

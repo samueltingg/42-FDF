@@ -42,7 +42,7 @@ void init_grid(t_vars *vars)
 	vars->offset_x = 0;
 	vars->offset_y = 0;
 	vars->at_origin = 0;
-	
+
 	resize(vars, 20);
 	center_grid(vars);
 
@@ -66,7 +66,7 @@ int handle_key_event(int keycode, void *param)
 {
     t_vars *vars = (t_vars *)param;
 
-	// printf("\nkey = %i\n", keycode);
+	printf("\nkey = %i\n", keycode);
 
 	if (keycode == KEY_ESC)
         close_window(vars);
@@ -122,7 +122,11 @@ int	main(int argc, char **argv)
 								&vars.img.endian);
 
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
-	mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &handle_key_event, &vars); 
+	#ifdef __APPLE__
+		mlx_hook(vars.win_ptr, ON_KEYDOWN, 0, &handle_key_event, &vars);
+	#elif __linux__
+		mlx_key_hook(vars.win_ptr, &handle_key_event, &vars);
+	#endif
 	mlx_hook(vars.win_ptr, ON_DESTROY, 0, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);
 }
