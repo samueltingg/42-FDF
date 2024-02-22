@@ -6,143 +6,23 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 13:25:50 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 13:28:21 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
 
 // works best if pixel_size equot to size of INT
-// void	img_pix_put(t_img *img, double x_double, double y_double, int color)
-// {
-// 	char	*dst;
-// 	int x;
-// 	int y;
-	
-// 	x = round(x_double);
-// 	y = round(y_double);
-
-// 	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT || x < 0 || y < 0 ) // * IMPORTANT!
-// 		return ;
-// 	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
-// 	*(unsigned int *)dst = color;
-// }
 
 void	img_pix_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
-	// int x;
-	// int y;
-	
-	// x = round(x_double);
-	// y = round(y_double);
 
 	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT || x < 0 || y < 0 ) // * IMPORTANT!
 		return ;
 	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
-
-
-
-// void render_horizontal_line(t_img *img, t_line_cord line)
-// {
-// 	int x;
-
-// 	x = line.x1;
-// 	while (x <= line.x2)
-// 	{
-// 		img_pix_put(img, x, line.y1, line.color);
-// 		x++;
-// 	}
-// }
-
-// void render_vertical_line(t_img *img, t_line_cord line)
-// {
-// 	int y;
-
-// 	y = line.y1;
-// 	while (y <= line.y2)
-// 	{
-// 		img_pix_put(img, line.x1, y, line.color);
-// 		y++;
-// 	}
-// }
-
-// void	render_grid(t_vars *vars)
-// {
-// 	int y;
-// 	int x;
-// 	int gap;
-
-// 	gap = 20;
-// 	y = 0;
-// 	while (y < vars->line_count) // horizontal
-// 	{
-// 		x = 0;
-// 		while (x < vars->wc - 1)
-// 		{
-// 			render_line_bresenham(&vars->img, (t_line_cord){x * gap
-				// + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, (x + 1) * gap
-				// + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, PURPLE_PIXEL});
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	x = 0;
-// 	while (x < vars->wc) // vertical
-// 	{
-// 		y = 0;
-// 		while (y < vars->line_count - 1)
-// 		{
-// 			render_line_bresenham(&vars->img, (t_line_cord){x * gap
-				// + WINDOW_WIDTH/2, y * gap + WINDOW_HEIGHT/2, x * gap
-				// + WINDOW_WIDTH/2, (y + 1) * gap + WINDOW_HEIGHT/2,
-				// PURPLE_PIXEL});
-// 			y++;
-// 		}
-// 		// ! COLOR not done;
-// 		x++;
-// 	}
-// }
-
-// void	render_grid(t_vars *vars)
-// {
-// 	int	j;
-// 	int	i;
-// 	int	x;
-// 	int	y;
-
-// 	// int gap;
-// 	// gap = 1;
-// 	j = 0;
-// 	while (j < vars->line_count) // horizontal
-// 	{
-// 		i = 0;
-// 		while (i < vars->wc - 1)
-// 		{
-// 			x = vars->cord[j][i].x;
-// 			y = vars->cord[j][i].y;
-// 			render_line_bresenham(&vars->img, (t_line_cord){x, y, vars->cord[j][i + 1].x, vars->cord[j][i + 1].y, PURPLE_PIXEL});
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// 	i = 0;
-// 	while (i < vars->wc) // vertical
-// 	{
-// 		j = 0;
-// 		while (j < vars->line_count - 1)
-// 		{
-// 			x = vars->cord[j][i].x;
-// 			y = vars->cord[j][i].y;
-// 			render_line_bresenham(&vars->img, (t_line_cord){x, y, vars->cord[j + 1][i].x, vars->cord[j + 1][i].y, PURPLE_PIXEL});
-// 			j++;
-// 		}
-// 		// ! COLOR not done;
-// 		i++;
-// 	}
-// }
 
 void	render_grid(t_vars *vars)
 {
@@ -187,7 +67,7 @@ void	render_grid(t_vars *vars)
 // {
 // 	int	i;
 // 	int	j;
-
+	//
 // 	j = rect.y;
 // 	while (j < rect.y + rect.height)
 // 	{
@@ -203,7 +83,7 @@ void	render_grid(t_vars *vars)
 // {
 // 	int	i;
 // 	int	j;
-
+	//
 // 	i = rect.x;
 // 	j = rect.y;
 // 	while (i < rect.x + rect.width)

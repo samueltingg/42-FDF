@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 09:23:55 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 13:54:38 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
 {
-    printf("\nRow 1: %f, %f, %f\n", row1.a, row1.b, row1.c);
-    printf("Row 2: %f, %f, %f\n", row2.a, row2.b, row2.c);
-    printf("Row 3: %f, %f, %f\n", row3.a, row3.b, row3.c);
+    // printf("\nRow 1: %f, %f, %f\n", row1.a, row1.b, row1.c);
+    // printf("Row 2: %f, %f, %f\n", row2.a, row2.b, row2.c);
+    // printf("Row 3: %f, %f, %f\n", row3.a, row3.b, row3.c);
     int x;
     int y;
     double x_new;
@@ -62,10 +62,12 @@ void rotate(t_vars *vars, double angle)
     printf("cos(angle): %f\n", cos(radian));
 
     // bring_grid_center_to_origin(vars);
+	translate_2d(vars, -WINDOW_WIDTH / 2, -WINDOW_HEIGHT / 2);
+
     multiply_matrix(vars, (t_matrix){cos(radian), -sin(radian), 0},
                           (t_matrix){sin(radian), cos(radian), 0},
                           (t_matrix){0, 0, 1});
-    // center_grid(vars);
+    center_grid(vars);
 
     // PRINT OUT GRID
     printf("\nAFTER matrix multiplication ~~\n");

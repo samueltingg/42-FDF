@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 10:03:30 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 13:43:08 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ typedef struct s_vars
 	int		gap;
 	int		offset_x;
 	int		offset_y;
+
+	// FLAGs
+	int at_origin;
 }			t_vars;
 
 // x & y : starting coordinates

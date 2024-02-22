@@ -23,10 +23,14 @@ void bring_grid_center_to_origin(t_vars *vars)
 	int grid_width;
 	int grid_height;
 
-	translate_2d(vars, -vars->cord[0][0].x, -vars->cord[0][0].y); // NOT SURE
+	printf("\n~~Bring Grid to Center~~");
+
+	translate_2d(vars, -vars->cord[0][0].x, -vars->cord[0][0].y); // bring top left corner of grid to frame origin (0,0)
 	grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
 	grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
 	translate_2d(vars, -(grid_width / 2), -(grid_height / 2));
+
+	vars->at_origin = 1;
 
 }
 
@@ -37,9 +41,10 @@ void init_grid(t_vars *vars)
 	vars->gap = 0;
 	vars->offset_x = 0;
 	vars->offset_y = 0;
+	vars->at_origin = 0;
 	
-	resize(vars, 100);
-	// center_grid(vars);
+	resize(vars, 20);
+	center_grid(vars);
 
 
     // PRINT OUT GRID
