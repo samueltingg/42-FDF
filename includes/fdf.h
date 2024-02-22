@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 15:07:10 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 16:46:58 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include ".././libft/libft.h"
 # include "macros.h"
+# include "structs.h"
 # include "mlx.h"
 # include <fcntl.h>
 # include <limits.h>
@@ -24,106 +25,8 @@
 # include <unistd.h>
 // ^can also use <mlx.h>, but only in 42 macs
 
-typedef struct s_cord
-{
-	double		x;
-	double		y;
-	double		z;
-	int		color;
-}			t_cord;
-
-/**
- * @param line_len amount of bytes taken by one row of our image
- * @param img_ptr pointer to the image structure created by mlx_new_image
- * @param addr pointer to the raw pixel data of the image
- */
-typedef struct s_img
-{
-	void	*img_ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_len;
-	int		endian;
-}			t_img;
-
-/*
-Elements:
-	- void	*mlx_ptr;
-	- void	*win_ptr;
-	- t_img	img;
-	- t_cord	**cord;
-	- int		line_count;
-	- int		wc;
-*/
-typedef struct s_vars
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
-// PARSING
-	t_cord	**cord;
-	int		line_count;
-	int		wc;
-	
-	int		gap;
-	int		offset_x;
-	int		offset_y;
-
-	// FLAGs
-	int at_origin;
-}			t_vars;
-
-// x & y : starting coordinates
-// typedef struct s_rect
-// {
-// 	int		x;
-// 	int		y;
-// 	int		width;
-// 	int		height;
-// 	int		color;
-// }			t_rect;
-
-/*
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
-	int		color;
-*/
-typedef struct s_line_cord
-{
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
-	int		color;
-}			t_line_cord;
-
-typedef struct s_line_var
-{
-	int		dx;
-	int		dy;
-	int		D;
-	int		x;
-	int		y;
-	int		xi;
-	int		yi;
-}			t_line_var;
-
-/*
-	int a;
-	int b;
-	int c;
-*/
-typedef struct s_matrix
-{
-	double a;
-	double b;
-	double c;
-}			t_matrix;
-
 // * print_grid
-void print_grid(t_vars *vars);
+void print_grid(t_vars *vars, t_cord **cord);
 
 // * PARSING
 int			ft_atoi_base(char *str, char *base);
@@ -159,7 +62,9 @@ void init_grid(t_vars *vars);
 
 // * TRANSFORMATION 2D
 void rotate(t_vars *vars, double angle);
-void translate_2d(t_vars *vars, double tx, double ty);
+// void translate_2d(t_vars *vars, double tx, double ty);
+void translate_2d(t_vars *vars, t_cord ***cord, double tx, double ty);
+
 void resize(t_vars *vars, int increase_amt);
 void center_grid(t_vars *vars);
 

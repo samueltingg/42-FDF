@@ -22,13 +22,13 @@ int handle_key_event(int keycode, void *param)
         close_window(vars);
 	// Translation
     else if (keycode == KEY_RIGHT)
-    	translate_2d(vars, 10, 0);
+    	translate_2d(vars, &vars->cord, 10, 0);
 	else if (keycode == KEY_LEFT)
-		translate_2d(vars, -10, 0);
+		translate_2d(vars, &vars->cord, -10, 0);
 	else if (keycode == KEY_UP)
-		translate_2d(vars, 0, -10);
+		translate_2d(vars, &vars->cord, 0, -10);
 	else if (keycode == KEY_DOWN)
-		translate_2d(vars, 0, 10);
+		translate_2d(vars, &vars->cord, 0, 10);
 	// Enlarge
 	else if (keycode == KEY_PLUS)
 		resize(vars, 2);

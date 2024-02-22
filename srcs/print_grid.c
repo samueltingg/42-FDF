@@ -12,7 +12,7 @@
 
 #include ".././includes/fdf.h"
 
-void print_grid(t_vars *vars)
+void print_grid(t_vars *vars, t_cord **cord)
 {
     int y;
 	int x;
@@ -24,8 +24,8 @@ void print_grid(t_vars *vars)
 		x = 0;
 		while (x < vars->wc)
 		{
-			printf("%d,%d,", (int)vars->cord[y][x].x, (int)vars->cord[y][x].y);
-			printf("%d  ", (int)vars->cord[y][x].z); // z
+			printf("%d,%d,", (int)cord[y][x].x, (int)cord[y][x].y);
+			printf("%d  ", (int)cord[y][x].z); // z
 			// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
 			// printf("%3d ", cord[y][x].z);
 			x++;
