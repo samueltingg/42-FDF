@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 13:43:08 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 15:07:10 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,10 @@ typedef struct s_matrix
 	double c;
 }			t_matrix;
 
-// print_grid
+// * print_grid
 void print_grid(t_vars *vars);
 
-// PARSING
+// * PARSING
 int			ft_atoi_base(char *str, char *base);
 int			get_line_count(char *input);
 void		parsing(char *input, t_vars *vars);
@@ -134,9 +134,12 @@ void		free_cord(t_vars *vars);
 void		img_pix_put(t_img *img, int x, int y, int color);
 // void		img_pix_put(t_img *img, double x_double, double y_double, int color);
 
+// * MLX
 int			close_window(void *params);
+int handle_key_event(int keycode, void *param);
 
-// RENDERING
+
+// * RENDERING
 // covers previous frame with black (reset)
 void		render_background(t_img *img, int color);
 int			render(void *param);
@@ -151,14 +154,18 @@ void		render_line_low(t_img *img, t_line_cord line);
 */
 void		render_line_high(t_img *img, t_line_cord line);
 
-// MATRIX MULTIPLICATION
-// void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
 
-// TRANSFORMATION 2D
+void init_grid(t_vars *vars);
+
+// * TRANSFORMATION 2D
 void rotate(t_vars *vars, double angle);
 void translate_2d(t_vars *vars, double tx, double ty);
 void resize(t_vars *vars, int increase_amt);
 void center_grid(t_vars *vars);
+
+// * MATRIX MULTIPLICATION
+void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
+
 
 void bring_grid_center_to_origin(t_vars *vars);
 

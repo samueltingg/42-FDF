@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/20 16:04:20 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 15:24:34 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void parsing(char *input, t_vars *vars)
 		perror("Unable to open the file");
 		exit(1);
 	}
-	vars->cord = malloc(vars->line_count * sizeof(t_cord *));
+	vars->cord = malloc(vars->line_count * sizeof(t_cord *)); // malloc
 	y = 0;
 	while (y < vars->line_count)
 	{

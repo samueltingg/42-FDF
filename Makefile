@@ -17,6 +17,7 @@ SRCS_FIL = \
 			ft_atoi_base.c \
 			matrix_transformation.c \
 			transformation_2d.c \
+			handle_key_event.c \
 			print_grid.c  # temporary
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))

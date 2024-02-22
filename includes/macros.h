@@ -6,15 +6,15 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 14:17:47 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/22 15:28:57 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACROS_H
 # define MACROS_H
 
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 800
+# define WINDOW_WIDTH 1600
+# define WINDOW_HEIGHT 900
 # define MLX_ERROR 1
 
 # define PI 3.14159
@@ -40,6 +40,7 @@
     #  define KEY_A 0
     #  define KEY_D 2
     #  define KEY_R 15
+    #  define KEY_I 34
     // Reference: https://github.com/izenynn/fdf/blob/main/inc/fdf.h
 #elif __linux__
     #  define KEY_ESC 65307
@@ -47,13 +48,13 @@
     #  define KEY_DOWN 65364
     #  define KEY_LEFT 65361
     #  define KEY_RIGHT 65363
+    #  define KEY_MINUS 45
+    #  define KEY_PLUS 61
     #  define KEY_W 119
     #  define KEY_S 115
     #  define KEY_A 97
     #  define KEY_D 100
     #  define KEY_P 112
-    #  define KEY_MINUS 45
-    #  define KEY_PLUS 61
     #  define KEY_R 114
     #  define KEY_U 117
     #  define KEY_J 106
