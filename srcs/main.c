@@ -91,7 +91,6 @@ int handle_key_event(int keycode, void *param)
 	}
 	else if (keycode == KEY_R)
 		init_grid(vars);
-
     return (0);
 }
 
