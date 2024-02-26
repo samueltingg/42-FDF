@@ -54,6 +54,7 @@ void create_original_cord_copy(t_vars *vars)
 	int x;
 	int y;
 
+	// resize()
 	vars->cord_ori = malloc(vars->line_count * sizeof(t_cord *)); // malloc
     y = 0;
 	while (y < vars->line_count)
@@ -69,13 +70,16 @@ void create_original_cord_copy(t_vars *vars)
 		}
 		y++;
 	}
-	// int grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
-	// int grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
-	// printf("grid_width: %i | grid_height: %i\n", grid_width, grid_height);
-	print_grid(vars, vars->cord_ori);
+	int grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
+	int grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
+	printf("grid_width: %i | grid_height: %i\n", grid_width, grid_height);
 
-	// translate_2d(vars, &vars->cord_ori, -grid_width / 2, -grid_height /2);
-	printf("---ORIGINAL Grid Copy---\n");
+	printf("\n---ORIGINAL Grid Copy---");
+	translate_2d(vars, &vars->cord_ori, -vars->wc / 2, -vars->line_count /2);
+
+	// if (vars->wc % 2 == 0)
+	// 	translate_2d(vars, &vars->cord_ori, 1, 1);
+
 	// print_grid(vars, vars->cord_ori);
 }
 

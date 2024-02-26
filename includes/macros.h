@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 15:28:57 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/26 16:44:11 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@
     #  define KEY_RIGHT 124
     #  define KEY_MINUS 27
     #  define KEY_PLUS 24
+    #  define KEY_W 13
     #  define KEY_A 0
+    #  define KEY_S 1
     #  define KEY_D 2
     #  define KEY_R 15
     #  define KEY_I 34
