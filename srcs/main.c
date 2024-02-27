@@ -137,11 +137,7 @@ int	main(int argc, char **argv)
 								&vars.img.endian);
 
 	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
-	// #ifdef __APPLE__
-		mlx_hook(vars.win_ptr, ON_KEYDOWN, 1L<<0, &handle_key_event, &vars);
-	// #elif __linux__
-	// 	mlx_key_hook(vars.win_ptr, &handle_key_event, &vars);
-	// #endif
+	mlx_hook(vars.win_ptr, ON_KEYDOWN, 1L<<0, &handle_key_event, &vars);
 	mlx_hook(vars.win_ptr, ON_DESTROY, 0, &close_window, &vars);
 	mlx_loop(vars.mlx_ptr);
 }
