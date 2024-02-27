@@ -41,6 +41,7 @@ void init_grid(t_vars *vars)
 	vars->offset_y = 0;
 
 	resize(vars, 20);
+	bring_grid_center_to_origin(vars);
 	center_grid(vars);
 
 
@@ -100,6 +101,7 @@ void init_vars(t_vars *vars)
 	vars->gap = 1;
 	vars->offset_x = 0;
 	vars->offset_y = 0;
+	vars->flags.iso = FALSE;
 }
 int	main(int argc, char **argv)
 {
@@ -114,7 +116,7 @@ int	main(int argc, char **argv)
 	vars.line_count = get_line_count(argv[1]);
 	parsing(argv[1], &vars); // PARSING
 
-	create_original_cord_copy(&vars);
+	// create_original_cord_copy(&vars);
 	init_grid(&vars);
 
 	vars.mlx_ptr = mlx_init();

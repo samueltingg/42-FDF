@@ -12,16 +12,9 @@
 
 #include ".././includes/fdf.h"
 
-int handle_key_event(int keycode, void *param)
+void handle_translation(int keycode, t_vars *vars)
 {
-    t_vars *vars = (t_vars *)param;
-
-	printf("\nkey = %i\n", keycode);
-
-	if (keycode == KEY_ESC)
-        close_window(vars);
-	// Translation
-    else if (keycode == KEY_RIGHT)
+    if (keycode == KEY_RIGHT)
     	translate_2d(vars, &vars->cord, 10, 0);
 	else if (keycode == KEY_LEFT)
 		translate_2d(vars, &vars->cord, -10, 0);
@@ -29,37 +22,78 @@ int handle_key_event(int keycode, void *param)
 		translate_2d(vars, &vars->cord, 0, -10);
 	else if (keycode == KEY_DOWN)
 		translate_2d(vars, &vars->cord, 0, 10);
-	// Enlarge
-	else if (keycode == KEY_PLUS)
+	else 
+		return ;
+}
+
+void handle_resize(int keycode, t_vars *vars)
+{
+	if (keycode == KEY_PLUS)
 		resize(vars, 1);
 	else if (keycode == KEY_MINUS)
 		resize(vars, -1);
-	//---ROTATION---
-	else if (keycode == KEY_D)
-	{
-		// bring_grid_center_to_origin(vars);
-		rotate_2D(vars, 45);
-	}
+	else
+		return ;
+	// adjustments
+	bring_grid_center_to_origin(vars);
+	translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
+}
+
+void handle_rotate(int keycode, t_vars *vars)
+{
+	if (keycode == KEY_D || keycode == KEY_A || keycode == KEY_W || keycode == KEY_S || keycode == KEY_L || keycode == KEY_J)
+		translate_2d(vars, &vars->cord, -WINDOW_WIDTH / 2, -WINDOW_HEIGHT / 2);
+
+	if (keycode == KEY_D)
+		rotate_2D(vars, 20);
 	else if (keycode == KEY_A)
-	{
-		// bring_grid_center_to_origin(vars);
-		rotate_2D(vars, -45);
-	}
+		rotate_2D(vars, -20);
 	else if (keycode == KEY_W)
-	{
-		rotate_about_x_axis(vars, 45);
-	}
+		rotate_about_x_axis(vars, 20);
 	else if (keycode == KEY_S)
-	{
-		rotate_about_x_axis(vars, -45);
-	}
+		rotate_about_x_axis(vars, -20);
+	else if (keycode == KEY_L)
+		rotate_about_y_axis(vars, 20);
+	else if (keycode == KEY_J)
+		rotate_about_y_axis(vars, -20);
+	else 
+		return ;
+	// adjustment
+	center_grid(vars);
+}
+
+int handle_key_event(int keycode, void *param)
+{
+    t_vars *vars = (t_vars *)param;
+
+	printf("\nkey = %i\n", keycode);
+
+	handle_resize(keycode, vars);
+	handle_translation(keycode, vars);
+	handle_rotate(keycode, vars);
+	// CLOSE WINDOW
+	if (keycode == KEY_ESC)
+        close_window(vars);
+	// RESET
 	else if (keycode == KEY_R)
 		init_grid(vars);
+	// iso
 	else if (keycode == KEY_I)
 	{
-		multiply_matrix(vars, (t_matrix){1/sqrt(2),-1/sqrt(2),0},
-							(t_matrix){1/sqrt(6),1/sqrt(6),-2/sqrt(6)},
-							(t_matrix){0, 0, 0});
+		// multiply_matrix(vars, (t_matrix){1/sqrt(2),-1/sqrt(2),0},
+		// 					(t_matrix){1/sqrt(6),1/sqrt(6),-2/sqrt(6)},
+		// 					(t_matrix){0, 0, 0});
+		if (vars->flags.iso == FALSE)	
+		{
+			rotate_2D(vars, 45);
+			rotate_about_x_axis(vars, 45);
+			vars->flags.iso = TRUE;
+		}
+		// else 
+		// {
+		// 	rotate_2D(vars, -45);
+		// 	rotate_about_x_axis(vars, -45);
+		// }
 	}
     return (0);
 }

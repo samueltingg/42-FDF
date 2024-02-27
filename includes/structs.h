@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 16:35:00 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/27 11:10:19 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
+typedef struct s_flag
+{
+	int iso;
+}				t_flag;
+
 /*
 Elements:
 	- void	*mlx_ptr;
@@ -57,9 +62,8 @@ typedef struct s_vars
 	int		gap;
 	int		offset_x;
 	int		offset_y;
-
-	// FLAGs
-	// int		at_origin;
+	
+	t_flag flags;
 }			t_vars;
 
 // x & y : starting coordinates

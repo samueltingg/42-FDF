@@ -97,8 +97,8 @@ void resize(t_vars *vars, int increase_amt)
 	// 	y++;
 	// }
 	// -----
-	bring_grid_center_to_origin(vars);
-	translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
+	// bring_grid_center_to_origin(vars);
+	// translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
 	// translate_2d(vars, &vars->cord, WINDOW_WIDTH / 2 + vars->offset_x, WINDOW_HEIGHT/2 + vars->offset_y);
 
 
