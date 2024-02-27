@@ -126,8 +126,11 @@ int handle_key_event(int keycode, void *param)
 		// 					(t_matrix){0, 0, 0});
 		if (vars->flags.iso == FALSE)	
 		{
+			translate_2d(vars, &vars->cord, (-WINDOW_WIDTH / 2) + -vars->offset_x, (-WINDOW_HEIGHT / 2) + -vars->offset_y);
 			rotate_2D(vars, 45);
 			rotate_about_x_axis(vars, 45);
+			translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
+
 			vars->flags.iso = TRUE;
 		}
 		// else 

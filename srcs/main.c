@@ -37,6 +37,7 @@ void init_grid(t_vars *vars)
 {
 	// init variables
 	vars->gap = 0;
+	vars->flags.iso = FALSE;
 
 	resize(vars, 20);
 
