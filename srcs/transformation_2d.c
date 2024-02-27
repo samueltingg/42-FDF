@@ -93,7 +93,7 @@ void resize(t_vars *vars, int increase_amt)
 	// translate_2d(vars, &vars->cord, WINDOW_WIDTH / 2 + vars->offset_x, WINDOW_HEIGHT/2 + vars->offset_y);
 
 
-	// center_grid(vars);
+	// center_grid_from_origin(vars);
     // printf("\ngap: %d\n", vars->gap);
 
     // PRINT OUT GRID

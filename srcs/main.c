@@ -12,7 +12,7 @@
 
 #include ".././includes/fdf.h"
 
-void center_grid(t_vars *vars)
+void center_grid_from_origin(t_vars *vars)
 {
 	printf("\n~~Center Grid~~");
 	translate_2d(vars, &vars->cord, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
@@ -39,8 +39,10 @@ void init_grid(t_vars *vars)
 	vars->gap = 0;
 
 	resize(vars, 20);
+
+	// below 2 function only used in this func (except "handle_resize" for now)
 	bring_grid_center_to_origin(vars);
-	center_grid(vars);
+	center_grid_from_origin(vars);
 
 	// init to 0 so that offset will be based from center of frame
 	vars->offset_x = 0;

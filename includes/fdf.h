@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/27 11:02:26 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/27 15:36:42 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void rotate_about_x_axis(t_vars *vars, double angle);
 void rotate_about_y_axis(t_vars *vars, double angle);
 
 void resize(t_vars *vars, int increase_amt);
-void center_grid(t_vars *vars);
+void center_grid_from_origin(t_vars *vars);
 
 
 

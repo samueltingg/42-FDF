@@ -65,7 +65,9 @@ void handle_resize(int keycode, t_vars *vars)
 		return ;
 	// adjustments
 	bring_grid_center_to_origin(vars);
-	translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
+	// translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
+	translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
+
 }
 
 void handle_rotate(int keycode, t_vars *vars)
@@ -75,11 +77,10 @@ void handle_rotate(int keycode, t_vars *vars)
 		// bring_grid_center_to_origin(vars);
 		// translate_2d(vars, &vars->cord, -WINDOW_WIDTH / 2, -WINDOW_HEIGHT / 2);
 
-		// try out: bring back to center
+		// try out: bring back to origin
 		translate_2d(vars, &vars->cord, (-WINDOW_WIDTH / 2) + -vars->offset_x, (-WINDOW_HEIGHT / 2) + -vars->offset_y);
 
 	}
-
 	if (keycode == KEY_D)
 		rotate_2D(vars, 20);
 	else if (keycode == KEY_A)
@@ -95,7 +96,7 @@ void handle_rotate(int keycode, t_vars *vars)
 	else 
 		return ;
 	// adjustment
-	// center_grid(vars);
+	// center_grid_from_origin(vars);
 
 	// try out:
 	translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
