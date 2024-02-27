@@ -14,16 +14,45 @@
 
 void handle_translation(int keycode, t_vars *vars)
 {
+    // if (keycode == KEY_RIGHT)
+    // 	translate_2d(vars, &vars->cord, 10, 0);
+	// else if (keycode == KEY_LEFT)
+	// 	translate_2d(vars, &vars->cord, -10, 0);
+	// else if (keycode == KEY_UP)
+	// 	translate_2d(vars, &vars->cord, 0, -10);
+	// else if (keycode == KEY_DOWN)
+	// 	translate_2d(vars, &vars->cord, 0, 10);
+	// else 
+	// 	return ;
+
+	// -----------
+	int tx;
+	int ty;
     if (keycode == KEY_RIGHT)
-    	translate_2d(vars, &vars->cord, 10, 0);
+	{
+		tx = 10;
+		ty = 0;
+	}
 	else if (keycode == KEY_LEFT)
-		translate_2d(vars, &vars->cord, -10, 0);
+	{
+		tx = -10;
+		ty = 0;
+	}
 	else if (keycode == KEY_UP)
-		translate_2d(vars, &vars->cord, 0, -10);
+	{
+		tx = 0;
+		ty = -10;
+	}
 	else if (keycode == KEY_DOWN)
-		translate_2d(vars, &vars->cord, 0, 10);
+	{
+		tx = 0;
+		ty = 10;
+	}
 	else 
 		return ;
+	translate_2d(vars, &vars->cord, tx, ty);
+	vars->offset_x += tx;
+	vars->offset_y += ty;
 }
 
 void handle_resize(int keycode, t_vars *vars)
@@ -42,7 +71,14 @@ void handle_resize(int keycode, t_vars *vars)
 void handle_rotate(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_D || keycode == KEY_A || keycode == KEY_W || keycode == KEY_S || keycode == KEY_L || keycode == KEY_J)
-		translate_2d(vars, &vars->cord, -WINDOW_WIDTH / 2, -WINDOW_HEIGHT / 2);
+	{
+		// bring_grid_center_to_origin(vars);
+		// translate_2d(vars, &vars->cord, -WINDOW_WIDTH / 2, -WINDOW_HEIGHT / 2);
+
+		// try out: bring back to center
+		translate_2d(vars, &vars->cord, (-WINDOW_WIDTH / 2) + -vars->offset_x, (-WINDOW_HEIGHT / 2) + -vars->offset_y);
+
+	}
 
 	if (keycode == KEY_D)
 		rotate_2D(vars, 20);
@@ -59,7 +95,11 @@ void handle_rotate(int keycode, t_vars *vars)
 	else 
 		return ;
 	// adjustment
-	center_grid(vars);
+	// center_grid(vars);
+
+	// try out:
+	translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
+
 }
 
 int handle_key_event(int keycode, void *param)

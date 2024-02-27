@@ -18,10 +18,6 @@ void translate_2d(t_vars *vars, t_cord ***cord, double tx, double ty)
     int x;
 	// printf("\ntx: %f, ty: %f", tx, ty);
 
-	// try out
-	// vars->offset_x = tx;
-	// vars->offset_y = ty;
-
     y = 0;
     while (y < vars->line_count)
     {
@@ -38,32 +34,27 @@ void translate_2d(t_vars *vars, t_cord ***cord, double tx, double ty)
     // PRINT OUT GRID
     printf("\n ---Translation-----\n");
 	print_grid(vars, *cord);
-    // ----------
-
 }
 
 void resize(t_vars *vars, int increase_amt)
 {
-    // if (increase_amt < 1) // 2nd condition -> to prevent 1 * 0.5
-    //     return ;
     int y;
     int x;
 
 	if (vars->gap + increase_amt <= 0) // gap cannot be <0
 		return ;
 	
-	int grid_width;
-	int grid_height;
+	// int grid_width;
+	// int grid_height;
+	// if (vars->gap != 0)
+	// {
+	// 	grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
+	// 	grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
+	// 	printf("\ngrid_width: %i\ngrid_height: %i\n", grid_width, grid_height);
 
-	if (vars->gap != 0)
-	{
-		grid_width = vars->wc + (vars->wc -1) * (vars->gap-1);
-		grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
-		printf("\ngrid_width: %i\ngrid_height: %i\n", grid_width, grid_height);
-
-		vars->offset_x = vars->cord[0][0].x + grid_width / 2 ;
-		vars->offset_y = vars->cord[0][0].y + grid_height / 2;
-	}
+	// 	vars->offset_x = vars->cord[0][0].x + grid_width / 2 ;
+	// 	vars->offset_y = vars->cord[0][0].y + grid_height / 2;
+	// }
 
 	// printf("\noffset_x: %i\noffset_y: %i\n", vars->offset_x, vars->offset_y);
 	vars->gap += increase_amt;
@@ -105,7 +96,7 @@ void resize(t_vars *vars, int increase_amt)
 	// center_grid(vars);
     // printf("\ngap: %d\n", vars->gap);
 
-    // // PRINT OUT GRID
+    // PRINT OUT GRID
     printf("\n----Resize-----\n");
 	print_grid(vars, vars->cord);
 }

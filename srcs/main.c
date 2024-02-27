@@ -37,13 +37,14 @@ void init_grid(t_vars *vars)
 {
 	// init variables
 	vars->gap = 0;
-	vars->offset_x = 0;
-	vars->offset_y = 0;
 
 	resize(vars, 20);
 	bring_grid_center_to_origin(vars);
 	center_grid(vars);
 
+	// init to 0 so that offset will be based from center of frame
+	vars->offset_x = 0;
+	vars->offset_y = 0;
 
     // PRINT OUT GRID
     printf("\n ----Start----\n");
