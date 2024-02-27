@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 13:28:21 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/27 16:33:31 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,48 +62,6 @@ void	render_grid(t_vars *vars)
 		i++;
 	}
 }
-
-// int	render_rect(t_img *img, t_rect rect) // ! do I need this?
-// {
-// 	int	i;
-// 	int	j;
-	//
-// 	j = rect.y;
-// 	while (j < rect.y + rect.height)
-// 	{
-// 		i = rect.x;
-// 		while (i < rect.x + rect.width)
-// 			img_pix_put(img, i++, j, rect.color);
-// 		j++;
-// 	}
-// 	return (0);
-// }
-
-// int	render_hollow_rect(t_img *img, t_rect rect)
-// {
-// 	int	i;
-// 	int	j;
-	//
-// 	i = rect.x;
-// 	j = rect.y;
-// 	while (i < rect.x + rect.width)
-// 	{
-// 		img_pix_put(img, i, rect.y, rect.color);
-// 			// top horizontal line
-// 		img_pix_put(img, i, rect.y + rect.height, rect.color);
-// 			// bottom horizontal line
-// 		i++;
-// 	}
-// 	while (j < rect.y + rect.height)
-// 	{
-// 		img_pix_put(img, rect.x, j, rect.color);
-// 			// left vertical line
-// 		img_pix_put(img, rect.x + rect.width, j, rect.color);
-// 			// right vertical line
-// 		j++;
-// 	}
-// 	return (0);
-// }
 
 void	render_background(t_img *img, int color)
 {
@@ -225,11 +183,6 @@ int	render(void *param)
 	if (vars->win_ptr == NULL)
 		return (1);
 	render_background(&vars->img, 0x0);
-	// render_rect(&vars->img, (t_rect){0, 0, 300, 300, RED_PIXEL});
-	// render_rect(&vars->img, (t_rect){WINDOW_WIDTH - 300, WINDOW_HEIGHT - 300,
-	// 300, 300, GREEN_PIXEL});
-	// render_hollow_rect(&vars->img, (t_rect){WINDOW_WIDTH / 2 - 150,
-	// 	WINDOW_HEIGHT / 2 - 150, 300, 300, 0xF29900FF});
 
 	// * DIAGONAL LINE TEST
 	// test_bresenham_line(vars);
