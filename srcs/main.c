@@ -12,6 +12,24 @@
 
 #include ".././includes/fdf.h"
 
+// void increase_z_value(t_vars *vars, int increase_amt)
+// {
+// 	int x;
+// 	int y;
+
+// 	y = 0;
+// 	while (y < vars->line_count)
+// 	{
+// 		x = 0;
+// 		while (x < vars->wc)
+// 		{
+// 			vars->cord[y][x].z += increase_amt;
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }
+
 int close_window(void *params)
 {
 	t_vars *vars = (t_vars *)params;

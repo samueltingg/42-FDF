@@ -12,6 +12,24 @@
 
 #include ".././includes/fdf.h"
 
+void increase_z_value(t_vars *vars, int increase_amt)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < vars->line_count)
+	{
+		x = 0;
+		while (x < vars->wc)
+		{
+			vars->cord[y][x].z += increase_amt;
+			x++;
+		}
+		y++;
+	}
+}
+
 void center_grid_from_origin(t_vars *vars)
 {
 	printf("\n~~Center Grid~~");
@@ -63,6 +81,7 @@ void init_grid(t_vars *vars)
 	// below 2 function only used in this func (except "handle_resize" for now)
 	bring_grid_center_to_origin(vars);
 	center_grid_from_origin(vars);
+	// increase_z_value(vars, 100);
 
 	// init to 0 so that offset will be based from center of frame
 	vars->offset_x = 0;

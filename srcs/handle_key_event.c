@@ -22,7 +22,7 @@ void handle_translation(int keycode, t_vars *vars)
 	// 	translate_2d(vars, &vars->cord, 0, -10);
 	// else if (keycode == KEY_DOWN)
 	// 	translate_2d(vars, &vars->cord, 0, 10);
-	// else 
+	// else
 	// 	return ;
 
 	// -----------
@@ -48,7 +48,7 @@ void handle_translation(int keycode, t_vars *vars)
 		tx = 0;
 		ty = 10;
 	}
-	else 
+	else
 		return ;
 	translate_2d(vars, &vars->cord, tx, ty);
 	vars->offset_x += tx;
@@ -100,7 +100,7 @@ void handle_rotate(int keycode, t_vars *vars)
 		rotate_about_y_axis(vars, 20);
 	else if (keycode == KEY_J)
 		rotate_about_y_axis(vars, -20);
-	else 
+	else
 		return ;
 	// adjustment
 	// center_grid_from_origin(vars);
@@ -132,7 +132,7 @@ int handle_key_event(int keycode, void *param)
 		// multiply_matrix(vars, (t_matrix){1/sqrt(2),-1/sqrt(2),0},
 		// 					(t_matrix){1/sqrt(6),1/sqrt(6),-2/sqrt(6)},
 		// 					(t_matrix){0, 0, 0});
-		if (vars->flags.iso == FALSE)	
+		if (vars->flags.iso == FALSE)
 		{
 			translate_2d(vars, &vars->cord, (-WINDOW_WIDTH / 2) + -vars->offset_x, (-WINDOW_HEIGHT / 2) + -vars->offset_y);
 			rotate_about_z_axis_2D(vars, 45);
@@ -141,7 +141,7 @@ int handle_key_event(int keycode, void *param)
 
 			vars->flags.iso = TRUE;
 		}
-		// else 
+		// else
 		// {
 		// 	rotate_about_z_axis_2D(vars, -45);
 		// 	rotate_about_x_axis(vars, -45);

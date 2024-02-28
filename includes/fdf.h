@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/28 10:37:17 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/28 10:53:59 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void bring_grid_center_to_origin(t_vars *vars);
 void init_vars(t_vars *vars);
 void init_grid(t_vars *vars);
 void create_original_cord_copy(t_vars *vars);
+
+
 
 // void after_parse(t_vars *vars);
 
