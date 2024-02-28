@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/27 16:28:36 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/28 16:36:11 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_img
 typedef struct s_flag
 {
 	int iso;
+	int done_once;
 }				t_flag;
 
 /*

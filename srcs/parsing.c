@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/28 16:29:54 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/28 16:38:55 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,15 @@ void parsing(char *input, t_vars *vars)
 	}
 	vars->cord = malloc(vars->line_count * sizeof(t_cord *)); // malloc
 	y = 0;
+
 	while (y < vars->line_count)
 	{
 		line = get_next_line(fd);
 		str_arr = ft_split(line, ' ');
-		int flag = 0;
-		if (!flag)
+		if (vars->flags.done_once == FALSE) // ? changes
 		{
 			vars->wc = count_words(line, ' ');
-			flag = 1;
+			vars->flags.done_once = TRUE;
 		}
 		// printf("wc: %i\n", vars->wc);
 		vars->cord[y] = malloc(vars->wc * sizeof(t_cord));
