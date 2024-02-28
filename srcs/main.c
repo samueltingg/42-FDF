@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 	vars.line_count = get_line_count(argv[1]);
 	parsing(argv[1], &vars); // PARSING
 
-	// create_original_cord_copy(&vars);
+	create_original_cord_copy(&vars);
 	init_grid(&vars);
 
 	vars.mlx_ptr = mlx_init();

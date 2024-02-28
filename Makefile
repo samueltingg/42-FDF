@@ -5,7 +5,7 @@ INCLUDES = -I ./includes/ -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 # COLORS
 GREEN = \033[0;32m
 RED = \033[0;31m
-# RESET = \033[0m
+RESET = \033[0m
 ORANGE = \033[0;38;5;166m
 # SRCS
 SRCDIR = srcs/

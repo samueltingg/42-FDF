@@ -48,6 +48,7 @@ void init_vars(t_vars *vars)
 // center & enlarge grid to default setting
 void init_grid(t_vars *vars)
 {
+	printf("\n====init grid====\n");
 	// init variables
 	vars->gap = 0;
 	vars->flags.iso = FALSE;
@@ -97,7 +98,7 @@ void create_original_cord_copy(t_vars *vars)
 	int grid_height = vars->line_count + (vars->line_count -1) * (vars->gap-1);
 	printf("grid_width: %i | grid_height: %i\n", grid_width, grid_height);
 
-	printf("\n---ORIGINAL Grid Copy---");
+	printf("\n====ORIGINAL Grid Copy====");
 	translate_2d(vars, &vars->cord_ori, -vars->wc / 2, -vars->line_count /2);
 
 	// if (vars->wc % 2 == 0)

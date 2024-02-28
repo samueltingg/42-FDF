@@ -64,13 +64,13 @@ void handle_resize(int keycode, t_vars *vars)
 	else
 		return ;
 	// adjustments
-	bring_grid_center_to_origin(vars);
 
 	// for resize after rotation: rotatate back to original(0 rotation)
-	rotate_about_x_axis(vars, vars->angle_x_axis);
-	rotate_about_y_axis(vars, vars->angle_y_axis);
-	rotate_about_z_axis_2D(vars, vars->angle_z_axis);
+	// rotate_about_x_axis(vars, vars->angle_x_axis);
+	// rotate_about_y_axis(vars, vars->angle_y_axis);
+	// rotate_about_z_axis_2D(vars, vars->angle_z_axis);
 	// vars->flags.resize = 1;
+	bring_grid_center_to_origin(vars);
 
 	// translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
 	translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);

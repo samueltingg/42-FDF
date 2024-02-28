@@ -58,35 +58,35 @@ void resize(t_vars *vars, int increase_amt)
 
 	// printf("\noffset_x: %i\noffset_y: %i\n", vars->offset_x, vars->offset_y);
 	vars->gap += increase_amt;
-    y = 0;
-	while (y < vars->line_count)
-	{
-		x = 0;
-		while (x < vars->wc)
-		{
-			vars->cord[y][x].x = x * vars->gap;
-			vars->cord[y][x].y = y * vars->gap;
-			// vars->cord[y][x].x = (x - (vars->wc / 2)) * vars->gap;
-			// vars->cord[y][x].y = (y - (vars->line_count/2)) * vars->gap;
-			x++;
-		}
-		y++;
-	}
-
-
-	// New method
-	// y = 0;
+    // y = 0;
 	// while (y < vars->line_count)
 	// {
 	// 	x = 0;
 	// 	while (x < vars->wc)
 	// 	{
-	// 		vars->cord[y][x].x = vars->cord_ori[y][x].x * vars->gap;
-	// 		vars->cord[y][x].y = vars->cord_ori[y][x].y * vars->gap;
+	// 		vars->cord[y][x].x = x * vars->gap;
+	// 		vars->cord[y][x].y = y * vars->gap;
+	// 		// vars->cord[y][x].x = (x - (vars->wc / 2)) * vars->gap;
+	// 		// vars->cord[y][x].y = (y - (vars->line_count/2)) * vars->gap;
 	// 		x++;
 	// 	}
 	// 	y++;
 	// }
+
+
+	// New method
+	y = 0;
+	while (y < vars->line_count)
+	{
+		x = 0;
+		while (x < vars->wc)
+		{
+			vars->cord[y][x].x = vars->cord_ori[y][x].x * vars->gap;
+			vars->cord[y][x].y = vars->cord_ori[y][x].y * vars->gap;
+			x++;
+		}
+		y++;
+	}
 	// -----
 	// bring_grid_center_to_origin(vars);
 	// translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
