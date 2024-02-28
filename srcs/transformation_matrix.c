@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/02/28 12:58:20 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/28 16:05:14 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,44 +39,43 @@ void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3)
             vars->cord[y][x].y = y_new;
             vars->cord[y][x].z = z_new;
             x++;
-            printf("%f,%f,%f  ", x_new,y_new,z_new); // remove
+            // printf("%f,%f,%f  ", x_new,y_new,z_new); // remove
         }
         y++;
-        printf("\n"); // remove
+        // printf("\n"); // remove
     }
 }
 
 void rotate_about_z_axis_2D(t_vars *vars, double angle)
 {
     
-    printf("\n ----Rotation----\n");
+    // printf("\n ----Rotation----\n");
     // double angle;
     double radian;
 
     radian = angle * (PI / 180); // convert to radians 
-    printf("\nradian: %f\n", radian);
-    printf("cos(angle): %f\n", cos(radian));
+    // printf("\nradian: %f\n", radian);
+    // printf("cos(angle): %f\n", cos(radian));
 
     multiply_matrix(vars, (t_matrix){cos(radian), -sin(radian), 0},
                           (t_matrix){sin(radian), cos(radian), 0},
                           (t_matrix){0, 0, 1});
     
-    
     // PRINT OUT GRID
-    printf("\nAFTER matrix multiplication ~~\n");
-    print_grid(vars, vars->cord);
+    // printf("\nAFTER matrix multiplication ~~\n");
+    // print_grid(vars, vars->cord);
 }
 
 void rotate_about_x_axis(t_vars *vars, double angle)
 {
     
-    printf("\n ----Rotation about x-axis----\n");
+    // printf("\n ----Rotation about x-axis----\n");
     // double angle;
     double radian;
 
     radian = angle * (PI / 180); // convert to radians 
-    printf("\nradian: %f\n", radian);
-    printf("cos(angle): %f\n", cos(radian));
+    // printf("\nradian: %f\n", radian);
+    // printf("cos(angle): %f\n", cos(radian));
 
     multiply_matrix(vars, (t_matrix){1, 0, 0},
                           (t_matrix){0, cos(radian), -sin(radian)},
@@ -84,26 +83,26 @@ void rotate_about_x_axis(t_vars *vars, double angle)
     
     
     // PRINT OUT GRID
-    printf("\nAFTER matrix multiplication ~~\n");
-    print_grid(vars, vars->cord);
+    // printf("\nAFTER matrix multiplication ~~\n");
+    // print_grid(vars, vars->cord);
 }
 
 
 void rotate_about_y_axis(t_vars *vars, double angle)
 {
-    printf("\n ----Rotation about y-axis----\n");
+    // printf("\n ----Rotation about y-axis----\n");
     // double angle;
     double radian;
 
     radian = angle * (PI / 180); // convert to radians 
-    printf("\nradian: %f\n", radian);
-    printf("cos(angle): %f\n", cos(radian));
+    // printf("\nradian: %f\n", radian);
+    // printf("cos(angle): %f\n", cos(radian));
 
     multiply_matrix(vars, (t_matrix){cos(radian), 0, sin(radian)},
                           (t_matrix){0, 1, 0},
                           (t_matrix){-sin(radian), 0, cos(radian)});
         
     // PRINT OUT GRID
-    printf("\nAFTER matrix multiplication ~~\n");
-    print_grid(vars, vars->cord);
+    // printf("\nAFTER matrix multiplication ~~\n");
+    // print_grid(vars, vars->cord);
 }

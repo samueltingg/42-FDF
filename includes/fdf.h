@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/28 10:53:59 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/28 14:31:00 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,16 @@ void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
 // * TRANSFORMATION
 // void translate_2d(t_vars *vars, double tx, double ty);
 void translate_2d(t_vars *vars, t_cord ***cord, double tx, double ty);
+// void resize(t_vars *vars, int increase_amt);
+void resize(t_vars *vars); // ? meng's idea
+
 void rotate_about_z_axis_2D(t_vars *vars, double angle);
 void rotate_about_x_axis(t_vars *vars, double angle);
 void rotate_about_y_axis(t_vars *vars, double angle);
 
-void resize(t_vars *vars, int increase_amt);
-void center_grid_from_origin(t_vars *vars);
-
-
 // TRANSFORMATION UTILS
 void center_grid_from_origin(t_vars *vars);
-void bring_grid_center_to_origin(t_vars *vars);
+void bring_center_of_grid_from_topcorner_to_origin(t_vars *vars);
 void init_vars(t_vars *vars);
 void init_grid(t_vars *vars);
 void create_original_cord_copy(t_vars *vars);

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/22 15:24:34 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/28 16:29:54 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ void	free_str_arr(char **str_arr)
 	free(str_arr);
 }
 
-void	free_cord(t_vars *vars) // ! NOT CHECKED
-{
-	int y = 0;
-	while (y < vars->line_count)
-	{
-		free(vars->cord[y]);
-		y++;
-	}
-	free(vars->cord);
-}
+// void	free_cord(t_vars *vars) // ! NOT CHECKED
+// {
+// 	int y = 0;
+// 	while (y < vars->line_count)
+// 	{
+// 		free(vars->cord[y]);
+// 		y++;
+// 	}
+// 	free(vars->cord);
+// }
 
 int	count_words(char *str, char c)
 {
@@ -109,10 +109,17 @@ void parsing(char *input, t_vars *vars)
 	{
 		line = get_next_line(fd);
 		str_arr = ft_split(line, ' ');
-		vars->wc = count_words(line, ' ');
+		int flag = 0;
+		if (!flag)
+		{
+			vars->wc = count_words(line, ' ');
+			flag = 1;
+		}
+		// printf("wc: %i\n", vars->wc);
 		vars->cord[y] = malloc(vars->wc * sizeof(t_cord));
 		x = 0;
-		while (str_arr[x])
+		// while (str_arr[x])
+		while (x < vars->wc)
 		{
 			vars->cord[y][x].x = x;
 			vars->cord[y][x].y = y;
@@ -134,38 +141,5 @@ void parsing(char *input, t_vars *vars)
 		y++;
 	}
 
-	// Print the contents of the 2D array
-	// y = 0;
-	// for (y = 0; y < vars->line_count; y++)
-	// {
-	// 	for (x = 0; x < vars->wc; x++)
-	// 	{
-	// 		printf("%d,%d,", vars->cord[y][x].x, vars->cord[y][x].y);
-	// 		printf("%d  ", vars->cord[y][x].z); // z
-	// 		// printf("%d,%d  ", cord[y][x].z, cord[y][x].color); // z & color
-	// 		// printf("%3d ", cord[y][x].z);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("\n");
-
-	// return (cord);
 }
 
-// void after_parse(t_vars *vars) // meng's advice
-// {
-// 	int y;
-// 	int x;
-
-// 	y = 0;
-// 	while (y < vars->line_count)
-// 	{
-// 		x = 0;
-// 		while (x < vars->wc)
-// 		{
-// 			vars->cord[y][x].x -= vars->wc / 2;
-// 			vars->cord[y][x].y -= vars->line_count / 2;
-// 			x++;
-// 		}
-// 		y++;
-// 	}}

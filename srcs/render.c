@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/28 10:32:19 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/28 16:09:22 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,25 +177,6 @@ void	render_background(t_img *img, int color)
 
 
 
-// void apply_transformation_to_coordinates(t_vars *vars)
-// {
-//     int y;
-//     int x;
-
-//     y = 0;
-//     while (y < vars->line_count)
-//     {
-//         x = 0;
-//         while (x < vars->wc)
-//         {
-//             (vars->cord)[y][x].x += tx;
-//             (vars->cord)[y][x].y += ty;
-//             x++;
-//         }
-//         y++;
-//     }
-// }
-
 
 
 int	render(void *param)
@@ -209,6 +190,16 @@ int	render(void *param)
 
 	// * DIAGONAL LINE TEST
 	// test_bresenham_line(vars);
+	
+
+	// *idea from meng
+	resize(vars);
+	bring_center_of_grid_from_topcorner_to_origin(vars);
+	rotate_about_x_axis(vars, vars->angle_x_axis);
+	rotate_about_y_axis(vars, vars->angle_y_axis);
+	rotate_about_z_axis_2D(vars, vars->angle_z_axis);
+	translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
+
 	
 	// * GRID
 	render_grid(vars);
