@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/27 16:33:31 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/28 10:32:19 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,29 @@ void	render_background(t_img *img, int color)
 // 	// render_line_bresenham(&vars->img, a11);
 // 	// render_line_bresenham(&vars->img, a12);
 // }
+
+
+
+// void apply_transformation_to_coordinates(t_vars *vars)
+// {
+//     int y;
+//     int x;
+
+//     y = 0;
+//     while (y < vars->line_count)
+//     {
+//         x = 0;
+//         while (x < vars->wc)
+//         {
+//             (vars->cord)[y][x].x += tx;
+//             (vars->cord)[y][x].y += ty;
+//             x++;
+//         }
+//         y++;
+//     }
+// }
+
+
 
 int	render(void *param)
 {

@@ -65,6 +65,13 @@ void handle_resize(int keycode, t_vars *vars)
 		return ;
 	// adjustments
 	bring_grid_center_to_origin(vars);
+
+	// for resize after rotation: rotatate back to original(0 rotation)
+	rotate_about_x_axis(vars, vars->angle_x_axis);
+	rotate_about_y_axis(vars, vars->angle_y_axis);
+	rotate_about_z_axis_2D(vars, vars->angle_z_axis);
+	// vars->flags.resize = 1;
+
 	// translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
 	translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
 
@@ -82,9 +89,9 @@ void handle_rotate(int keycode, t_vars *vars)
 
 	}
 	if (keycode == KEY_D)
-		rotate_2D(vars, 20);
+		rotate_about_z_axis_2D(vars, 20);
 	else if (keycode == KEY_A)
-		rotate_2D(vars, -20);
+		rotate_about_z_axis_2D(vars, -20);
 	else if (keycode == KEY_W)
 		rotate_about_x_axis(vars, 20);
 	else if (keycode == KEY_S)
@@ -102,6 +109,7 @@ void handle_rotate(int keycode, t_vars *vars)
 	translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
 
 }
+
 
 int handle_key_event(int keycode, void *param)
 {
@@ -127,7 +135,7 @@ int handle_key_event(int keycode, void *param)
 		if (vars->flags.iso == FALSE)	
 		{
 			translate_2d(vars, &vars->cord, (-WINDOW_WIDTH / 2) + -vars->offset_x, (-WINDOW_HEIGHT / 2) + -vars->offset_y);
-			rotate_2D(vars, 45);
+			rotate_about_z_axis_2D(vars, 45);
 			rotate_about_x_axis(vars, 45);
 			translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
 
@@ -135,7 +143,7 @@ int handle_key_event(int keycode, void *param)
 		}
 		// else 
 		// {
-		// 	rotate_2D(vars, -45);
+		// 	rotate_about_z_axis_2D(vars, -45);
 		// 	rotate_about_x_axis(vars, -45);
 		// }
 	}
