@@ -105,6 +105,9 @@ void init_vars(t_vars *vars)
 	vars->gap = 1;
 	vars->offset_x = 0;
 	vars->offset_y = 0;
+	vars->angle_x_axis = 0;
+	vars->angle_y_axis = 0;
+	vars->angle_z_axis = 0;
 	vars->flags.iso = FALSE;
 }
 int	main(int argc, char **argv)

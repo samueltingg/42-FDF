@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/27 11:10:19 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/27 16:28:36 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ typedef struct s_vars
 	int		gap;
 	int		offset_x;
 	int		offset_y;
-	
+
+	// to keep track of rotated angle about each axis
+	double	angle_x_axis;
+	double 	angle_y_axis;
+	double  angle_z_axis;
 	t_flag flags;
 }			t_vars;
 

@@ -15,7 +15,7 @@ SRCS_FIL = \
 			bresenham.c \
 			parsing.c \
 			ft_atoi_base.c \
-			matrix_transformation.c \
+			transformation_matrix.c \
 			transformation_2d.c \
 			handle_key_event.c \
 			print_grid.c  # temporary
