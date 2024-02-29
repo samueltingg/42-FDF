@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/28 10:49:08 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/29 14:47:48 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
     #  define KEY_I 34
     #  define KEY_J 38
     #  define KEY_L 37
+    #  define KEY_Z 6
     // Reference: https://github.com/izenynn/fdf/blob/main/inc/fdf.h
 #elif __linux__
     #  define KEY_ESC 65307

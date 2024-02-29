@@ -117,7 +117,7 @@ void resize(t_vars *vars)
 		{
 			vars->cord[y][x].x = vars->cord_ori[y][x].x * vars->gap;
 			vars->cord[y][x].y = vars->cord_ori[y][x].y * vars->gap;
-			vars->cord[y][x].z = vars->cord_ori[y][x].z * vars->gap / 2; 
+			vars->cord[y][x].z = vars->cord_ori[y][x].z * (vars->gap / vars->z_height); 
 			x++;
 		}
 		y++;

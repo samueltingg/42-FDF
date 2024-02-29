@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/29 13:35:54 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/29 14:34:59 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ void parsing(char *input, t_vars *vars)
 	}
 	vars->cord = malloc(vars->line_count * sizeof(t_cord *)); // malloc
 	y = 0;
-
 	while (y < vars->line_count)
 	{
 		line = get_next_line(fd);
@@ -115,10 +114,8 @@ void parsing(char *input, t_vars *vars)
 			vars->wc = count_words(line, ' ');
 			vars->flags.done_once = TRUE;
 		}
-		// printf("wc: %i\n", vars->wc);
 		vars->cord[y] = malloc(vars->wc * sizeof(t_cord));
 		x = 0;
-		// while (str_arr[x])
 		while (x < vars->wc)
 		{
 			vars->cord[y][x].x = x;
@@ -134,6 +131,9 @@ void parsing(char *input, t_vars *vars)
 			}
 			else
 				vars->cord[y][x].color = 0xFFFFFF; // Set a default color if none is provided
+				
+			// if (vars->cord[y][x].z > 0) // * EXTRA -> sets pixels with height > 0 to purple
+			// 	vars->cord[y][x].color = PURPLE_PIXEL; 
 			x++;
 		}
 		free(line);

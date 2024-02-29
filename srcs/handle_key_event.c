@@ -196,18 +196,21 @@ void handle_resize(int keycode, t_vars *vars)
 
 void handle_rotate(int keycode, t_vars *vars)
 {
+	double rotate_amt;
+
+	rotate_amt = 10;
 	if (keycode == KEY_D)
-		vars->angle_z_axis += 20;
+		vars->angle_z_axis += rotate_amt;
 	else if (keycode == KEY_A)
-		vars->angle_z_axis += -20;
+		vars->angle_z_axis += -rotate_amt;
 	else if (keycode == KEY_W)
-		vars->angle_x_axis += 20;
+		vars->angle_x_axis += rotate_amt;
 	else if (keycode == KEY_S)
-		vars->angle_x_axis += -20;
+		vars->angle_x_axis += -rotate_amt;
 	else if (keycode == KEY_L)
-		vars->angle_y_axis += 20;
+		vars->angle_y_axis += rotate_amt;
 	else if (keycode == KEY_J)
-		vars->angle_y_axis += -20;
+		vars->angle_y_axis += -rotate_amt;
 	else
 		return ;
 
@@ -218,7 +221,7 @@ int handle_key_event(int keycode, void *param)
 {
     t_vars *vars = (t_vars *)param;
 
-	// printf("\nkey = %i\n", keycode);
+	printf("\nkey = %i\n", keycode);
 	
 	handle_resize(keycode, vars);
 	handle_translation(keycode, vars);
@@ -240,8 +243,8 @@ int handle_key_event(int keycode, void *param)
 			// translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
 
 			vars->angle_z_axis = 40;
-			vars->angle_x_axis = 40;
-			vars->angle_y_axis = -40;
+			vars->angle_x_axis = 20;
+			vars->angle_y_axis = -20;
 			vars->flags.iso = TRUE;
 		}
 		// else
@@ -249,6 +252,13 @@ int handle_key_event(int keycode, void *param)
 		// 	rotate_about_z_axis_2D(vars, -45);
 		// 	rotate_about_x_axis(vars, -45);
 		// }
+	}
+	else if (keycode == KEY_Z) // increases & decrease z_height
+	{
+		if ((vars->z_height - 0.100000) < 0.000001)	// same as if (z_height == 0.1)
+			vars->z_height = 2;
+		else if (vars->z_height > 0.1)
+			vars->z_height = vars->z_height - 0.1;
 	}
     return (0);
 }

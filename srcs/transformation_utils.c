@@ -62,6 +62,7 @@ void init_vars(t_vars *vars)
 	vars->angle_z_axis = 0;
 	vars->flags.iso = FALSE;
 	vars->flags.done_once = FALSE;
+	vars->z_height = 2;
 }
 
 // center & enlarge grid to default setting

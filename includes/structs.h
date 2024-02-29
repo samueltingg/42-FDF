@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/29 11:18:10 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/29 14:45:24 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ typedef struct s_vars
     t_cord  **cord_ori; // original copy of coordinates | grid center translated to frame origin(0,0)
 	int		line_count;
 	int		wc;
-	int		gap;
+	double	    gap;
+	double	z_height;
 	int		offset_x;
 	int		offset_y;
 
@@ -70,16 +71,6 @@ typedef struct s_vars
 	double  angle_z_axis;
 	t_flag flags;
 }			t_vars;
-
-// x & y : starting coordinates
-// typedef struct s_rect
-// {
-// 	int		x;
-// 	int		y;
-// 	int		width;
-// 	int		height;
-// 	int		color;
-// }			t_rect;
 
 /*
 	int		x1;
