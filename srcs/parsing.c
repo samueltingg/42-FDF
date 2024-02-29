@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/29 14:34:59 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 06:29:40 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,9 @@ void parsing(char *input, t_vars *vars)
 			}
 			else
 				vars->cord[y][x].color = 0xFFFFFF; // Set a default color if none is provided
-				
+
 			// if (vars->cord[y][x].z > 0) // * EXTRA -> sets pixels with height > 0 to purple
-			// 	vars->cord[y][x].color = PURPLE_PIXEL; 
+			// 	vars->cord[y][x].color = PURPLE_PIXEL;
 			x++;
 		}
 		free(line);

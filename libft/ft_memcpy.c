@@ -6,12 +6,12 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:06 by sting             #+#    #+#             */
-/*   Updated: 2023/10/18 14:29:52 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 06:44:46 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+// size_t n -> size of eg.array in bytes
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;

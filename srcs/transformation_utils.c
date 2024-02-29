@@ -12,24 +12,6 @@
 
 #include ".././includes/fdf.h"
 
-// void increase_z_value(t_vars *vars, int increase_amt)
-// {
-// 	int x;
-// 	int y;
-
-// 	y = 0;
-// 	while (y < vars->line_count)
-// 	{
-// 		x = 0;
-// 		while (x < vars->wc)
-// 		{
-// 			vars->cord[y][x].z += increase_amt;
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
-
 void center_grid_from_origin(t_vars *vars)
 {
 	// printf("\n~~Center Grid~~");
@@ -97,30 +79,19 @@ void init_grid(t_vars *vars)
 
 void create_original_cord_copy(t_vars *vars)
 {
-	int x;
 	int y;
 
-	vars->cord_ori = malloc(vars->line_count * sizeof(t_cord *)); // malloc
+	vars->cord_ori = ft_calloc(vars->line_count, sizeof(t_cord *)); // malloc
     y = 0;
 	while (y < vars->line_count)
 	{
-		vars->cord_ori[y] = malloc(vars->wc * sizeof(t_cord));
-		x = 0;
-		while (x < vars->wc)
-		{
-			vars->cord_ori[y][x].x = vars->cord[y][x].x;
-			vars->cord_ori[y][x].y = vars->cord[y][x].y;
-			vars->cord_ori[y][x].z = vars->cord[y][x].z;
-			x++;
-		}
+		vars->cord_ori[y] = ft_calloc(vars->wc, sizeof(t_cord));
+		ft_memcpy(vars->cord_ori[y], vars->cord[y], vars->wc * sizeof(t_cord));
 		y++;
 	}
 
 	// printf("\n====ORIGINAL Grid Copy====");
 	translate_2d(vars, &vars->cord_ori, -vars->wc / 2, -vars->line_count /2);
-
-	// if (vars->wc % 2 == 0)
-	// 	translate_2d(vars, &vars->cord_ori, 1, 1);
 
 	// print_grid(vars, vars->cord_ori);
 }
