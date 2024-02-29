@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/28 14:31:00 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/29 10:51:09 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,6 @@ void init_vars(t_vars *vars);
 void init_grid(t_vars *vars);
 void create_original_cord_copy(t_vars *vars);
 
-
-
-// void after_parse(t_vars *vars);
-
-
+// * COLOR
+int gradient(int startcolor, int endcolor, int len, int pix);
 #endif

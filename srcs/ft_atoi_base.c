@@ -6,9 +6,11 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 07:51:22 by sting             #+#    #+#             */
-/*   Updated: 2024/02/05 14:35:34 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/29 13:40:44 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include ".././includes/fdf.h"
 
 int	check_count_base(char *base)
 {
@@ -74,6 +76,9 @@ int	ft_atoi_base(char *str, char *base)
 	}
 	while (*str)
 	{
+		// handle case where input is lowercase but base is always set to upper case
+		if (ft_isalpha(*str))
+			*str = ft_toupper(*str);
 		if (base_index(base, *str) == -1)
 			return (result * sign);
 		result = (result * base_len) + (base_index(base, *str));
