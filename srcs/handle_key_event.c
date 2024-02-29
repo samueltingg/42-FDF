@@ -185,9 +185,10 @@ void handle_translation(int keycode, t_vars *vars)
 
 void handle_resize(int keycode, t_vars *vars)
 {
+
 	if (keycode == KEY_PLUS)
 		vars->gap++;
-	else if (keycode == KEY_MINUS)
+	else if (keycode == KEY_MINUS && vars->gap - 1 > 0)
 		vars->gap--;
 	else
 		return ;
@@ -221,8 +222,8 @@ int handle_key_event(int keycode, void *param)
 {
     t_vars *vars = (t_vars *)param;
 
-	printf("\nkey = %i\n", keycode);
-	
+	// printf("\nkey = %i\n", keycode);
+
 	handle_resize(keycode, vars);
 	handle_translation(keycode, vars);
 	handle_rotate(keycode, vars);
