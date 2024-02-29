@@ -239,8 +239,9 @@ int handle_key_event(int keycode, void *param)
 			// rotate_about_x_axis(vars, 45);
 			// translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
 
-			vars->angle_z_axis = 45;
-			vars->angle_x_axis = 45;
+			vars->angle_z_axis = 40;
+			vars->angle_x_axis = 40;
+			vars->angle_y_axis = -40;
 			vars->flags.iso = TRUE;
 		}
 		// else

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/28 16:09:22 by sting            ###   ########.fr       */
+/*   Updated: 2024/02/29 09:26:11 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	render_grid(t_vars *vars)
 			cord.y1 = round(vars->cord[j][i].y);
 			cord.x2 = round(vars->cord[j][i + 1].x);
 			cord.y2 = round(vars->cord[j][i + 1].y);
-			render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, PURPLE_PIXEL});
+			render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, WHITE_PIXEL});
 			i++;
 		}
 		j++;
@@ -55,7 +55,7 @@ void	render_grid(t_vars *vars)
 			cord.y1 = round(vars->cord[j][i].y);
 			cord.x2 = round(vars->cord[j + 1][i].x);
 			cord.y2 = round(vars->cord[j + 1][i].y);
-			render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, PURPLE_PIXEL});
+			render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, WHITE_PIXEL});
 			j++;
 		}
 		// ! COLOR not done;
