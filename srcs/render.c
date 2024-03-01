@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/29 13:19:33 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 07:01:27 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	render_grid(t_vars *vars)
 			cord.y2 = round(vars->cord[j][i + 1].y);
 			cord.color1 = vars->cord[j][i].color;
 			cord.color2 = vars->cord[j][i + 1].color;
-			// render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, WHITE_PIXEL});
 			render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, cord.color1, cord.color2});
 
 			i++;
@@ -61,11 +60,9 @@ void	render_grid(t_vars *vars)
 			cord.y2 = round(vars->cord[j + 1][i].y);
 			cord.color1 = vars->cord[j][i].color;
 			cord.color2 = vars->cord[j + 1][i].color;
-			// render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, WHITE_PIXEL}); // ! change this
 			render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, cord.color1, cord.color2});
 			j++;
 		}
-		// ! COLOR not done;
 		i++;
 	}
 }
@@ -137,7 +134,7 @@ void	render_background(t_img *img, int color)
 //     a11.y1 = 500;
 //     a12.x1 = 500;
 //     a12.y1 = 500;
-		// 	
+		//
 //     a1.x2 = 100;
 //     a1.y2 =100;
 //     a2.x2 = 500; // y axis
@@ -147,7 +144,7 @@ void	render_background(t_img *img, int color)
 //     a3.y2 = 100;
 		//
 //     a4.x2 = 100; // x-axis
-//     a4.y2 = 500; 
+//     a4.y2 = 500;
 		//
 //     a5.x2 = 1000; // x-axis
 //     a5.y2 = 500;
@@ -182,10 +179,6 @@ void	render_background(t_img *img, int color)
 // 	// render_line_bresenham(&vars->img, a12);
 // }
 
-
-
-
-
 int	render(void *param)
 {
 	t_vars	*vars;
@@ -197,7 +190,7 @@ int	render(void *param)
 
 	// * DIAGONAL LINE TEST
 	// test_bresenham_line(vars);
-	
+
 
 	// *idea from meng
 	resize(vars);
@@ -207,7 +200,7 @@ int	render(void *param)
 	rotate_about_z_axis_2D(vars, vars->angle_z_axis);
 	translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
 
-	
+
 	// * GRID
 	render_grid(vars);
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,

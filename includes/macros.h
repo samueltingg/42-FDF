@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/29 15:37:12 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 08:56:38 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@
 #define GREEN_PIXEL 0x00FF00
 #define BLUE_PIXEL  0x0000FF
 #define PURPLE_PIXEL 0x9900FF
-
+#define YELLOW_PIXEL 0xFFFFCC
+#define ORANGE_PIXEL 0xFFA500
 
 #endif

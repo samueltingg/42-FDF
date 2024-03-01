@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/01 06:29:40 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 09:00:02 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,43 @@ int	get_line_count(char *input)
 	return (line_count);
 }
 
+void init_default_colors(t_vars *vars)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (y < vars->line_count)
+	{
+		x = 0;
+		while (x < vars->wc)
+		{
+			if (vars->cord[y][x].z > 0) // * EXTRA -> sets pixels with height > 0 to purple
+			{
+				vars->cord[y][x].color = RED_PIXEL;
+
+				// Check top neighbor
+				if (y > 0 && (int)vars->cord[y - 1][x].z == 0)
+					vars->cord[y - 1][x].color = BLUE_PIXEL;
+
+				// Check bottom neighbor
+				if (y < vars->line_count - 1 && vars->cord[y + 1][x].z == 0)
+					vars->cord[y + 1][x].color = BLUE_PIXEL;
+
+				// Check left neighbor
+				if (x > 0 && (int)vars->cord[y][x - 1].z == 0)
+					vars->cord[y][x - 1].color = BLUE_PIXEL;
+
+				// Check right neighbor
+				if (x < vars->wc - 1 && (int)(vars->cord[y][x + 1].z) == 0)
+					vars->cord[y][x + 1].color = BLUE_PIXEL;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 void parsing(char *input, t_vars *vars)
 {
 	int		y;
@@ -131,15 +168,13 @@ void parsing(char *input, t_vars *vars)
 			}
 			else
 				vars->cord[y][x].color = 0xFFFFFF; // Set a default color if none is provided
-
-			// if (vars->cord[y][x].z > 0) // * EXTRA -> sets pixels with height > 0 to purple
-			// 	vars->cord[y][x].color = PURPLE_PIXEL;
 			x++;
 		}
 		free(line);
 		free_str_arr(str_arr);
 		y++;
 	}
+	init_default_colors(vars);
 
 }
 
