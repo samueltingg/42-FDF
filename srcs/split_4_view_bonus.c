@@ -6,18 +6,29 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 14:10:37 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 15:01:15 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
 
 
+
 void init_other_grids(t_vars *vars)
 {
-	vars->gap = WINDOW_WIDTH/2/vars->wc; // init splitview grid size
-	int grid_width =vars->wc + (vars->wc -1) * (vars->gap-1);
-	printf("grid width: %i\n", grid_width);
+	vars->gap = 0;
+	if (((vars->wc + (vars->wc -1) * (vars->gap-1)) < 400))
+	{
+		while ((vars->wc + (vars->wc -1) * (vars->gap-1)) < 400)
+		{
+			vars->gap++;
+		}
+		// vars->gap = 500/vars->wc; // init splitview grid size
+		printf("gap: %f\n", vars->gap);
+	}
+	else 
+		vars->gap = 1;
+	// printf("grid width: %i\n", grid_width);
 
 	resize(vars);
 	bring_center_of_grid_from_topcorner_to_origin(vars);
@@ -47,8 +58,8 @@ void transform_4_grids(t_vars *vars)
 	// TRANSLATION
 	translate_2d(vars, &vars->cord, WINDOW_WIDTH * 1/4, WINDOW_HEIGHT * 1/4);
 	translate_2d(vars, &vars->cord_back, WINDOW_WIDTH * 3/4, WINDOW_HEIGHT * 1/4);
-	translate_2d(vars, &vars->cord_left, WINDOW_WIDTH * 1/4, WINDOW_HEIGHT * 3/4);
-	translate_2d(vars, &vars->cord_right, WINDOW_WIDTH * 3/4, WINDOW_HEIGHT * 3/4);
+	translate_2d(vars, &vars->cord_left, WINDOW_WIDTH * 1/4, WINDOW_HEIGHT * 7/8 );
+	translate_2d(vars, &vars->cord_right, WINDOW_WIDTH * 3/4, WINDOW_HEIGHT * 7/8);
 
 	
 	// printf("\n==front==\n");

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 11:27:26 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 15:15:08 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void print_grid(t_vars *vars, t_cord **cord);
 int			ft_atoi_base(char *str, char *base);
 int			get_line_count(char *input);
 void		parsing(char *input, t_vars *vars);
-void		free_cord(t_vars *vars);
+void		free_cord(t_vars *vars, t_cord ***cord);
 
 void		img_pix_put(t_img *img, int x, int y, int color);
 // void		img_pix_put(t_img *img, double x_double, double y_double, int color);
@@ -90,5 +90,9 @@ void init_default_colors(t_vars *vars);
 void init_other_grids(t_vars *vars);
 void transform_4_grids(t_vars *vars);
 void render_bonus_grids(t_vars *vars);
+
+// * FREE
+void free_all_cord(t_vars *vars);
+void free_all_splitview_cord(t_vars *vars);
 
 #endif

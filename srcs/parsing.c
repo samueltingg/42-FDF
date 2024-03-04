@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 13:57:57 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 15:11:23 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	free_str_arr(char **str_arr)
 	free(str_arr);
 }
 
-// void	free_cord(t_vars *vars) // ! NOT CHECKED
+// void	free_cord(t_vars *vars, t_cord ***cord) // ! NOT CHECKED
 // {
 // 	int y = 0;
 // 	while (y < vars->line_count)
 // 	{
-// 		free(vars->cord[y]);
+// 		free((*cord)[y]);
 // 		y++;
 // 	}
-// 	free(vars->cord);
+// 	free((*cord));
 // }
 
 int	count_words(char *str, char c)

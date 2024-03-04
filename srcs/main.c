@@ -36,7 +36,8 @@ int close_window(void *params)
 
 	mlx_destroy_image(vars->mlx_ptr, vars->img.img_ptr);
 	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-	// free_cord(vars); // not needed as exit helps to free
+	
+	free_all_cord(vars); // not needed as exit helps to free
 	exit(0);
 }
 
@@ -44,8 +45,8 @@ void init_vars(t_vars *vars)
 {
 	vars->line_count = 0;
 	vars->wc = 0;
-	vars->gap = 0;
-	vars->z_height = 2;
+	vars->gap = 20;
+	vars->z_factor = 5;
 	vars->offset_x = 0;
 	vars->offset_y = 0;
 	vars->angle_x_axis = 0;

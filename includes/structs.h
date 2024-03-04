@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 10:32:27 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 14:50:11 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_vars
 	int		line_count;
 	int		wc;
 	double	    gap;
-	double	z_height;
+	double	z_factor;
 	int		offset_x;
 	int		offset_y;
 

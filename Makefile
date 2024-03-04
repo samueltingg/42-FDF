@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c99 -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -std=c99 
+# -fsanitize=address -g
 INCLUDES = -I ./includes/ -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 
 # COLORS
@@ -21,6 +22,7 @@ SRCS_FIL = \
 			transformation_utils.c \
 			gradient.c \
 			split_4_view_bonus.c \
+			free.c \
 			print_grid.c  # temporary
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))

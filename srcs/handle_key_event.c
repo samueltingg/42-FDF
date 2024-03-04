@@ -234,7 +234,10 @@ int handle_key_event(int keycode, void *param)
 	else if (keycode == KEY_R)
 	{
 		init_grid(vars);
+		if (vars->flags.split_4_view == TRUE)
+			free_all_splitview_cord(vars);
 		vars->flags.split_4_view = FALSE;
+
 	}
 	else if (vars->flags.split_4_view == TRUE)
 		return (0);
@@ -259,12 +262,12 @@ int handle_key_event(int keycode, void *param)
 		// 	rotate_about_x_axis(vars, -45);
 		// }
 	}
-	else if (keycode == KEY_Z) // increases & decrease z_height
+	else if (keycode == KEY_Z) // increases & decrease z_factor
 	{
-		if ((vars->z_height - 0.100000) < 0.000001)	// same as if (z_height == 0.1)
-			vars->z_height = 2;
-		else if (vars->z_height > 0.1)
-			vars->z_height = vars->z_height - 0.1;
+		if ((vars->z_factor - 0.100000) < 0.000001)	// same as if (z_factor == 0.1)
+			vars->z_factor = 5;
+		else if (vars->z_factor > 0.1)
+			vars->z_factor = vars->z_factor - 0.1;
 	}
 	// turn on default colors
 	else if (keycode == KEY_DOT)
