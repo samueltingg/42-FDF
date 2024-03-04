@@ -46,6 +46,7 @@ void init_grid(t_vars *vars)
 	vars->flags.iso = FALSE;
 	vars->flags.done_once = FALSE;
 
+	vars->gap = 20;
 	resize(vars);
 
 	// below 2 function only used in this func (except "handle_resize" for now)

@@ -26,9 +26,12 @@ void	free_cord(t_vars *vars, t_cord ***cord) // ! NOT CHECKED
 void free_all_cord(t_vars *vars)
 {
 	free_cord(vars, &vars->cord);
-	free_cord(vars, &vars->cord_back);
-	free_cord(vars, &vars->cord_left);
-	free_cord(vars, &vars->cord_right);
+	if (vars->flags.split_4_view == TRUE)
+	{
+		free_cord(vars, &vars->cord_back);
+		free_cord(vars, &vars->cord_left);
+		free_cord(vars, &vars->cord_right);
+	}
 }
 
 void free_all_splitview_cord(t_vars *vars)

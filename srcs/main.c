@@ -36,7 +36,7 @@ int close_window(void *params)
 
 	mlx_destroy_image(vars->mlx_ptr, vars->img.img_ptr);
 	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-	
+
 	free_all_cord(vars); // not needed as exit helps to free
 	exit(0);
 }
