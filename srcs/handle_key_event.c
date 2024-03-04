@@ -68,7 +68,7 @@
 // 	// for resize after rotation: rotatate back to original(0 rotation)
 // 	// rotate_about_x_axis(vars, vars->angle_x_axis);
 // 	// rotate_about_y_axis(vars, vars->angle_y_axis);
-// 	// rotate_about_z_axis_2D(vars, vars->angle_z_axis);
+// 	// rotate_about_z_axis_2d(vars, vars->angle_z_axis);
 // 	// vars->flags.resize = 1;
 // 	bring_center_of_grid_from_topcorner_to_origin(vars);
 
@@ -89,9 +89,9 @@
 
 // 	}
 // 	if (keycode == KEY_D)
-// 		rotate_about_z_axis_2D(vars, 20);
+// 		rotate_about_z_axis_2d(vars, 20);
 // 	else if (keycode == KEY_A)
-// 		rotate_about_z_axis_2D(vars, -20);
+// 		rotate_about_z_axis_2d(vars, -20);
 // 	else if (keycode == KEY_W)
 // 		rotate_about_x_axis(vars, 20);
 // 	else if (keycode == KEY_S)
@@ -135,7 +135,7 @@
 // 		if (vars->flags.iso == FALSE)
 // 		{
 // 			translate_2d(vars, &vars->cord, (-WINDOW_WIDTH / 2) + -vars->offset_x, (-WINDOW_HEIGHT / 2) + -vars->offset_y);
-// 			rotate_about_z_axis_2D(vars, 45);
+// 			rotate_about_z_axis_2d(vars, 45);
 // 			rotate_about_x_axis(vars, 45);
 // 			translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
 
@@ -143,7 +143,7 @@
 // 		}
 // 		// else
 // 		// {
-// 		// 	rotate_about_z_axis_2D(vars, -45);
+// 		// 	rotate_about_z_axis_2d(vars, -45);
 // 		// 	rotate_about_x_axis(vars, -45);
 // 		// }
 // 	}
@@ -232,14 +232,19 @@ int handle_key_event(int keycode, void *param)
         close_window(vars);
 	// RESET
 	else if (keycode == KEY_R)
+	{
 		init_grid(vars);
+		vars->flags.split_4_view = FALSE;
+	}
+	else if (vars->flags.split_4_view == TRUE)
+		return (0);
 	// iso
 	else if (keycode == KEY_I)
 	{
 		if (vars->flags.iso == FALSE)
 		{
 			// translate_2d(vars, &vars->cord, (-WINDOW_WIDTH / 2) + -vars->offset_x, (-WINDOW_HEIGHT / 2) + -vars->offset_y);
-			// rotate_about_z_axis_2D(vars, 45);
+			// rotate_about_z_axis_2d(vars, 45);
 			// rotate_about_x_axis(vars, 45);
 			// translate_2d(vars, &vars->cord, (WINDOW_WIDTH / 2) + vars->offset_x, (WINDOW_HEIGHT / 2) + vars->offset_y);
 
@@ -250,7 +255,7 @@ int handle_key_event(int keycode, void *param)
 		}
 		// else
 		// {
-		// 	rotate_about_z_axis_2D(vars, -45);
+		// 	rotate_about_z_axis_2d(vars, -45);
 		// 	rotate_about_x_axis(vars, -45);
 		// }
 	}
@@ -268,7 +273,8 @@ int handle_key_event(int keycode, void *param)
 	else if (keycode == KEY_4)
 	{
 		vars->flags.split_4_view = TRUE;
-		init_other_grids(vars);	
+		init_other_grids(vars);
+		transform_4_grids(vars);	
 	}
 
     return (0);

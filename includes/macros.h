@@ -6,15 +6,15 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 09:33:59 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 14:09:46 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACROS_H
 # define MACROS_H
 
-# define WINDOW_WIDTH 1600
-# define WINDOW_HEIGHT 900
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
 # define MLX_ERROR 1
 # define TRUE 1
 # define FALSE 0

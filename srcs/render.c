@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 10:29:01 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 11:26:00 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	render_grid(t_vars *vars)
+void	render_grid(t_vars *vars, t_cord ***grid)
 {
 	int	j;
 	int	i;
-	t_line_cord cord;
+	t_line_cord line;
 
 	j = 0;
 	while (j < vars->line_count) // horizontal
@@ -36,13 +36,13 @@ void	render_grid(t_vars *vars)
 		i = 0;
 		while (i < vars->wc - 1)
 		{
-			cord.x1 = round(vars->cord[j][i].x);
-			cord.y1 = round(vars->cord[j][i].y);
-			cord.x2 = round(vars->cord[j][i + 1].x);
-			cord.y2 = round(vars->cord[j][i + 1].y);
-			cord.color1 = vars->cord[j][i].color;
-			cord.color2 = vars->cord[j][i + 1].color;
-			render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, cord.color1, cord.color2});
+			line.x1 = round((*grid)[j][i].x);
+			line.y1 = round((*grid)[j][i].y);
+			line.x2 = round((*grid)[j][i + 1].x);
+			line.y2 = round((*grid)[j][i + 1].y);
+			line.color1 = (*grid)[j][i].color;
+			line.color2 = (*grid)[j][i + 1].color;
+			render_line_bresenham(&vars->img, (t_line_cord){line.x1, line.y1, line.x2, line.y2, line.color1, line.color2});
 
 			i++;
 		}
@@ -54,13 +54,13 @@ void	render_grid(t_vars *vars)
 		j = 0;
 		while (j < vars->line_count - 1)
 		{
-			cord.x1 = round(vars->cord[j][i].x);
-			cord.y1 = round(vars->cord[j][i].y);
-			cord.x2 = round(vars->cord[j + 1][i].x);
-			cord.y2 = round(vars->cord[j + 1][i].y);
-			cord.color1 = vars->cord[j][i].color;
-			cord.color2 = vars->cord[j + 1][i].color;
-			render_line_bresenham(&vars->img, (t_line_cord){cord.x1, cord.y1, cord.x2, cord.y2, cord.color1, cord.color2});
+			line.x1 = round((*grid)[j][i].x);
+			line.y1 = round((*grid)[j][i].y);
+			line.x2 = round((*grid)[j + 1][i].x);
+			line.y2 = round((*grid)[j + 1][i].y);
+			line.color1 = (*grid)[j][i].color;
+			line.color2 = (*grid)[j + 1][i].color;
+			render_line_bresenham(&vars->img, (t_line_cord){line.x1, line.y1, line.x2, line.y2, line.color1, line.color2});
 			j++;
 		}
 		i++;
@@ -191,20 +191,24 @@ int	render(void *param)
 	// * DIAGONAL LINE TEST
 	// test_bresenham_line(vars);
 
+	if (vars->flags.split_4_view == TRUE)
+		render_bonus_grids(vars);
+	else
+	{
+		// *idea from meng
+		resize(vars);
+		if (vars->flags.default_colors == TRUE)
+			init_default_colors(vars);
+		bring_center_of_grid_from_topcorner_to_origin(vars);
+		rotate_about_x_axis(vars, &vars->cord, vars->angle_x_axis);
+		rotate_about_y_axis(vars, &vars->cord, vars->angle_y_axis);
+		rotate_about_z_axis_2d(vars, &vars->cord, vars->angle_z_axis);
+		translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
 
-	// *idea from meng
-	resize(vars);
-	if (vars->flags.default_colors == TRUE)
-		init_default_colors(vars);
-	bring_center_of_grid_from_topcorner_to_origin(vars);
-	rotate_about_x_axis(vars, &vars->cord, vars->angle_x_axis);
-	rotate_about_y_axis(vars, &vars->cord, vars->angle_y_axis);
-	rotate_about_z_axis_2D(vars, &vars->cord, vars->angle_z_axis);
-	translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
+		render_grid(vars, &vars->cord);
+	}
 
-
-	// * GRID
-	render_grid(vars);
+	
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
 		0);
 	return (0);

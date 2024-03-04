@@ -54,6 +54,7 @@ void init_vars(t_vars *vars)
 	vars->flags.iso = FALSE;
 	vars->flags.done_once = FALSE;
 	vars->flags.default_colors = FALSE;
+	vars->flags.split_4_view = FALSE;
 }
 
 int	main(int argc, char **argv)
