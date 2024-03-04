@@ -129,7 +129,7 @@
 // 	// iso
 // 	else if (keycode == KEY_I)
 // 	{
-// 		// multiply_matrix(vars, (t_matrix){1/sqrt(2),-1/sqrt(2),0},
+// 		// multiply_matrix_to_grid(vars, (t_matrix){1/sqrt(2),-1/sqrt(2),0},
 // 		// 					(t_matrix){1/sqrt(6),1/sqrt(6),-2/sqrt(6)},
 // 		// 					(t_matrix){0, 0, 0});
 // 		if (vars->flags.iso == FALSE)

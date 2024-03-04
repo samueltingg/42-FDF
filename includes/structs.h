@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 14:50:11 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 15:45:12 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,13 @@ typedef struct s_line_var
 	int		xi;
 	int		yi;
 }			t_line_var;
+
+typedef struct s_angle
+{
+	double x;
+	double y;
+	double z;
+} 				t_angle;
 
 /*
 	int a;

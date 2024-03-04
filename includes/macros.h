@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 14:09:46 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 16:25:36 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@
 #define PURPLE_PIXEL 0x9900FF
 #define YELLOW_PIXEL 0xFFFFCC
 #define ORANGE_PIXEL 0xFFA500
+
+#define RADIAN(angle_degrees) ((angle_degrees) * PI/180)
 
 #endif

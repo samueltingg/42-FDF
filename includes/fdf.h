@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 15:15:08 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 16:16:26 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void		render_line_high(t_img *img, t_line_cord line);
 void init_grid(t_vars *vars);
 
 // * MATRIX MULTIPLICATION
-// void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
-void multiply_matrix(t_vars *vars, t_cord ***cord, double matrix[3][3]);
+// void multiply_matrix_to_grid(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
+void multiply_matrix_to_grid(t_vars *vars, t_cord ***cord, double matrix[3][3]);
 
 // * TRANSFORMATION
 // void translate_2d(t_vars *vars, double tx, double ty);
@@ -73,6 +73,9 @@ void resize(t_vars *vars); // ? meng's idea
 void rotate_about_z_axis_2d(t_vars *vars, t_cord ***cord, double angle);
 void rotate_about_x_axis(t_vars *vars, t_cord ***cord, double angle);
 void rotate_about_y_axis(t_vars *vars, t_cord ***cord, double angle);
+
+void rotate_about_all_axis(t_vars *vars, t_cord ***cord, t_angle angle);
+
 
 // TRANSFORMATION UTILS
 void center_grid_from_origin(t_vars *vars);
