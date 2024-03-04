@@ -20,6 +20,7 @@ SRCS_FIL = \
 			handle_key_event.c \
 			transformation_utils.c \
 			gradient.c \
+			split_4_view_bonus.c \
 			print_grid.c  # temporary
 
 SRCS = $(addprefix $(SRCDIR), $(SRCS_FIL))

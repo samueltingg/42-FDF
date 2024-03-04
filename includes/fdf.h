@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/01 10:16:41 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 10:30:21 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ void		render_line_high(t_img *img, t_line_cord line);
 void init_grid(t_vars *vars);
 
 // * MATRIX MULTIPLICATION
-void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
-
-
-
+// void multiply_matrix(t_vars *vars, t_matrix row1, t_matrix row2, t_matrix row3);
+void multiply_matrix(t_vars *vars, t_cord ***cord, double matrix[3][3]);
 
 // * TRANSFORMATION
 // void translate_2d(t_vars *vars, double tx, double ty);
@@ -72,9 +70,9 @@ void translate_2d(t_vars *vars, t_cord ***cord, double tx, double ty);
 // void resize(t_vars *vars, int increase_amt);
 void resize(t_vars *vars); // ? meng's idea
 
-void rotate_about_z_axis_2D(t_vars *vars, double angle);
-void rotate_about_x_axis(t_vars *vars, double angle);
-void rotate_about_y_axis(t_vars *vars, double angle);
+void rotate_about_z_axis_2D(t_vars *vars, t_cord ***cord, double angle);
+void rotate_about_x_axis(t_vars *vars, t_cord ***cord, double angle);
+void rotate_about_y_axis(t_vars *vars, t_cord ***cord, double angle);
 
 // TRANSFORMATION UTILS
 void center_grid_from_origin(t_vars *vars);
@@ -87,4 +85,8 @@ t_cord **duplicate_coordinates(t_vars *vars, t_cord **cord);
 // * COLOR
 int gradient(int startcolor, int endcolor, int len, int pix);
 void init_default_colors(t_vars *vars);
+
+// * SPLIT 4 VIEW
+void init_other_grids(t_vars *vars);
+
 #endif

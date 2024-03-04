@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/01 10:05:32 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 10:32:27 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,11 @@ typedef struct s_line_var
 	int b;
 	int c;
 */
-typedef struct s_matrix
-{
-	double	a;
-	double	b;
-	double	c;
-}			t_matrix;
+// typedef struct s_matrix // * not needed anymore
+// {
+// 	double	a;
+// 	double	b;
+// 	double	c;
+// }			t_matrix;
 
 #endif

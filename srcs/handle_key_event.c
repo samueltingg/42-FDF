@@ -268,12 +268,7 @@ int handle_key_event(int keycode, void *param)
 	else if (keycode == KEY_4)
 	{
 		vars->flags.split_4_view = TRUE;
-		vars->gap = 33;
-		vars->offset_x = 0;
-		vars->offset_y = 0;
-		vars->angle_x_axis = 0;
-		vars->angle_y_axis = 0;
-		vars->angle_z_axis = 0;
+		init_other_grids(vars);	
 	}
 
     return (0);

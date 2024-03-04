@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/01 09:22:39 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/04 10:29:01 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,9 +197,9 @@ int	render(void *param)
 	if (vars->flags.default_colors == TRUE)
 		init_default_colors(vars);
 	bring_center_of_grid_from_topcorner_to_origin(vars);
-	rotate_about_x_axis(vars, vars->angle_x_axis);
-	rotate_about_y_axis(vars, vars->angle_y_axis);
-	rotate_about_z_axis_2D(vars, vars->angle_z_axis);
+	rotate_about_x_axis(vars, &vars->cord, vars->angle_x_axis);
+	rotate_about_y_axis(vars, &vars->cord, vars->angle_y_axis);
+	rotate_about_z_axis_2D(vars, &vars->cord, vars->angle_z_axis);
 	translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
 
 
