@@ -222,7 +222,7 @@ int handle_key_event(int keycode, void *param)
 {
     t_vars *vars = (t_vars *)param;
 
-	printf("\nkey = %i\n", keycode);
+	// printf("\nkey = %i\n", keycode);
 
 	handle_resize(keycode, vars);
 	handle_translation(keycode, vars);
