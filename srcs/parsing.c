@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/01 09:00:02 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 09:19:40 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ void parsing(char *input, t_vars *vars)
 		free_str_arr(str_arr);
 		y++;
 	}
-	init_default_colors(vars);
+	// init_default_colors(vars);
 
 }
 

@@ -222,7 +222,7 @@ int handle_key_event(int keycode, void *param)
 {
     t_vars *vars = (t_vars *)param;
 
-	// printf("\nkey = %i\n", keycode);
+	printf("\nkey = %i\n", keycode);
 
 	handle_resize(keycode, vars);
 	handle_translation(keycode, vars);
@@ -261,5 +261,20 @@ int handle_key_event(int keycode, void *param)
 		else if (vars->z_height > 0.1)
 			vars->z_height = vars->z_height - 0.1;
 	}
+	// turn on default colors
+	else if (keycode == KEY_DOT)
+		vars->flags.default_colors = TRUE;
+	// split 4 view
+	else if (keycode == KEY_4)
+	{
+		vars->flags.split_4_view = TRUE;
+		vars->gap = 33;
+		vars->offset_x = 0;
+		vars->offset_y = 0;
+		vars->angle_x_axis = 0;
+		vars->angle_y_axis = 0;
+		vars->angle_z_axis = 0;
+	}
+
     return (0);
 }

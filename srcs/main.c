@@ -40,6 +40,22 @@ int close_window(void *params)
 	exit(0);
 }
 
+void init_vars(t_vars *vars)
+{
+	vars->line_count = 0;
+	vars->wc = 0;
+	vars->gap = 0;
+	vars->z_height = 2;
+	vars->offset_x = 0;
+	vars->offset_y = 0;
+	vars->angle_x_axis = 0;
+	vars->angle_y_axis = 0;
+	vars->angle_z_axis = 0;
+	vars->flags.iso = FALSE;
+	vars->flags.done_once = FALSE;
+	vars->flags.default_colors = FALSE;
+}
+
 int	main(int argc, char **argv)
 {
 	t_vars vars;

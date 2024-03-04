@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/01 07:01:27 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 09:22:39 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,8 @@ int	render(void *param)
 
 	// *idea from meng
 	resize(vars);
+	if (vars->flags.default_colors == TRUE)
+		init_default_colors(vars);
 	bring_center_of_grid_from_topcorner_to_origin(vars);
 	rotate_about_x_axis(vars, vars->angle_x_axis);
 	rotate_about_y_axis(vars, vars->angle_y_axis);

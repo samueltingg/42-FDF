@@ -32,32 +32,19 @@ void bring_center_of_grid_from_topcorner_to_origin(t_vars *vars)
 
 }
 
-void init_vars(t_vars *vars)
-{
-	vars->line_count = 0;
-	vars->wc = 0;
-	vars->gap = 0;
-	vars->offset_x = 0;
-	vars->offset_y = 0;
-	vars->angle_x_axis = 0;
-	vars->angle_y_axis = 0;
-	vars->angle_z_axis = 0;
-	vars->flags.iso = FALSE;
-	vars->flags.done_once = FALSE;
-	vars->z_height = 2;
-}
+
 
 // center & enlarge grid to default setting
 void init_grid(t_vars *vars)
 {
 	// printf("\n====init grid====\n");
 	// init variables
-	vars->flags.iso = FALSE;
 	// vars->flags.resize = FALSE;
 	vars->angle_x_axis = 0;
 	vars->angle_y_axis = 0;
 	vars->angle_z_axis = 0;
-	// init_vars(vars);
+	vars->flags.iso = FALSE;
+	vars->flags.done_once = FALSE;
 
 	vars->gap = 20; // ? init size of grid to 20
 	resize(vars);
@@ -77,18 +64,25 @@ void init_grid(t_vars *vars)
 	// print_grid(vars, vars->cord);
 }
 
-void create_original_cord_copy(t_vars *vars)
+t_cord **duplicate_coordinates(t_vars *vars, t_cord **cord)
 {
 	int y;
+	t_cord **dup;
 
-	vars->cord_ori = ft_calloc(vars->line_count, sizeof(t_cord *)); // malloc
+	dup = ft_calloc(vars->line_count, sizeof(t_cord *)); // malloc
     y = 0;
 	while (y < vars->line_count)
 	{
-		vars->cord_ori[y] = ft_calloc(vars->wc, sizeof(t_cord));
-		ft_memcpy(vars->cord_ori[y], vars->cord[y], vars->wc * sizeof(t_cord));
+		dup[y] = ft_calloc(vars->wc, sizeof(t_cord));
+		ft_memcpy(dup[y], cord[y], vars->wc * sizeof(t_cord));
 		y++;
 	}
+	return (dup);
+}
+
+void create_original_cord_copy(t_vars *vars)
+{
+	vars->cord_ori = duplicate_coordinates(vars, vars->cord);
 
 	// printf("\n====ORIGINAL Grid Copy====");
 	translate_2d(vars, &vars->cord_ori, -vars->wc / 2, -vars->line_count /2);

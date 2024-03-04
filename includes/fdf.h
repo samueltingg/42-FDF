@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/02/29 10:51:09 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 10:16:41 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ void bring_center_of_grid_from_topcorner_to_origin(t_vars *vars);
 void init_vars(t_vars *vars);
 void init_grid(t_vars *vars);
 void create_original_cord_copy(t_vars *vars);
+t_cord **duplicate_coordinates(t_vars *vars, t_cord **cord);
 
 // * COLOR
 int gradient(int startcolor, int endcolor, int len, int pix);
+void init_default_colors(t_vars *vars);
 #endif

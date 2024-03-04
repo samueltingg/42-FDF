@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/02/29 14:45:24 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/01 10:05:32 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_flag
 {
 	int iso;
 	int done_once;
+	int default_colors;
+	int split_4_view;
 }				t_flag;
 
 /*
@@ -58,6 +60,7 @@ typedef struct s_vars
 	// PARSING
 	t_cord	**cord; // coordinates here will be updated for each transformation
     t_cord  **cord_ori; // original copy of coordinates | grid center translated to frame origin(0,0)
+
 	int		line_count;
 	int		wc;
 	double	    gap;
@@ -70,6 +73,11 @@ typedef struct s_vars
 	double 	angle_y_axis;
 	double  angle_z_axis;
 	t_flag flags;
+
+	// split 4 view
+	t_cord  **cord_back;
+	t_cord  **cord_left;
+	t_cord  **cord_right;
 }			t_vars;
 
 /*
