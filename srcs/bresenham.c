@@ -6,11 +6,26 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 14:44:47 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 14:08:38 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
+
+/*
+! Important check
+	- 	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT || x < 0 || y < 0)
+		return ;
+*/
+void	img_pix_put(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT || x < 0 || y < 0)
+		return ;
+	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
 
 /*
 - For Less steep slope
@@ -26,11 +41,8 @@ void	render_line_low(t_img *img, t_line_cord cord)
 	var.dy = cord.y2 - cord.y1;
 	var.yi = 1;
 	if (var.dy < 0)
-	{
 		var.yi = -1;
-		var.dy = -var.dy;
-	}
-	var.d = (2 * var.dy) - var.dx;
+	var.d = (2 * abs(var.dy)) - var.dx;
 	var.x = cord.x1;
 	var.y = cord.y1;
 	while (var.x <= cord.x2)
@@ -40,10 +52,10 @@ void	render_line_low(t_img *img, t_line_cord cord)
 		if (var.d > 0)
 		{
 			var.y = var.y + var.yi;
-			var.d = var.d + (2 * (var.dy - var.dx));
+			var.d = var.d + (2 * (abs(var.dy) - var.dx));
 		}
 		else
-			var.d = var.d + (2 * var.dy);
+			var.d = var.d + (2 * abs(var.dy));
 		var.x++;
 	}
 }
@@ -62,11 +74,8 @@ void	render_line_high(t_img *img, t_line_cord cord)
 	var.dx = cord.x2 - cord.x1;
 	var.xi = 1;
 	if (var.dx < 0)
-	{
 		var.xi = -1;
-		var.dx = -var.dx;
-	}
-	var.d = (2 * var.dy) - var.dx;
+	var.d = (2 * var.dy) - abs(var.dx);
 	var.x = cord.x1;
 	var.y = cord.y1;
 	while (var.y <= cord.y2)
@@ -76,10 +85,10 @@ void	render_line_high(t_img *img, t_line_cord cord)
 		if (var.d > 0 && var.dx != 0)
 		{
 			var.x = var.x + var.xi;
-			var.d = var.d + (2 * (var.dx - var.dy));
+			var.d = var.d + (2 * (abs(var.dx) - var.dy));
 		}
 		else
-			var.d = var.d + (2 * var.dx);
+			var.d = var.d + (2 * abs(var.dx));
 		var.y++;
 	}
 }

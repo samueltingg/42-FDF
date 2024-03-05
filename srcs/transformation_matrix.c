@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 14:49:24 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 14:13:13 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ void	multiply_matrix_to_grid(t_vars *vars, t_cord ***cord, double matrix[3][3])
 	double	y_new;
 	double	z_new;
 
-	y = 0;
-	while (y < vars->line_count)
+	y = -1;
+	while (++y < vars->line_count)
 	{
-		x = 0;
-		while (x < vars->wc)
+		x = -1;
+		while (++x < vars->wc)
 		{
-			// Multiply the coordinates of each point with the transformation matrix
 			x_new = (*cord)[y][x].x * matrix[0][0] +
                     (*cord)[y][x].y * matrix[0][1] +
                     (*cord)[y][x].z * matrix[0][2];
@@ -36,15 +35,10 @@ void	multiply_matrix_to_grid(t_vars *vars, t_cord ***cord, double matrix[3][3])
 			z_new = (*cord)[y][x].x * matrix[2][0] +
                     (*cord)[y][x].y * matrix[2][1] +
                     (*cord)[y][x].z * matrix[2][2];
-			// Update the coordinates of the point with the new values
 			(*cord)[y][x].x = x_new;
 			(*cord)[y][x].y = y_new;
 			(*cord)[y][x].z = z_new;
-			x++;
-			// printf("%f,%f,%f  ", x_new,y_new,z_new); // remove
 		}
-		y++;
-		// printf("\n"); // remove
 	}
 }
 
@@ -146,7 +140,7 @@ void	rotate_about_y_axis(t_vars *vars, t_cord ***cord, double angle)
 
 
 
-void multiply_matrices(double result[3][3], double matrix2[3][3]) 
+void multiply_matrices(double result[3][3], double matrix2[3][3])
 {
     double temp_result[3][3];
     int i, j, k;
@@ -156,20 +150,22 @@ void multiply_matrices(double result[3][3], double matrix2[3][3])
     for (i = 0; i < 3; i++) // ! CHANGE TO WHILE LOOP
 	{
         for (j = 0; j < 3; j++) {
-			
+
             temp_result[i][j] = 0;
         }
     }
 
     // Perform matrix multiplication
     i = 0;
-    while (i < 3) 
+    while (i < 3)
 	{
         j = 0;
-        while (j < 3) {
+        while (j < 3)
+		{
             temp = 0; // Initialize temporary variable to 0
             k = 0;
-            while (k < 3) {
+            while (k < 3)
+			{
                 temp += result[i][k] * matrix2[k][j];
                 k++;
             }
@@ -181,9 +177,11 @@ void multiply_matrices(double result[3][3], double matrix2[3][3])
 
     // Copy the temporary result back to the original result matrix
     i = 0;
-    while (i < 3) {
+    while (i < 3)
+	{
         j = 0;
-        while (j < 3) {
+        while (j < 3)
+		{
             result[i][j] = temp_result[i][j];
             j++;
         }

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:25:58 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 15:00:06 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 13:42:59 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,7 @@ void	handle_rotate(int keycode, t_vars *vars)
 */
 void	if_other_key_pressed(int keycode, t_vars *vars)
 {
-	if (keycode == KEY_I)
-	{
-		if (vars->flags.iso == FALSE)
-		{
-			vars->angle_z_axis = 30;
-			vars->angle_x_axis = 50;
-			vars->angle_y_axis = 0;
-			vars->flags.iso = TRUE;
-		}
-	}
-	else if (keycode == KEY_Z)
+	if (keycode == KEY_Z)
 	{
 		if ((vars->z_factor - 0.100000) < 0.000001)
 			vars->z_factor = 5;
@@ -105,6 +95,16 @@ void	if_other_key_pressed(int keycode, t_vars *vars)
 	}
 }
 
+	// if (keycode == KEY_I)
+	// {
+	// 	if (vars->flags.iso == FALSE)
+	// 	{
+	// 		vars->angle_z_axis = 30;
+	// 		vars->angle_x_axis = 50;
+	// 		vars->angle_y_axis = 0;
+	// 		vars->flags.iso = TRUE;
+	// 	}
+	// }
 /*
 - KEY_R -> RESET
 */

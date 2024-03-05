@@ -6,26 +6,11 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 15:18:35 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 13:50:01 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
-
-/*
-! Important check
-	- 	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT || x < 0 || y < 0)
-		return ;
-*/
-void	img_pix_put(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x >= WINDOW_WIDTH || y >= WINDOW_HEIGHT || x < 0 || y < 0)
-		return ;
-	dst = img->addr + (y * img->line_len + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 void	render_horizontal_lines(t_vars *vars, t_cord ***grid)
 {
@@ -107,7 +92,7 @@ int	render(void *param)
 		return (1);
 	render_background(&vars->img, 0x0);
 	if (vars->flags.split_4_view == TRUE)
-		render_bonus_grids(vars);
+		render_splitview_grids(vars);
 	else
 	{
 		resize(vars);

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 16:46:02 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 13:46:52 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	init_default_colors(t_vars *vars);
 // * SPLIT 4 VIEW
 void	init_other_grids(t_vars *vars);
 void	transform_4_grids(t_vars *vars);
-void	render_bonus_grids(t_vars *vars);
+void	render_splitview_grids(t_vars *vars);
 
 // * FREE
 void	free_cord(t_vars *vars, t_cord ***cord);
