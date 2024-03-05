@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 15:45:12 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 09:46:13 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ typedef struct s_flag
 	int done_once;
 	int default_colors;
 	int split_4_view;
+	int rotate_x;
+	int rotate_y;
+	int rotate_z;
 }				t_flag;
 
 /*

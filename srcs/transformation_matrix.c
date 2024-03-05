@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 15:43:44 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 10:24:25 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void multiply_matrices(double result[3][3], double matrix2[3][3]) {
 }
 
 
-void multiply_3_matrices_tgt(double result[3][3], double matrix_x[3][3], double matrix_y[3][3], double matrix_z[3][3])
+void multiply_3_matrices_tgt(double result[3][3], double matrix_1[3][3], double matrix_2[3][3], double matrix_3[3][3])
 {
     // Initialize the composite matrix with the identity matrix
 	// int result[3][3];
@@ -204,9 +204,9 @@ void multiply_3_matrices_tgt(double result[3][3], double matrix_x[3][3], double 
     result[2][2] = 1.0;
 
     // Multiply the input matrices in the desired order to obtain the composite matrix
-    multiply_matrices(result, matrix_x); // Multiply matrix3 first
-    multiply_matrices(result, matrix_y); // Then multiply matrix2
-    multiply_matrices(result, matrix_z); // Finally multiply matrix1
+    multiply_matrices(result, matrix_1); // Multiply matrix3 first
+    multiply_matrices(result, matrix_2); // Then multiply matrix2
+    multiply_matrices(result, matrix_3); // Finally multiply matrix1
 }
 
 void rotate_about_all_axis(t_vars *vars, t_cord ***cord, t_angle angle)
@@ -247,7 +247,12 @@ void rotate_about_all_axis(t_vars *vars, t_cord ***cord, t_angle angle)
 	matrix_z[2][1] = 0;
 	matrix_z[2][2] = 1;
 
-	multiply_3_matrices_tgt(result, matrix_x, matrix_y, matrix_z);
+	if (vars->flags.rotate_x == TRUE)
+		multiply_3_matrices_tgt(result, matrix_x, matrix_y, matrix_z);
+	else if (vars->flags.rotate_y == TRUE)
+		multiply_3_matrices_tgt(result, matrix_y, matrix_x, matrix_z);
+	else if (vars->flags.rotate_z == TRUE)
+		multiply_3_matrices_tgt(result, matrix_z, matrix_x, matrix_y);
 
 	multiply_matrix_to_grid(vars, cord, result);
 }

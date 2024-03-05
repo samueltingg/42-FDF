@@ -199,21 +199,80 @@ void handle_rotate(int keycode, t_vars *vars)
 {
 	double rotate_amt;
 
+	// reset to 0
+	if (keycode == KEY_D || keycode == KEY_A || keycode == KEY_W || keycode == KEY_S || keycode == KEY_L || keycode == KEY_J)
+	{
+		vars->flags.rotate_x = FALSE;
+		vars->flags.rotate_y = FALSE;
+		vars->flags.rotate_z = FALSE;
+
+	}
+
+	// if (keycode == KEY_D || keycode == KEY_A)
+	// 	vars->flags.rotate_z = TRUE;
+	// else if (keycode == KEY_W || keycode == KEY_S)
+	// 	vars->flags.rotate_x = TRUE;
+	// else if (keycode == KEY_L || keycode == KEY_J)
+	// 	vars->flags.rotate_y = TRUE;
+
+	// rotate_amt = 10;
+	// if (keycode == KEY_D)
+	// 	vars->angle_z_axis += rotate_amt;
+	// else if (keycode == KEY_A)
+	// 	vars->angle_z_axis += -rotate_amt;
+	// else if (keycode == KEY_W)
+	// 	vars->angle_x_axis += rotate_amt;
+	// else if (keycode == KEY_S)
+	// 	vars->angle_x_axis += -rotate_amt;
+	// else if (keycode == KEY_L)
+	// 	vars->angle_y_axis += rotate_amt;
+	// else if (keycode == KEY_J)
+	// 	vars->angle_y_axis += -rotate_amt;
+	// else
+	// 	return ;
+
 	rotate_amt = 10;
-	if (keycode == KEY_D)
-		vars->angle_z_axis += rotate_amt;
-	else if (keycode == KEY_A)
-		vars->angle_z_axis += -rotate_amt;
-	else if (keycode == KEY_W)
-		vars->angle_x_axis += rotate_amt;
-	else if (keycode == KEY_S)
-		vars->angle_x_axis += -rotate_amt;
-	else if (keycode == KEY_L)
-		vars->angle_y_axis += rotate_amt;
-	else if (keycode == KEY_J)
-		vars->angle_y_axis += -rotate_amt;
+	if (keycode == KEY_D || keycode == KEY_A)
+	{
+		vars->flags.rotate_z = TRUE;
+		if (keycode == KEY_D)
+			vars->angle_z_axis += rotate_amt;
+		else if (keycode == KEY_A)
+			vars->angle_z_axis += -rotate_amt;
+	}
+	else if (keycode == KEY_W || keycode == KEY_S)
+	{
+		vars->flags.rotate_x = TRUE;
+		if (keycode == KEY_W)
+			vars->angle_x_axis += rotate_amt;
+		else if (keycode == KEY_S)
+			vars->angle_x_axis += -rotate_amt;
+	}
+	else if (keycode == KEY_L || keycode == KEY_J)
+	{
+		vars->flags.rotate_y = TRUE;
+		if (keycode == KEY_L)
+			vars->angle_y_axis += rotate_amt;
+		else if (keycode == KEY_J)
+			vars->angle_y_axis += -rotate_amt;
+	}
 	else
 		return ;
+
+	// if (keycode == KEY_D)
+	// 	vars->angle_z_axis += rotate_amt;
+	// else if (keycode == KEY_A)
+	// 	vars->angle_z_axis += -rotate_amt;
+	// else if (keycode == KEY_W)
+	// 	vars->angle_x_axis += rotate_amt;
+	// else if (keycode == KEY_S)
+	// 	vars->angle_x_axis += -rotate_amt;
+	// else if (keycode == KEY_L)
+	// 	vars->angle_y_axis += rotate_amt;
+	// else if (keycode == KEY_J)
+	// 	vars->angle_y_axis += -rotate_amt;
+	// else
+	// 	return ;
 
 }
 
