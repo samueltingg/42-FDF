@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 07:51:22 by sting             #+#    #+#             */
-/*   Updated: 2024/02/29 13:40:44 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 13:17:53 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,21 @@ int	base_index(char *base, char c)
 	return (-1);
 }
 
-int	ft_atoi_base(char *str, char *base)
+/*
+- removed additional check
+	// while (*str == ' ' || (*str >= 9 && *str <= 13))
+	// 	str++;
+	// while (*str == '+' || *str == '-')
+	// {
+	// 	if (*str == '-')
+	// 		sign *= -1;
+	// 	str++;
+	// }
+- handle case where input is lowercase but base is always set to upper case
+		// if (ft_isalpha(*str))
+		// 	*str = ft_toupper(*str);
+*/
+int	ft_atoi_base_fdf(char *str, char *base)
 {
 	int	sign;
 	int	result;
@@ -64,19 +78,10 @@ int	ft_atoi_base(char *str, char *base)
 	sign = 1;
 	result = 0;
 	base_len = check_count_base(base);
-	if (check_count_base (base) == 0)
+	if (check_count_base(base) == 0)
 		return (0);
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	while (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
 	while (*str)
 	{
-		// handle case where input is lowercase but base is always set to upper case
 		if (ft_isalpha(*str))
 			*str = ft_toupper(*str);
 		if (base_index(base, *str) == -1)
@@ -94,11 +99,10 @@ int	ft_atoi_base(char *str, char *base)
 // 	char base[] = "0123456789ABCDEF";
 //     char string[] = "0xFF0000";
 
-//     printf("%i", ft_atoi_base(string, base));
+//     printf("%i", ft_atoi_base_fdf(string, base));
 // }
-
 
 /* atoi_base: input from any base, output decimal
  * line 53: can't return 0, as 0 is part of index
- * line 80: when meet char of str not part of base, return result 
+ * line 80: when meet char of str not part of base, return result
  * using pointer method instead of array saves 2 lines */

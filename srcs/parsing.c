@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 15:11:23 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 13:15:48 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@ void	free_str_arr(char **str_arr)
 	free(str_arr);
 }
 
-// void	free_cord(t_vars *vars, t_cord ***cord) // ! NOT CHECKED
-// {
-// 	int y = 0;
-// 	while (y < vars->line_count)
-// 	{
-// 		free((*cord)[y]);
-// 		y++;
-// 	}
-// 	free((*cord));
-// }
 
 int	count_words(char *str, char c)
 {
@@ -164,7 +154,7 @@ void parsing(char *input, t_vars *vars)
 				i = 0;
 				while (str_arr[x][i] != 'x')
 					i++;
-				vars->cord[y][x].color = ft_atoi_base((&str_arr[x][++i]),
+				vars->cord[y][x].color = ft_atoi_base_fdf((&str_arr[x][++i]),
 						"0123456789ABCDEF");
 			}
 			else
@@ -175,7 +165,5 @@ void parsing(char *input, t_vars *vars)
 		free_str_arr(str_arr);
 		y++;
 	}
-	// init_default_colors(vars);
-
 }
 

@@ -1,14 +1,14 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   main.c                                             :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2024/01/22 12:00:19 by sting             #+#    #+#             */
-// /*   Updated: 2024/01/23 15:11:28 by sting            ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_key_event.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/05 13:25:58 by sting             #+#    #+#             */
+/*   Updated: 2024/03/05 13:26:01 by sting            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include ".././includes/fdf.h"
 
@@ -205,59 +205,58 @@ void handle_rotate(int keycode, t_vars *vars)
 		vars->flags.rotate_x = FALSE;
 		vars->flags.rotate_y = FALSE;
 		vars->flags.rotate_z = FALSE;
-
 	}
 
-	// if (keycode == KEY_D || keycode == KEY_A)
-	// 	vars->flags.rotate_z = TRUE;
-	// else if (keycode == KEY_W || keycode == KEY_S)
-	// 	vars->flags.rotate_x = TRUE;
-	// else if (keycode == KEY_L || keycode == KEY_J)
-	// 	vars->flags.rotate_y = TRUE;
-
-	// rotate_amt = 10;
-	// if (keycode == KEY_D)
-	// 	vars->angle_z_axis += rotate_amt;
-	// else if (keycode == KEY_A)
-	// 	vars->angle_z_axis += -rotate_amt;
-	// else if (keycode == KEY_W)
-	// 	vars->angle_x_axis += rotate_amt;
-	// else if (keycode == KEY_S)
-	// 	vars->angle_x_axis += -rotate_amt;
-	// else if (keycode == KEY_L)
-	// 	vars->angle_y_axis += rotate_amt;
-	// else if (keycode == KEY_J)
-	// 	vars->angle_y_axis += -rotate_amt;
-	// else
-	// 	return ;
+	if (keycode == KEY_D || keycode == KEY_A)
+		vars->flags.rotate_z = TRUE;
+	else if (keycode == KEY_W || keycode == KEY_S)
+		vars->flags.rotate_x = TRUE;
+	else if (keycode == KEY_L || keycode == KEY_J)
+		vars->flags.rotate_y = TRUE;
 
 	rotate_amt = 10;
-	if (keycode == KEY_D || keycode == KEY_A)
-	{
-		vars->flags.rotate_z = TRUE;
-		if (keycode == KEY_D)
-			vars->angle_z_axis += rotate_amt;
-		else if (keycode == KEY_A)
-			vars->angle_z_axis += -rotate_amt;
-	}
-	else if (keycode == KEY_W || keycode == KEY_S)
-	{
-		vars->flags.rotate_x = TRUE;
-		if (keycode == KEY_W)
-			vars->angle_x_axis += rotate_amt;
-		else if (keycode == KEY_S)
-			vars->angle_x_axis += -rotate_amt;
-	}
-	else if (keycode == KEY_L || keycode == KEY_J)
-	{
-		vars->flags.rotate_y = TRUE;
-		if (keycode == KEY_L)
-			vars->angle_y_axis += rotate_amt;
-		else if (keycode == KEY_J)
-			vars->angle_y_axis += -rotate_amt;
-	}
+	if (keycode == KEY_D)
+		vars->angle_z_axis += rotate_amt;
+	else if (keycode == KEY_A)
+		vars->angle_z_axis += -rotate_amt;
+	else if (keycode == KEY_W)
+		vars->angle_x_axis += rotate_amt;
+	else if (keycode == KEY_S)
+		vars->angle_x_axis += -rotate_amt;
+	else if (keycode == KEY_L)
+		vars->angle_y_axis += rotate_amt;
+	else if (keycode == KEY_J)
+		vars->angle_y_axis += -rotate_amt;
 	else
 		return ;
+
+	// rotate_amt = 10;
+	// if (keycode == KEY_D || keycode == KEY_A)
+	// {
+	// 	vars->flags.rotate_z = TRUE;
+	// 	if (keycode == KEY_D)
+	// 		vars->angle_z_axis += rotate_amt;
+	// 	else if (keycode == KEY_A)
+	// 		vars->angle_z_axis += -rotate_amt;
+	// }
+	// else if (keycode == KEY_W || keycode == KEY_S)
+	// {
+	// 	vars->flags.rotate_x = TRUE;
+	// 	if (keycode == KEY_W)
+	// 		vars->angle_x_axis += rotate_amt;
+	// 	else if (keycode == KEY_S)
+	// 		vars->angle_x_axis += -rotate_amt;
+	// }
+	// else if (keycode == KEY_L || keycode == KEY_J)
+	// {
+	// 	vars->flags.rotate_y = TRUE;
+	// 	if (keycode == KEY_L)
+	// 		vars->angle_y_axis += rotate_amt;
+	// 	else if (keycode == KEY_J)
+	// 		vars->angle_y_axis += -rotate_amt;
+	// }
+	// else
+	// 	return ;
 
 	// if (keycode == KEY_D)
 	// 	vars->angle_z_axis += rotate_amt;
@@ -286,7 +285,8 @@ int handle_key_event(int keycode, void *param)
 	handle_resize(keycode, vars);
 	handle_translation(keycode, vars);
 	handle_rotate(keycode, vars);
-	// CLOSE WINDOW
+	// printf("x: %f, y: %f, z: %f\n", vars->angle_x_axis, vars->angle_y_axis, vars->angle_z_axis);
+
 	if (keycode == KEY_ESC)
         close_window(vars);
 	// RESET
@@ -300,7 +300,6 @@ int handle_key_event(int keycode, void *param)
 	}
 	else if (vars->flags.split_4_view == TRUE)
 		return (0);
-	// iso
 	else if (keycode == KEY_I)
 	{
 		if (vars->flags.iso == FALSE)
@@ -328,10 +327,8 @@ int handle_key_event(int keycode, void *param)
 		else if (vars->z_factor > 0.1)
 			vars->z_factor = vars->z_factor - 0.1;
 	}
-	// turn on default colors
 	else if (keycode == KEY_DOT)
 		vars->flags.default_colors = TRUE;
-	// split 4 view
 	else if (keycode == KEY_4)
 	{
 		vars->flags.split_4_view = TRUE;

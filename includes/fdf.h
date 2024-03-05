@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/04 16:16:26 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 13:15:48 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 void print_grid(t_vars *vars, t_cord **cord);
 
 // * PARSING
-int			ft_atoi_base(char *str, char *base);
+int			ft_atoi_base_fdf(char *str, char *base);
 int			get_line_count(char *input);
 void		parsing(char *input, t_vars *vars);
 void		free_cord(t_vars *vars, t_cord ***cord);

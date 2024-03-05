@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 10:24:25 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 11:22:56 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ void multiply_matrices(double result[3][3], double matrix2[3][3]) {
 }
 
 
+
 void multiply_3_matrices_tgt(double result[3][3], double matrix_1[3][3], double matrix_2[3][3], double matrix_3[3][3])
 {
     // Initialize the composite matrix with the identity matrix
@@ -250,7 +251,7 @@ void rotate_about_all_axis(t_vars *vars, t_cord ***cord, t_angle angle)
 	if (vars->flags.rotate_x == TRUE)
 		multiply_3_matrices_tgt(result, matrix_x, matrix_y, matrix_z);
 	else if (vars->flags.rotate_y == TRUE)
-		multiply_3_matrices_tgt(result, matrix_y, matrix_x, matrix_z);
+		multiply_3_matrices_tgt(result, matrix_y, matrix_z, matrix_x);
 	else if (vars->flags.rotate_z == TRUE)
 		multiply_3_matrices_tgt(result, matrix_z, matrix_x, matrix_y);
 

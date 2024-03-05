@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 09:36:19 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 10:31:38 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,6 @@ int	render(void *param)
 		// rotate_about_z_axis_2d(vars, &vars->cord, vars->angle_z_axis);
 		// rotate_about_y_axis(vars, &vars->cord, vars->angle_y_axis);
 		
-		// rotate_about_all_axis(vars, &vars->cord, (t_angle){vars->angle_x_axis, vars->angle_y_axis, vars->angle_z_axis});
 		rotate_about_all_axis(vars, &vars->cord, (t_angle){vars->angle_x_axis, vars->angle_y_axis, vars->angle_z_axis});
 
 
