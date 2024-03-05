@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 11:22:56 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 14:49:24 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,21 +146,25 @@ void	rotate_about_y_axis(t_vars *vars, t_cord ***cord, double angle)
 
 
 
-void multiply_matrices(double result[3][3], double matrix2[3][3]) {
+void multiply_matrices(double result[3][3], double matrix2[3][3]) 
+{
     double temp_result[3][3];
     int i, j, k;
     double temp;
 
     // Initialize temporary result matrix to zeros
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) // ! CHANGE TO WHILE LOOP
+	{
         for (j = 0; j < 3; j++) {
+			
             temp_result[i][j] = 0;
         }
     }
 
     // Perform matrix multiplication
     i = 0;
-    while (i < 3) {
+    while (i < 3) 
+	{
         j = 0;
         while (j < 3) {
             temp = 0; // Initialize temporary variable to 0
@@ -186,8 +190,6 @@ void multiply_matrices(double result[3][3], double matrix2[3][3]) {
         i++;
     }
 }
-
-
 
 void multiply_3_matrices_tgt(double result[3][3], double matrix_1[3][3], double matrix_2[3][3], double matrix_3[3][3])
 {
@@ -216,7 +218,6 @@ void rotate_about_all_axis(t_vars *vars, t_cord ***cord, t_angle angle)
 	double matrix_y[3][3];
 	double matrix_z[3][3];
 	double result[3][3];
-
 
 	matrix_x[0][0] = 1;
 	matrix_x[0][1] = 0;
@@ -254,6 +255,5 @@ void rotate_about_all_axis(t_vars *vars, t_cord ***cord, t_angle angle)
 		multiply_3_matrices_tgt(result, matrix_y, matrix_z, matrix_x);
 	else if (vars->flags.rotate_z == TRUE)
 		multiply_3_matrices_tgt(result, matrix_z, matrix_x, matrix_y);
-
 	multiply_matrix_to_grid(vars, cord, result);
 }

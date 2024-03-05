@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 09:46:13 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 14:44:47 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,50 +37,66 @@ typedef struct s_img
 
 typedef struct s_flag
 {
-	int iso;
-	int done_once;
-	int default_colors;
-	int split_4_view;
-	int rotate_x;
-	int rotate_y;
-	int rotate_z;
-}				t_flag;
+	int		iso;
+	int		done_once;
+	int		default_colors;
+	int		split_4_view;
+	int		rotate_x;
+	int		rotate_y;
+	int		rotate_z;
+}			t_flag;
 
 /*
-Elements:
-	- void	*mlx_ptr;
-	- void	*win_ptr;
-	- t_img	img;
-	- t_cord	**cord;
-	- int		line_count;
-	- int		wc;
-*/
-typedef struct s_vars
-{
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
 	// PARSING
-	t_cord	**cord; // coordinates here will be updated for each transformation
-    t_cord  **cord_ori; // original copy of coordinates | grid center translated to frame origin(0,0)
+	t_cord **cord;
+		// coordinates here will be updated for each transformation
+	t_cord **cord_ori;
+		// original copy of coordinates | grid center translated to frame origin(0,0)
 
 	int		line_count;
 	int		wc;
-	double	    gap;
+	double	gap;
 	double	z_factor;
 	int		offset_x;
 	int		offset_y;
 
 	// to keep track of rotated angle about each axis
 	double	angle_x_axis;
-	double 	angle_y_axis;
-	double  angle_z_axis;
-	t_flag flags;
+	double	angle_y_axis;
+	double	angle_z_axis;
+	t_flag	flags;
 
 	// split 4 view
-	t_cord  **cord_back;
-	t_cord  **cord_left;
-	t_cord  **cord_right;
+	t_cord	**cord_bottom;
+	t_cord	**cord_left;
+	t_cord	**cord_right
+*/
+typedef struct s_vars
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	img;
+	t_cord	**cord;
+	t_cord	**cord_ori;
+
+	int		line_count;
+	int		wc;
+	double	gap;
+	double	z_factor;
+	int		offset_x;
+	int		offset_y;
+
+	double	angle_x_axis;
+	double	angle_y_axis;
+	double	angle_z_axis;
+	t_flag	flags;
+
+	t_cord	**cord_bottom;
+	t_cord	**cord_left;
+	t_cord	**cord_right;
 }			t_vars;
 
 /*
@@ -104,7 +120,7 @@ typedef struct s_line_var
 {
 	int		dx;
 	int		dy;
-	int		D;
+	int		d;
 	int		x;
 	int		y;
 	int		xi;
@@ -113,10 +129,10 @@ typedef struct s_line_var
 
 typedef struct s_angle
 {
-	double x;
-	double y;
-	double z;
-} 				t_angle;
+	double	x;
+	double	y;
+	double	z;
+}			t_angle;
 
 /*
 	int a;

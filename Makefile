@@ -19,7 +19,7 @@ SRCS_FIL = \
 			transformation_2d.c \
 			handle_key_event.c \
 			transformation_utils.c \
-			gradient.c \
+			color_n_gradient.c \
 			split_4_view_bonus.c \
 			free.c \
 			print_grid.c  # temporary

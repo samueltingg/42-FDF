@@ -1,16 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gradient.c                                         :+:      :+:    :+:   */
+/*   color_n_gradient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:50:13 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 13:23:52 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 16:43:39 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include ".././includes/fdf.h"
+
+/*
+NOT REQUIRED
+- presets color or pixes with z height > 0,
+	and pixels surrounding it
+	(code checks for top/bottom/left/right neighbour)
+*/
+void	init_default_colors(t_vars *vars)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < vars->line_count)
+	{
+		x = 0;
+		while (x < vars->wc)
+		{
+			if (vars->cord[y][x].z > 0)
+			{
+				vars->cord[y][x].color = RED_PIXEL;
+				if (y > 0 && (int)vars->cord[y - 1][x].z == 0)
+					vars->cord[y - 1][x].color = BLUE_PIXEL;
+				if (y < vars->line_count - 1 && vars->cord[y + 1][x].z == 0)
+					vars->cord[y + 1][x].color = BLUE_PIXEL;
+				if (x > 0 && (int)vars->cord[y][x - 1].z == 0)
+					vars->cord[y][x - 1].color = BLUE_PIXEL;
+				if (x < vars->wc - 1 && (int)(vars->cord[y][x + 1].z) == 0)
+					vars->cord[y][x + 1].color = BLUE_PIXEL;
+			}
+			x++;
+		}
+		y++;
+	}
+}
 
 int	get_red(int color)
 {

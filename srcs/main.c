@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:24:55 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 13:02:27 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 14:26:15 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 	vars.line_count = get_line_count(argv[1]);
 	parsing(argv[1], &vars);
 	create_original_cord_copy(&vars);
-	init_grid(&vars);
+	reset_grid(&vars);
 	mlx(&vars);
 	return (0);
 }

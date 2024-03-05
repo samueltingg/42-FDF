@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:06:31 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 13:06:46 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 16:45:04 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_all_cord(t_vars *vars)
 	free_cord(vars, &vars->cord);
 	if (vars->flags.split_4_view == TRUE)
 	{
-		free_cord(vars, &vars->cord_back);
+		free_cord(vars, &vars->cord_bottom);
 		free_cord(vars, &vars->cord_left);
 		free_cord(vars, &vars->cord_right);
 	}
@@ -38,7 +38,20 @@ void	free_all_cord(t_vars *vars)
 
 void	free_all_splitview_cord(t_vars *vars)
 {
-	free_cord(vars, &vars->cord_back);
+	free_cord(vars, &vars->cord_bottom);
 	free_cord(vars, &vars->cord_left);
 	free_cord(vars, &vars->cord_right);
+}
+
+void	free_str_arr(char **str_arr)
+{
+	int	i;
+
+	i = 0;
+	while (str_arr[i] != NULL)
+	{
+		free(str_arr[i]);
+		i++;
+	}
+	free(str_arr);
 }
