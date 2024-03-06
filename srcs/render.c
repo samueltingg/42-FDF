@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/06 10:25:00 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 13:16:47 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	render(void *param)
 	render_text(vars->mlx_ptr, vars->win_ptr);
 	return (0);
 }
-
+// * Combined Rotation matrices Method
 		// rotate_about_all_axis(vars, &vars->cord,
 		// (t_angle){vars->angle_x_axis, vars->angle_y_axis,
 		// vars->angle_z_axis});
