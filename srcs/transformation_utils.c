@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:31:54 by sting             #+#    #+#             */
-/*   Updated: 2024/03/06 09:15:30 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 10:41:09 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ t_cord	**duplicate_coordinates(t_vars *vars, t_cord **cord)
 	t_cord	**dup;
 
 	dup = ft_calloc(vars->line_count, sizeof(t_cord *));
+	if (dup == NULL)
+	{
+		perror("Failed to allocate memory");
+		exit(EXIT_FAILURE);
+	}
 	y = 0;
 	while (y < vars->line_count)
 	{

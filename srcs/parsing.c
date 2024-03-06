@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:55:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 16:46:15 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 10:41:19 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,11 @@ void	parse_lines(t_vars *vars, int fd)
 			vars->flags.done_once = TRUE;
 		}
 		vars->cord[y] = malloc(vars->wc * sizeof(t_cord));
+		if (vars->cord[y] == NULL)
+		{
+			perror("Failed to allocate memory");
+			exit(EXIT_FAILURE);
+		}
 		store_coordinates_n_color_by_line(vars, str_arr, y);
 		free(line);
 		free_str_arr(str_arr);
