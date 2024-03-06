@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:25:04 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 13:46:52 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 09:57:38 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,8 @@ void	free_all_cord(t_vars *vars);
 void	free_all_splitview_cord(t_vars *vars);
 void	free_str_arr(char **str_arr);
 
+// * RENDER SIDEBAR
+void	render_sidebar(t_img *img, int color);
+void	render_text(void *mlx_ptr, void *win_ptr);
 
 #endif

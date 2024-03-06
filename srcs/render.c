@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:43:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 15:51:53 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 10:25:00 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,16 +102,18 @@ int	render(void *param)
 		rotate_about_x_axis(vars, &vars->cord, vars->angle_x_axis);
 		rotate_about_z_axis_2d(vars, &vars->cord, vars->angle_z_axis);
 		rotate_about_y_axis(vars, &vars->cord, vars->angle_y_axis);
-		// rotate_about_all_axis(vars, &vars->cord,
-		// (t_angle){vars->angle_x_axis, vars->angle_y_axis,
-		// vars->angle_z_axis});
 		translate_2d(vars, &vars->cord, vars->offset_x, vars->offset_y);
 		render_grid(vars, &vars->cord);
 	}
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img.img_ptr, 0,
 		0);
+	render_text(vars->mlx_ptr, vars->win_ptr);
 	return (0);
 }
+
+		// rotate_about_all_axis(vars, &vars->cord,
+		// (t_angle){vars->angle_x_axis, vars->angle_y_axis,
+		// vars->angle_z_axis});
 
 // * DIAGONAL LINE TEST
 // void test_bresenham_line(t_vars *vars)

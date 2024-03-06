@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:31:54 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 15:12:31 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 09:15:30 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	reset_grid(t_vars *vars)
 {
 	vars->angle_z_axis = 30;
 	vars->angle_x_axis = 50;
-	vars->angle_y_axis = 0;
+	vars->angle_y_axis = -30;
 	vars->flags.iso = FALSE;
 	vars->flags.done_once = FALSE;
 	vars->gap = 20;

@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 14:08:38 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 09:12:13 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,19 @@ void	swap_coordinates(t_line_cord *cord)
 	cord->color2 = tmp;
 }
 
+/*
+	if (change in x > change in y) "line less steep"
+		- render_low
+	else "line is steep"
+		- render high
+	-----------------
+	if (cord.x1 > cord.x2)
+	^swap cord to maintain consistency of drawing from small to big coordinate
+
+*/
 void	render_line_bresenham(t_img *img, t_line_cord cord)
 {
-	if (abs(cord.x2 - cord.x1) > abs(cord.y2 - cord.y1)) // Less STEEP
+	if (abs(cord.x2 - cord.x1) > abs(cord.y2 - cord.y1))
 	{
 		if (cord.x1 > cord.x2)
 		{
@@ -120,7 +130,7 @@ void	render_line_bresenham(t_img *img, t_line_cord cord)
 		else
 			render_line_low(img, cord);
 	}
-	else // STEEP
+	else
 	{
 		if (cord.y1 > cord.y2)
 		{

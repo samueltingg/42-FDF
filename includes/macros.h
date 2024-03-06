@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 14:40:36 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 09:20:29 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,9 @@
 # define ORANGE_PIXEL 0xFFA500
 
 # define RADIAN(angle_degrees) ((angle_degrees)*PI / 180)
+# define R(a) (a) >> 16
+# define G(a) ((a) >> 8) & 0xFF
+# define B(a) (a) & 0xFF
+# define RGB(r, g, b) ((r) << 16) + ((g) << 8) + (b)
 
 #endif
