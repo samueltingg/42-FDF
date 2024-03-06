@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:19:42 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 14:13:13 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/05 15:47:39 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,8 +250,8 @@ void rotate_about_all_axis(t_vars *vars, t_cord ***cord, t_angle angle)
 	if (vars->flags.rotate_x == TRUE)
 		multiply_3_matrices_tgt(result, matrix_x, matrix_y, matrix_z);
 	else if (vars->flags.rotate_y == TRUE)
-		multiply_3_matrices_tgt(result, matrix_y, matrix_z, matrix_x);
+		multiply_3_matrices_tgt(result, matrix_y, matrix_x, matrix_z);
 	else if (vars->flags.rotate_z == TRUE)
-		multiply_3_matrices_tgt(result, matrix_z, matrix_x, matrix_y);
+		multiply_3_matrices_tgt(result, matrix_z, matrix_y, matrix_x);
 	multiply_matrix_to_grid(vars, cord, result);
 }
