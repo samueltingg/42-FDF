@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:50:13 by sting             #+#    #+#             */
-/*   Updated: 2024/03/06 09:31:19 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/06 10:33:57 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	gradient(int startcolor, int endcolor, int len, int position)
 		/ (double)len;
 	increment[1] = (double)((G(endcolor)) - (G(startcolor)))
 		/ (double)len;
-	increment[2] = (double)((B(endcolor)) - B((startcolor)))
+	increment[2] = (double)((B(endcolor)) - (B(startcolor)))
 		/ (double)len;
 	new[0] = (R(startcolor)) + round(position * increment[0]);
 	new[1] = (G(startcolor)) + round(position * increment[1]);
