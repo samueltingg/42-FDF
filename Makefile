@@ -16,8 +16,8 @@ SRCS_FIL = \
 			bresenham.c \
 			parsing.c \
 			ft_atoi_base.c \
-			transformation_matrix.c \
-			transformation_2d.c \
+			rotation.c \
+			translate_resize.c \
 			handle_key_event.c \
 			transformation_utils.c \
 			color_n_gradient.c \
