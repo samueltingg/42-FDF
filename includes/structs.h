@@ -6,7 +6,7 @@
 /*   By: sting <sting@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:02:32 by sting             #+#    #+#             */
-/*   Updated: 2024/03/05 14:44:47 by sting            ###   ########.fr       */
+/*   Updated: 2024/03/07 14:35:51 by sting            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct s_flag
 	t_cord **cord;
 		// coordinates here will be updated for each transformation
 	t_cord **cord_ori;
-		// original copy of coordinates | grid center translated to frame origin(0,0)
+		// original copy of coordinates |
+		// grid center translated to frame origin(0,0)
 
 	int		line_count;
 	int		wc;
