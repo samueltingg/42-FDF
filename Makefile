@@ -39,10 +39,10 @@ LIBFT.A = $(LIBFT_DIR)libft.a
 # Set MINILIBX_DIR based on the operating system
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Darwin)  # macOS
-    MINILIBX_DIR = minilibx/
+    MINILIBX_DIR = minilibx/minilibx-macOS/
 	LIBRARIES = -L$(LIBFT_DIR) -lft -lm -L$(MINILIBX_DIR) -lmlx -framework OpenGL -framework AppKit
 else ifeq ($(UNAME_S), Linux)  # Linux
-    MINILIBX_DIR = minilibx-linux/
+    MINILIBX_DIR = minilibx/minilibx-linux/
 	LIBRARIES = -L$(LIBFT_DIR) -lft -lm -L$(MINILIBX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
 else
     $(error Unsupported operating system)
