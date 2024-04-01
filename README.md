@@ -1,5 +1,5 @@
 ## About
-FDF is a program that converts a file storing XYZ coordinates(+ color) into a **3D wireframe model** using a graphics library called MiniLibX.
+FDF, program that converts a file storing XYZ coordinates(+ color) into a **3D wireframe model** using a graphics library called MiniLibX.
 
 <table>
   <tr>
