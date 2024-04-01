@@ -5,7 +5,7 @@ FDF is a program that converts a file with XYZ coordinates and color information
 1. run `make`
 2. run program ('pipex') with your desired map:
    ```
-   ./pipex maps/t1.fdf
+   ./fdf maps/t1.fdf
    ```
 ### Interact with the 3D model with keyboard keys! 
 (Zoom, Rotation, Translation, Multi-view)
