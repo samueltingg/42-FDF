@@ -8,21 +8,7 @@ FDF is a program that converts a file with XYZ coordinates and color information
 <img width="500" alt="Screenshot 2024-04-01 at 09 53 46" src="https://github.com/samueltingg/42-FDF/assets/146511932/e23f9561-e737-4a18-8ce5-dda2817ae147">
     </td>
     <td>
-       <pre>
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0 10 10  0  0 10 10  0  0  0 10 10 10 10 10 10  0  0
-0  0 10 10  0  0 10 10  0  0  0 10 10 10 10 10 10  0  0
-0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0
-0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0
-0  0 10 10 10 10 10 10  0  0  0 10 10 10 10 10 10  0  0
-0  0 10 10 10 10 10 10  0  0  0 10 10 10 10 10 10  0  0
-0  0  0  0  0  0 10 10  0  0  0 10 10  0  0  0  0  0  0
-0  0  0  0  0  0 10 10  0  0  0 10 10 10 10 10 10  0  0
-0  0  0  0  0  0 10 10  0  0  0 10 10 10 10 10 10  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-       </pre>
+      <img width="473" alt="Screenshot 2024-04-01 at 10 55 07" src="https://github.com/samueltingg/42-FDF/assets/146511932/bfa35eab-0a3d-4472-8255-d3666bd99098">
     </td>
   </tr>
 </table>
